@@ -49,8 +49,8 @@ namespace SecurityPackage
         public string Decrypt()
         {
             PlainText = "";
-            int Count = CipherText.Length / DepthLevel;
             int Lenght = CipherText.Length;
+            int Count = Lenght / DepthLevel;
             if (Count * DepthLevel != Lenght) Count++;
             for (int i = 0; i < DepthLevel; i++)
                 Arrays[i] = new List<char>();

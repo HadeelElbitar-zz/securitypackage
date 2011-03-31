@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CeaserCipher.cs" />
+    <Compile Include="ColumnarCipher.cs" />
     <Compile Include="HillCipher.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

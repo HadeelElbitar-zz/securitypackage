@@ -23,7 +23,10 @@ namespace SecurityPackage
             //HillCipher p = new HillCipher("hadeel", K);
             //p.Encrypt();
             //p.Decrypt();
-            RailFenceCipher p = new RailFenceCipher("advance attack two hours from nw", 3);
+            //RailFenceCipher p = new RailFenceCipher("advance attack two hours from nw", 3);
+            //p.Encrypt();
+            //p.Decrypt();
+            ColumnarCipher p = new ColumnarCipher("advance attack two hours from now", 52314);
             p.Encrypt();
             p.Decrypt();
         }
