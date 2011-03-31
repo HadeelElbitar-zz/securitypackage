@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="MonoalphabeticCipher.cs" />
     <Compile Include="PlayFairCipher.cs" />
+    <Compile Include="PolyalphabeticCipher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">

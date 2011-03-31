@@ -18,7 +18,7 @@ namespace SecurityPackage
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PlayFairCipher p = new PlayFairCipher("haddel", "Anacrchy");
+            PolyalphabeticCipher p = new PolyalphabeticCipher("abcxz" , "cbz",1);
             p.Encrypt();
             p.Decrypt();
         }

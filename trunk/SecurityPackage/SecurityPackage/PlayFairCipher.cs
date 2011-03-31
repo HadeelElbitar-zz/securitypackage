@@ -117,12 +117,21 @@ namespace SecurityPackage
             int[] Index = new int[2];
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
-                    if (Matrix[i, j] == X.ToString())
+                {
+                    if (Matrix[i, j][0] == X)
                     {
                         Index[0] = i;
                         Index[1] = j;
                         return Index;
                     }
+                    if (Matrix[i, j][0] == 'I' && Matrix[i, j][1] == X)
+                    {
+                        Index[0] = i;
+                        Index[1] = j;
+                        return Index;
+                    }
+                }
+            
             return Index;
         }
         string [,] BuildMatrix(string _Key)
