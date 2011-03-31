@@ -1,0 +1,9 @@
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\bin\Debug\SecurityPackage.exe
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\bin\Debug\SecurityPackage.pdb
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.MainForm.resources
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.Properties.Resources.resources
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.exe
+c:\users\dydy\documents\visual studio 2010\Projects\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.pdb
