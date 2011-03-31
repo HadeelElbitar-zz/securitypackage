@@ -18,9 +18,14 @@ namespace SecurityPackage
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            int[,] K = { { 1, 2, 3 }, { 2, 3, 4 }, { 1, 1, 2 } };
-            HillCipher p = new HillCipher("hadeel", K);
+            //int[,] K = { { 1, 2, 3 }, { 2, 3, 4 }, { 1, 1, 2 } };
+            //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
+            //HillCipher p = new HillCipher("hadeel", K);
+            //p.Encrypt();
+            //p.Decrypt();
+            RailFenceCipher p = new RailFenceCipher("advance attack two hours from nw", 3);
             p.Encrypt();
+            p.Decrypt();
         }
     }
 }
