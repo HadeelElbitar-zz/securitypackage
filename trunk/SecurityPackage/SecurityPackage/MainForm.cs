@@ -18,9 +18,9 @@ namespace SecurityPackage
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            PolyalphabeticCipher p = new PolyalphabeticCipher("abcxz" , "cbz",1);
+            int[,] K = { { 1, 2, 3 }, { 2, 3, 4 }, { 1, 1, 2 } };
+            HillCipher p = new HillCipher("hadeel", K);
             p.Encrypt();
-            p.Decrypt();
         }
     }
 }
