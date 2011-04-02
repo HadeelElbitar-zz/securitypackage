@@ -14,18 +14,30 @@ namespace SecurityPackage
         int[,] KeyInverse;
         int NumberOfChars;
         Dictionary<char, int> AlphaIndex = new Dictionary<char, int>();
+        /// <summary>
+        /// use it when decrypting only
+        /// </summary>
         public HillCipher() { }
+        /// <summary>
+        /// use it when encrypting only
+        /// </summary>
+        /// <param name="_PlainText"></param>
+        /// <param name="_Key"></param>
         public HillCipher(string _PlainText, int[,] _Key)
         {
             PlainText = _PlainText.ToUpper();
-            Key = _Key;
-            NumberOfChars = (int)Math.Sqrt(Key.Length);
-            KeyInverse = new int[NumberOfChars, NumberOfChars];
-            FillIndex();
+            PrepareKey(_Key);
         }
         #endregion
 
         #region Helping Functions
+        void PrepareKey(int[,] NewKey)
+        {
+            Key = NewKey;
+            NumberOfChars = (int)Math.Sqrt(Key.Length);
+            KeyInverse = new int[NumberOfChars, NumberOfChars];
+            FillIndex();
+        }
         void FillIndex()
         {
             char Initial = 'A';
@@ -113,6 +125,8 @@ namespace SecurityPackage
         #region Encryption
         public string Encrypt()
         {
+            if (PlainText == null || Key == null)
+                return "Please choose a valid Plain Text and Key !";
             int[,] PT = new int[1, NumberOfChars];
             int[,] CT;
             int count = PlainText.Length;
@@ -149,6 +163,11 @@ namespace SecurityPackage
         #region Decryption
         public string Decrypt()
         {
+            if (CipherText == null)
+                return "There is no Encrypted CipherText to Decrypt !";
+            if (Key == null)
+                return "please choose a valid key !";
+            CipherText = CipherText.ToUpper();
             int Determinant = MatrixDet(Key);
             Determinant = Math.Abs(Determinant) % 26;
             Determinant = 26 - (27 / (26 - Determinant));
@@ -193,6 +212,44 @@ namespace SecurityPackage
                 }
             }
             return PlainText;
+        }
+        #endregion
+
+        #region Setting Properties
+        /// <summary>
+        /// Set new PlainText
+        /// </summary>
+        public string _PlainText
+        {
+            set
+            {
+                PlainText = value;
+            }
+        }
+        /// <summary>
+        /// Set new Key
+        /// </summary>
+        public int[,] _Key
+        {
+            set
+            {
+                Key = value;
+                PrepareKey(Key);
+            }
+        }
+        /// <summary>
+        /// returns the CihperText generated or set new value to Decrypt
+        /// </summary>
+        public string _CipherText
+        {
+            get
+            {
+                return CipherText;
+            }
+            set
+            {
+                CipherText = value;
+            }
         }
         #endregion
     }

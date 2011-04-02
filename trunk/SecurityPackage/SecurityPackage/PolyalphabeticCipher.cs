@@ -11,7 +11,15 @@ namespace SecurityPackage
         string PlainText, CipherText, Key;
         char[,] Matrix = new char[26, 26];
         Dictionary<char, int> AlphaIndex = new Dictionary<char, int>();
+        /// <summary>
+        /// use it when decrypting only
+        /// </summary>
         public PolyalphabeticCipher() { }
+        /// <summary>
+        /// use it when encrypting only
+        /// </summary>
+        /// <param name="_PlainText"></param>
+        /// <param name="_Key"></param>
         public PolyalphabeticCipher(string _PlainText, string _Key, int Mode) // Mode = 0 "AutoKey" , Mode = 1 "RepeatKey"
         {
             PlainText = _PlainText.ToLower();

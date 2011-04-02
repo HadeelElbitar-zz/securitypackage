@@ -56,9 +56,7 @@
             this.HillTabPage = new System.Windows.Forms.TabPage();
             this.HillOKButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.HillWidthTextBox = new System.Windows.Forms.TextBox();
-            this.HillWidthLabel = new System.Windows.Forms.Label();
-            this.HillHeightTextBox = new System.Windows.Forms.TextBox();
+            this.HillSizeTextBox = new System.Windows.Forms.TextBox();
             this.HillHeightLabel = new System.Windows.Forms.Label();
             this.MonoalphabeticTabPage = new System.Windows.Forms.TabPage();
             this.MonoalphabeticDecryptButton = new System.Windows.Forms.Button();
@@ -410,6 +408,7 @@
             this.ColumnarDecryptButton.TabIndex = 7;
             this.ColumnarDecryptButton.Text = "Decrypt";
             this.ColumnarDecryptButton.UseVisualStyleBackColor = true;
+            this.ColumnarDecryptButton.Click += new System.EventHandler(this.ColumnarDecryptButton_Click);
             // 
             // ColumnarEncryptButton
             // 
@@ -420,6 +419,7 @@
             this.ColumnarEncryptButton.TabIndex = 6;
             this.ColumnarEncryptButton.Text = "Encrypt";
             this.ColumnarEncryptButton.UseVisualStyleBackColor = true;
+            this.ColumnarEncryptButton.Click += new System.EventHandler(this.ColumnarEncryptButton_Click);
             // 
             // ColumnarKeyGroupBox
             // 
@@ -462,12 +462,11 @@
             this.HillOKButton.TabIndex = 6;
             this.HillOKButton.Text = "OK";
             this.HillOKButton.UseVisualStyleBackColor = true;
+            this.HillOKButton.Click += new System.EventHandler(this.HillOKButton_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.HillWidthTextBox);
-            this.groupBox1.Controls.Add(this.HillWidthLabel);
-            this.groupBox1.Controls.Add(this.HillHeightTextBox);
+            this.groupBox1.Controls.Add(this.HillSizeTextBox);
             this.groupBox1.Controls.Add(this.HillHeightLabel);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.ForeColor = System.Drawing.Color.LightSeaGreen;
@@ -477,31 +476,13 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // HillWidthTextBox
+            // HillSizeTextBox
             // 
-            this.HillWidthTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HillWidthTextBox.Location = new System.Drawing.Point(3, 62);
-            this.HillWidthTextBox.Name = "HillWidthTextBox";
-            this.HillWidthTextBox.Size = new System.Drawing.Size(138, 20);
-            this.HillWidthTextBox.TabIndex = 9;
-            // 
-            // HillWidthLabel
-            // 
-            this.HillWidthLabel.AutoSize = true;
-            this.HillWidthLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HillWidthLabel.Location = new System.Drawing.Point(3, 49);
-            this.HillWidthLabel.Name = "HillWidthLabel";
-            this.HillWidthLabel.Size = new System.Drawing.Size(72, 13);
-            this.HillWidthLabel.TabIndex = 8;
-            this.HillWidthLabel.Text = "Hill Key Width";
-            // 
-            // HillHeightTextBox
-            // 
-            this.HillHeightTextBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.HillHeightTextBox.Location = new System.Drawing.Point(3, 29);
-            this.HillHeightTextBox.Name = "HillHeightTextBox";
-            this.HillHeightTextBox.Size = new System.Drawing.Size(138, 20);
-            this.HillHeightTextBox.TabIndex = 7;
+            this.HillSizeTextBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HillSizeTextBox.Location = new System.Drawing.Point(3, 29);
+            this.HillSizeTextBox.Name = "HillSizeTextBox";
+            this.HillSizeTextBox.Size = new System.Drawing.Size(138, 20);
+            this.HillSizeTextBox.TabIndex = 7;
             // 
             // HillHeightLabel
             // 
@@ -509,9 +490,9 @@
             this.HillHeightLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HillHeightLabel.Location = new System.Drawing.Point(3, 16);
             this.HillHeightLabel.Name = "HillHeightLabel";
-            this.HillHeightLabel.Size = new System.Drawing.Size(75, 13);
+            this.HillHeightLabel.Size = new System.Drawing.Size(63, 13);
             this.HillHeightLabel.TabIndex = 6;
-            this.HillHeightLabel.Text = "Hill Key Height";
+            this.HillHeightLabel.Text = "Hill Key Size";
             // 
             // MonoalphabeticTabPage
             // 
@@ -535,6 +516,7 @@
             this.MonoalphabeticDecryptButton.TabIndex = 9;
             this.MonoalphabeticDecryptButton.Text = "Decrypt";
             this.MonoalphabeticDecryptButton.UseVisualStyleBackColor = true;
+            this.MonoalphabeticDecryptButton.Click += new System.EventHandler(this.MonoalphabeticDecryptButton_Click);
             // 
             // MonoalphabeticEncryptButton
             // 
@@ -545,6 +527,7 @@
             this.MonoalphabeticEncryptButton.TabIndex = 8;
             this.MonoalphabeticEncryptButton.Text = "Encrypt";
             this.MonoalphabeticEncryptButton.UseVisualStyleBackColor = true;
+            this.MonoalphabeticEncryptButton.Click += new System.EventHandler(this.MonoalphabeticEncryptButton_Click);
             // 
             // MonoalphabeticKeyGroupBox
             // 
@@ -588,6 +571,7 @@
             this.PlayFairDecryptButton.TabIndex = 7;
             this.PlayFairDecryptButton.Text = "Decrypt";
             this.PlayFairDecryptButton.UseVisualStyleBackColor = true;
+            this.PlayFairDecryptButton.Click += new System.EventHandler(this.PlayFairDecryptButton_Click);
             // 
             // PlayFairEncryptButton
             // 
@@ -598,6 +582,7 @@
             this.PlayFairEncryptButton.TabIndex = 6;
             this.PlayFairEncryptButton.Text = "Encrypt";
             this.PlayFairEncryptButton.UseVisualStyleBackColor = true;
+            this.PlayFairEncryptButton.Click += new System.EventHandler(this.PlayFairEncryptButton_Click);
             // 
             // PlayFairKeyGroupBox
             // 
@@ -724,6 +709,7 @@
             this.RailFenceDecryptButton.TabIndex = 7;
             this.RailFenceDecryptButton.Text = "Decrypt";
             this.RailFenceDecryptButton.UseVisualStyleBackColor = true;
+            this.RailFenceDecryptButton.Click += new System.EventHandler(this.RailFenceDecryptButton_Click);
             // 
             // RailFenceEncryptButton
             // 
@@ -734,6 +720,7 @@
             this.RailFenceEncryptButton.TabIndex = 6;
             this.RailFenceEncryptButton.Text = "Encrypt";
             this.RailFenceEncryptButton.UseVisualStyleBackColor = true;
+            this.RailFenceEncryptButton.Click += new System.EventHandler(this.RailFenceEncryptButton_Click);
             // 
             // RailFenceDepthGroupBox
             // 
@@ -850,9 +837,7 @@
         private System.Windows.Forms.TabPage HillTabPage;
         private System.Windows.Forms.Button HillOKButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox HillWidthTextBox;
-        private System.Windows.Forms.Label HillWidthLabel;
-        private System.Windows.Forms.TextBox HillHeightTextBox;
+        private System.Windows.Forms.TextBox HillSizeTextBox;
         private System.Windows.Forms.Label HillHeightLabel;
         private System.Windows.Forms.TabPage MonoalphabeticTabPage;
         private System.Windows.Forms.Button MonoalphabeticDecryptButton;

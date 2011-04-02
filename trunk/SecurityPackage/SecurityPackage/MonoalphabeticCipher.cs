@@ -8,32 +8,48 @@ namespace SecurityPackage
     class MonoalphabeticCipher
     {
         #region Constructors
-        string PlainText, CipherText;
+        string PlainText, CipherText, TempKey;
         Dictionary<char , char> Key = new Dictionary<char,char>();
         char[] Alphabetic = { 'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g', 'G', 'h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M', 'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't', 'T', 'u', 'U', 'v', 'V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z' };
+        /// <summary>
+        /// use it when decrypting only
+        /// </summary>
         public MonoalphabeticCipher() { }
+        /// <summary>
+        /// use it when encrypting only
+        /// </summary>
+        /// <param name="_PlainText"></param>
+        /// <param name="_Key"></param>
         public MonoalphabeticCipher(string _PlainText , string _Key) 
         {
             PlainText = _PlainText;
-            for (int i = 0; i < 26; i++)
+            PrepareKey(_Key);
+        }
+        #endregion
+
+        #region Helping Functions
+        void PrepareKey(string NewKey)
+        {
+            for (int i = 0, j = -1; i < 26; i++)
             {
-                Key.Add(Alphabetic[i], _Key[i]);
-                Key.Add(Alphabetic[i + 1], _Key[i]);
+                Key.Add(Alphabetic[++j], NewKey[i]);
+                Key.Add(Alphabetic[++j], NewKey[i]);
             }
+            Key.Add(' ', ' ');
         }
         #endregion
 
         #region Encryption
         public string Encrypt()
         {
-            if(Key.Count == 0 || PlainText == null)
+            if(Key.Count < 52 || PlainText == null)
                 return "Please choose a valid Plain Text and Key !";
             CipherText = "";
             foreach (char item in PlainText)
                 CipherText += Key[item];
             return CipherText;
         }
-        public string Encrypt(string _Key)
+        string Encrypt(string _Key)
         {
             if (PlainText == null)
                 return "Please choose a valid Plain Text !";
@@ -47,7 +63,7 @@ namespace SecurityPackage
                 CipherText += Key[item];
             return CipherText;
         }
-        public string Encrypt(string _PlainText, string _Key)
+        string Encrypt(string _PlainText, string _Key)
         {
             Dictionary<char, char> TempKey = new Dictionary<char, char>();
             for (int i = 0; i < 26; i++)
@@ -77,7 +93,7 @@ namespace SecurityPackage
                     }
             return PlainText;
         }
-        public string Decrypt(string _Key)
+        string Decrypt(string _Key)
         {
             if (CipherText == null)
                 return "Text didn't got encrypted !";
@@ -96,7 +112,7 @@ namespace SecurityPackage
                     }
             return PlainText;
         }
-        public string Decrypt(string _CipherText, string _Key)
+        string Decrypt(string _CipherText, string _Key)
         {
             string PT = "";
             Dictionary<char, char> TempKey = new Dictionary<char, char>();
@@ -113,6 +129,44 @@ namespace SecurityPackage
                         break;
                     }
             return PT;
+        }
+        #endregion
+
+        #region Setting Properties
+        /// <summary>
+        /// Set new PlainText
+        /// </summary>
+        public string _PlainText
+        {
+            set
+            {
+                PlainText = value;
+            }
+        }
+        /// <summary>
+        /// Set new Key
+        /// </summary>
+        public string _Key
+        {
+            set
+            {
+                TempKey = value;
+                PrepareKey(TempKey);
+            }
+        }
+        /// <summary>
+        /// returns the CihperText generated or set new value to Decrypt
+        /// </summary>
+        public string _CipherText
+        {
+            get
+            {
+                return CipherText;
+            }
+            set
+            {
+                CipherText = value;
+            }
         }
         #endregion
     }

@@ -12,17 +12,34 @@ namespace SecurityPackage
         char[] Alphabetic = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         string[,] Matrix = new string[5, 5];
         List<string> Diagrams = new List<string>();
+        /// <summary>
+        /// use it when decrypting only
+        /// </summary>
         public PlayFairCipher() { }
+        /// <summary>
+        /// use it when encrypting only
+        /// </summary>
+        /// <param name="_PlainText"></param>
+        /// <param name="_Key"></param>
         public PlayFairCipher(string _PlainText, string _Key)
         {
             PlainText = _PlainText.ToLower();
-            Key = _Key.ToUpper();
-            BuildMatrix();
-            GetDiagrams();
+            string[] TempPT = PlainText.Split(' ');
+            foreach (string item in TempPT)
+            {
+                GetDiagrams(item);
+                Diagrams.Add(" ");
+            }
+            PrepareKey(_Key);
         }
         #endregion
 
         #region Helping Functions
+        void PrepareKey(string NewKey)
+        {
+            Key = NewKey.ToUpper();
+            BuildMatrix();
+        }
         void BuildMatrix()
         {
             List<char> Temp = new List<char>();
@@ -91,24 +108,25 @@ namespace SecurityPackage
                 }
             }
         }
-        void GetDiagrams()
+        void GetDiagrams(string Text)
         {
-            if (PlainText.Length % 2 != 0)
-                PlainText += "x";
-            int count = PlainText.Length;
+            //PlainText = PlainText.Replace(" ", "");
+            if (Text.Length % 2 != 0)
+                Text += "x";
+            int count = Text.Length;
             for (int i = 0; i < count; i+=2)
             {
-                if (PlainText[i] != PlainText[i + 1])
-                    Diagrams.Add(PlainText[i].ToString() + PlainText[i + 1].ToString());
+                if (Text[i] != Text[i + 1])
+                    Diagrams.Add(Text[i].ToString() + Text[i + 1].ToString());
                 else
                 {
-                    if(PlainText[count-1]=='x')
-                        PlainText = PlainText.Remove(count - 1, 1);
-                    PlainText = PlainText.Insert(i + 1, "x");
-                    if (PlainText.Length % 2 != 0)
-                        PlainText += "x";
-                    count = PlainText.Length;
-                    Diagrams.Add(PlainText[i].ToString() + PlainText[i + 1].ToString());
+                    if (Text[count - 1] == 'x')
+                        Text = Text.Remove(count - 1, 1);
+                    Text = Text.Insert(i + 1, "x");
+                    if (Text.Length % 2 != 0)
+                        Text += "x";
+                    count = Text.Length;
+                    Diagrams.Add(Text[i].ToString() + Text[i + 1].ToString());
                 }
             }
         }
@@ -204,37 +222,21 @@ namespace SecurityPackage
             }
             return NewMatrix;
         }
-        List<string> GetDiagrams(string PT)
-        {
-            List<string> NewDiagram = new List<string>();
-            if (PT.Length % 2 != 0)
-                PT += "x";
-            int count = PT.Length;
-            for (int i = 0; i < count; i += 2)
-            {
-                if (PT[i] != PT[i + 1])
-                    NewDiagram.Add(PT[i].ToString() + PT[i + 1].ToString());
-                else
-                {
-                    if (PT[count - 1] == 'x')
-                        PT = PT.Remove(count - 1, 1);
-                    PT = PT.Insert(i + 1, "x");
-                    if (PT.Length % 2 != 0)
-                        PT += "x";
-                    count = PT.Length;
-                    NewDiagram.Add(PT[i].ToString() + PT[i + 1].ToString());
-                }
-            }
-            return NewDiagram;
-        }
         #endregion
 
         #region Encryption
         public string Encrypt()
         {
+            if (PlainText == null || Key == null)
+                return "Please choose a valid Plain Text and Key !";
             int[] Index1, Index2;
             foreach (string item in Diagrams)
             {
+                if (item == " ")
+                {
+                    CipherText += " ";
+                    continue;
+                }
                 string Titem = item.ToUpper();
                 Index1 = SearchMatrix(Titem[0]);
                 Index2 = SearchMatrix(Titem[1]);
@@ -263,13 +265,26 @@ namespace SecurityPackage
         {
             if (CipherText == null)
                 return "Text didn't got encrypted !";
+            if (Key == null)
+                return "please choose a valid key !";
             string PlainText = "";
-            List<string> NewDiagrams = GetDiagrams(CipherText);
-            int[] Index1, Index2;
-            foreach (string item in NewDiagrams)
+            string[] TempPT = CipherText.Split(' ');
+            foreach (string item in TempPT)
             {
-                Index1 = SearchMatrix(item[0]);
-                Index2 = SearchMatrix(item[1]);
+                GetDiagrams(item); 
+                Diagrams.Add(" ");
+            }
+            int[] Index1, Index2;
+            foreach (string item in Diagrams)
+            {
+                if (item == " ")
+                {
+                    PlainText += " ";
+                    continue;
+                }
+                string Titem = item.ToUpper();
+                Index1 = SearchMatrix(Titem[0]);
+                Index2 = SearchMatrix(Titem[1]);
                 if (Index1[0] == Index2[0]) // same i same row
                 {
                     int col1 = Index1[1] - 1, col2 = Index2[1] - 1;
@@ -293,6 +308,44 @@ namespace SecurityPackage
                 }
             }
             return PlainText;
+        }
+        #endregion
+
+        #region Setting Properties
+        /// <summary>
+        /// Set new PlainText
+        /// </summary>
+        public string _PlainText
+        {
+            set
+            {
+                PlainText = value;
+            }
+        }
+        /// <summary>
+        /// Set new Key
+        /// </summary>
+        public string _Key
+        {
+            set
+            {
+                Key = value;
+                PrepareKey(Key);
+            }
+        }
+        /// <summary>
+        /// returns the CihperText generated or set new value to Decrypt
+        /// </summary>
+        public string _CipherText
+        {
+            get
+            {
+                return CipherText;
+            }
+            set
+            {
+                CipherText = value;
+            }
         }
         #endregion
     }

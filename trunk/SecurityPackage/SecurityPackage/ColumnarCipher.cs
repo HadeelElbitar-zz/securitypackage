@@ -10,19 +10,21 @@ namespace SecurityPackage
         #region Constructors
         string PlainText, CipherText, Key;
         int[] SortedKey;
-        int NumberOfColumns, MaxNumOfElements;
+        int KeyInt, NumberOfColumns;
         List<char>[] Columns;
+        /// <summary>
+        /// use it when decrypting only
+        /// </summary>
         public ColumnarCipher() { }
+        /// <summary>
+        /// use it when encrypting only
+        /// </summary>
+        /// <param name="_PlainText"></param>
+        /// <param name="_Key"></param>
         public ColumnarCipher(string _PlainText, int _Key)
         {
             PlainText = _PlainText;
-            Key = _Key.ToString();
-            NumberOfColumns = Key.Length;
-            MaxNumOfElements = PlainText.Length / NumberOfColumns;
-            Columns = new List<char>[NumberOfColumns];
-            for (int i = 0; i < NumberOfColumns; i++)
-                Columns[i] = new List<char>();
-            SortedKey = SortKey(Key);
+            PrepareKey(_Key);
         }
         #endregion
 
@@ -39,11 +41,23 @@ namespace SecurityPackage
                 Numbers[++j] = item.Value;
             return Numbers;
         }
+        void PrepareKey(int NewKey)
+        {
+            Key = NewKey.ToString();
+            NumberOfColumns = Key.Length;
+            //MaxNumOfElements = PlainText.Length / NumberOfColumns;
+            Columns = new List<char>[NumberOfColumns];
+            for (int i = 0; i < NumberOfColumns; i++)
+                Columns[i] = new List<char>();
+            SortedKey = SortKey(Key);
+        }
         #endregion
 
         #region Encryption
         public string Encrypt()
         {
+            if (PlainText == null || Key == null)
+                return "Please choose a valid Plain Text and Key !";
             CipherText = "";
             int length = PlainText.Length;
             int j = -1;
@@ -66,6 +80,10 @@ namespace SecurityPackage
         #region Decryption
         public string Decrypt()
         {
+            if (CipherText == null)
+                return "There is no Encrypted CipherText to Decrypt !";
+            if (Key == null)
+                return "please choose a valid key !";
             PlainText = "";
             int Length = CipherText.Length, NumberOfCharInCol, ExtraChars;
             for (int i = 0; i < NumberOfColumns; i++)
@@ -76,7 +94,6 @@ namespace SecurityPackage
             for (int j = 0; j < NumberOfColumns; j++)
             {
                 ColIndex = SortedKey[j];
-                //NumberOfCharInCol = NumberOfCharsPerEachColumn[ColIndex];
                 if (ColIndex < ExtraChars)
                 {
                     for (int i = 0; k < Length && i < NumberOfCharInCol + 1; k++, i++)
@@ -87,8 +104,6 @@ namespace SecurityPackage
                     for (int i = 0; k < Length && i < NumberOfCharInCol; k++, i++)
                         Columns[ColIndex].Add(CipherText[k]);
             }
-            //NumberOfCharInCol = Length / NumberOfColumns + 1;
-
             for (int i = 0; i < NumberOfCharInCol + 1; i++)
                 for (int j = 0; j < NumberOfColumns; j++)
                 {
@@ -99,6 +114,44 @@ namespace SecurityPackage
                     catch { }
                 }
             return PlainText;
+        }
+        #endregion
+
+        #region Setting Properties
+        /// <summary>
+        /// Set new PlainText
+        /// </summary>
+        public string _PlainText
+        {
+            set
+            {
+                PlainText = value;
+            }
+        }
+        /// <summary>
+        /// Set new Key
+        /// </summary>
+        public int _Key
+        {
+            set
+            {
+                KeyInt = value;
+                PrepareKey(KeyInt);
+            }
+        }
+        /// <summary>
+        /// returns the CihperText generated or set new value to Decrypt
+        /// </summary>
+        public string _CipherText
+        {
+            get
+            {
+                return CipherText;
+            }
+            set
+            {
+                CipherText = value;
+            }
         }
         #endregion
     }

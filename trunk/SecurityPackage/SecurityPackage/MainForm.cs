@@ -18,11 +18,11 @@ namespace SecurityPackage
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
+            //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
             //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
-            HillCipher p = new HillCipher("pay", K);
-            p.Encrypt();
-            p.Decrypt();
+            //HillCipher p = new HillCipher("pay", K);
+            //p.Encrypt();
+            //p.Decrypt();
             //RailFenceCipher p = new RailFenceCipher("advance attack two hours from nw", 3);
             //p.Encrypt();
             //p.Decrypt();
@@ -89,8 +89,10 @@ namespace SecurityPackage
                 MessageBox.Show("Invalid key!");
             else
             {
-                CeaserCipher ceaserCipher = new CeaserCipher(OriginalTextBox.Text, Key);
-                ModifiedTextBox.Text = ceaserCipher.Decrypt();
+                CeaserCipher ceaserCipher = new CeaserCipher();
+                ceaserCipher._CipherText = OriginalTextBox.Text;
+                ceaserCipher._Key = Key;
+                 ModifiedTextBox.Text = ceaserCipher.Decrypt();
             }
         }
         #endregion
@@ -118,7 +120,9 @@ namespace SecurityPackage
                 MessageBox.Show("Invalid depth level!");
             else
             {
-                RailFenceCipher railFenceCipher = new RailFenceCipher(OriginalTextBox.Text, depthLevel);
+                RailFenceCipher railFenceCipher = new RailFenceCipher();
+                railFenceCipher._CipherText = OriginalTextBox.Text;
+                railFenceCipher._DepthLevel = depthLevel;
                 ModifiedTextBox.Text = railFenceCipher.Decrypt();
             }
         }
@@ -182,7 +186,9 @@ namespace SecurityPackage
                 MessageBox.Show("Invalid key!");
             else
             {
-                PlayFairCipher playFairCipher = new PlayFairCipher(OriginalTextBox.Text, PlayFairKeyTextBox.Text);
+                PlayFairCipher playFairCipher = new PlayFairCipher();
+                playFairCipher._CipherText = OriginalTextBox.Text;
+                playFairCipher._Key = PlayFairKeyTextBox.Text;
                 ModifiedTextBox.Text = playFairCipher.Decrypt();
             }
         }
@@ -211,7 +217,9 @@ namespace SecurityPackage
                 MessageBox.Show("Invalid key!");
             else
             {
-                MonoalphabeticCipher monoalphabeticCipher = new MonoalphabeticCipher(OriginalTextBox.Text, Key);
+                MonoalphabeticCipher monoalphabeticCipher = new MonoalphabeticCipher();
+                monoalphabeticCipher._CipherText = OriginalTextBox.Text;
+                monoalphabeticCipher._Key = Key;
                 ModifiedTextBox.Text = monoalphabeticCipher.Decrypt();
             }
         }
@@ -220,16 +228,14 @@ namespace SecurityPackage
         #region Hill Encryption/Decryption
         private void HillOKButton_Click(object sender, EventArgs e)
         {
-            int HillHeight = 0, HillWidth = 0;
+            int HillSize = 0;
             if (OriginalTextBox.Text == null)
                 MessageBox.Show("There is no text to encrypt/decrypt!");
-            else if (!int.TryParse(HillHeightTextBox.Text, out HillHeight))
-                MessageBox.Show("Invalid height!");
-            else if (!int.TryParse(HillWidthTextBox.Text, out HillWidth))
-                MessageBox.Show("Invalid width!");
+            else if (!int.TryParse(HillSizeTextBox.Text, out HillSize))
+                MessageBox.Show("Invalid size!");
             else
             {
-                HillKeyForm HillKeyMatrix = new HillKeyForm(HillHeight, HillWidth, OriginalTextBox.Text, ModifiedTextBox);
+                HillKeyForm HillKeyMatrix = new HillKeyForm(HillSize, HillSize, OriginalTextBox.Text, ModifiedTextBox);
                 HillKeyMatrix.Show();
             }
         }
@@ -258,12 +264,13 @@ namespace SecurityPackage
                 MessageBox.Show("Invalid key!");
             else
             {
-                ColumnarCipher columnarCipher = new ColumnarCipher(OriginalTextBox.Text, Key);
-                ModifiedTextBox.Text = columnarCipher.Encrypt();
+                ColumnarCipher columnarCipher = new ColumnarCipher();
+                columnarCipher._CipherText = OriginalTextBox.Text;
+                columnarCipher._Key = Key;
+                ModifiedTextBox.Text = columnarCipher.Decrypt();
             }
         }
         #endregion
-
 
         #endregion
     }

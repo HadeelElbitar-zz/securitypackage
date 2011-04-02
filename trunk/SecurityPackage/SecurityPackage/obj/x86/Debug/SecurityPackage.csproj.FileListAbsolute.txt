@@ -48,3 +48,4 @@ C:\Users\dydy\Desktop\Package Code\SecurityPackage\SecurityPackage\obj\x86\Debug
 C:\Users\dydy\Desktop\Package Code\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.Properties.Resources.resources
 C:\Users\dydy\Desktop\Package Code\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\dydy\Desktop\Package Code\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.HillKeyForm.resources
