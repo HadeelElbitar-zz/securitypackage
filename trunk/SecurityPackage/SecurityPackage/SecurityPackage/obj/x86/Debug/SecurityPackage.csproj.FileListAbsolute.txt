@@ -8,3 +8,5 @@ C:\Users\dydy\Desktop\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\De
 C:\Users\dydy\Desktop\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\dydy\Desktop\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.exe
 C:\Users\dydy\Desktop\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.pdb
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.exe
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.pdb
