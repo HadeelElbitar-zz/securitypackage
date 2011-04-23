@@ -22,7 +22,7 @@ namespace SecurityPackage
         /// <param name="_DepthLevel"></param>
         public RailFenceCipher(string _PlaintText , int _DepthLevel)
         {
-            PlainText = _PlaintText;
+            PlainText = _PlaintText.Replace(" ", "");
             PrepareDepthLevel(_DepthLevel);
         }
         #endregion
@@ -108,6 +108,7 @@ namespace SecurityPackage
             set
             {
                 PlainText = value;
+                PlainText = PlainText.Replace(" ", "");
             }
         }
         /// <summary>
@@ -133,6 +134,7 @@ namespace SecurityPackage
             set
             {
                 CipherText = value;
+                CipherText = CipherText.Replace(" ", "");
             }
         }
         #endregion

@@ -13,7 +13,7 @@ namespace SecurityPackage
         int[,] Key;
         int[,] KeyInverse;
         int NumberOfChars;
-        Dictionary<char, int> AlphaIndex = new Dictionary<char, int>();
+        Dictionary<char, int> AlphaIndex;
         /// <summary>
         /// use it when decrypting only
         /// </summary>
@@ -25,7 +25,7 @@ namespace SecurityPackage
         /// <param name="_Key"></param>
         public HillCipher(string _PlainText, int[,] _Key)
         {
-            PlainText = _PlainText.ToUpper();
+            PlainText = _PlainText.ToUpper().Replace(" ", "");
             PrepareKey(_Key);
         }
         #endregion
@@ -40,11 +40,10 @@ namespace SecurityPackage
         }
         void FillIndex()
         {
+            AlphaIndex = new Dictionary<char, int>();
             char Initial = 'A';
             for (int i = 0; i < 26; i++)
-            {
                 AlphaIndex.Add(Convert.ToChar(Convert.ToInt32(Initial) + i), i);
-            }
         }
         int[,] MatrixMul(int[,] PT ,int[,] _Key)
         {
@@ -169,7 +168,10 @@ namespace SecurityPackage
                 return "please choose a valid key !";
             CipherText = CipherText.ToUpper();
             int Determinant = MatrixDet(Key);
-            Determinant = Math.Abs(Determinant) % 26;
+            if (Determinant < 0)
+                Determinant = 26 - (Math.Abs(Determinant) % 26);
+            else
+                Determinant %= 26;
             Determinant = 26 - (27 / (26 - Determinant));
             int[,] CofactorMatrix = GetCofactorMatrix(Key);
             
@@ -224,6 +226,7 @@ namespace SecurityPackage
             set
             {
                 PlainText = value;
+                PlainText = PlainText.Replace(" ", "");
             }
         }
         /// <summary>
@@ -249,6 +252,7 @@ namespace SecurityPackage
             set
             {
                 CipherText = value;
+                CipherText = CipherText.Replace(" ", "");
             }
         }
         #endregion

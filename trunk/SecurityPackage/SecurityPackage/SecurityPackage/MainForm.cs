@@ -18,9 +18,10 @@ namespace SecurityPackage
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
+            int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
             //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
-            //HillCipher p = new HillCipher("pay", K);
+            //int[,] K = { { 7, 4, 2, 0, 6 }, { 6, 3, -1, 2, -1 }, { 4, 6, 2, 5, 4 }, { 8, 2, -7, 1, 2 }, { 9, 3, 7, 0, 5 } };
+            //HillCipher p = new HillCipher("paybac", K);
             //p.Encrypt();
             //p.Decrypt();
             //RailFenceCipher p = new RailFenceCipher("advance attack two hours from nw", 3);
@@ -29,6 +30,18 @@ namespace SecurityPackage
             //ColumnarCipher p = new ColumnarCipher("advance attack two hours from now", 52314);
             //p.Encrypt();
             //p.Decrypt();
+            //PolyalphabeticCipher p = new PolyalphabeticCipher("advance attack two hours from now plz", "AVS", 0);
+            //p.Encrypt();
+            //p.Decrypt();
+            //PlayFairCipher p = new PlayFairCipher("advance attack two hours from now plz", "islam");
+            //p.Encrypt();
+            //p.Decrypt();
+            //MonoalphabeticCipher p = new MonoalphabeticCipher("hadeel hisham sadek mohamed albetar", "qwertyuiopasdfghjklzxcvbnm");
+            //p.Encrypt();
+            //p.Decrypt();
+            CeaserCipher p = new CeaserCipher("advance attack two hours from now plz", 2);
+            p.Encrypt();
+            p.Decrypt();
         }
 
         #region Menu Items

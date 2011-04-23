@@ -10,7 +10,7 @@ namespace SecurityPackage
         #region Constructors
         string PlainText, CipherText, Key;
         char[] Alphabetic = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-        string[,] Matrix = new string[5, 5];
+        string[,] Matrix;
         List<string> Diagrams = new List<string>();
         /// <summary>
         /// use it when decrypting only
@@ -23,13 +23,8 @@ namespace SecurityPackage
         /// <param name="_Key"></param>
         public PlayFairCipher(string _PlainText, string _Key)
         {
-            PlainText = _PlainText.ToLower();
-            string[] TempPT = PlainText.Split(' ');
-            foreach (string item in TempPT)
-            {
-                GetDiagrams(item);
-                Diagrams.Add(" ");
-            }
+            PlainText = _PlainText.ToLower().Replace(" ","");
+            GetDiagrams(PlainText);
             PrepareKey(_Key);
         }
         #endregion
@@ -37,11 +32,12 @@ namespace SecurityPackage
         #region Helping Functions
         void PrepareKey(string NewKey)
         {
-            Key = NewKey.ToUpper();
+            Key = NewKey.ToUpper().Replace(" ","");
             BuildMatrix();
         }
         void BuildMatrix()
         {
+            Matrix = new string[5, 5];
             List<char> Temp = new List<char>();
             bool KeyFlag = true, AlphaFlag = false;
             int i = 0, j = 0, c = 0, Tempi = 0, Tempj = 0;
@@ -110,7 +106,7 @@ namespace SecurityPackage
         }
         void GetDiagrams(string Text)
         {
-            //PlainText = PlainText.Replace(" ", "");
+            Diagrams = new List<string>();
             if (Text.Length % 2 != 0)
                 Text += "x";
             int count = Text.Length;
@@ -232,11 +228,6 @@ namespace SecurityPackage
             int[] Index1, Index2;
             foreach (string item in Diagrams)
             {
-                if (item == " ")
-                {
-                    CipherText += " ";
-                    continue;
-                }
                 string Titem = item.ToUpper();
                 Index1 = SearchMatrix(Titem[0]);
                 Index2 = SearchMatrix(Titem[1]);
@@ -268,20 +259,10 @@ namespace SecurityPackage
             if (Key == null)
                 return "please choose a valid key !";
             string PlainText = "";
-            string[] TempPT = CipherText.Split(' ');
-            foreach (string item in TempPT)
-            {
-                GetDiagrams(item); 
-                Diagrams.Add(" ");
-            }
+                GetDiagrams(CipherText);
             int[] Index1, Index2;
             foreach (string item in Diagrams)
             {
-                if (item == " ")
-                {
-                    PlainText += " ";
-                    continue;
-                }
                 string Titem = item.ToUpper();
                 Index1 = SearchMatrix(Titem[0]);
                 Index2 = SearchMatrix(Titem[1]);
@@ -320,6 +301,7 @@ namespace SecurityPackage
             set
             {
                 PlainText = value;
+                PlainText = PlainText.Replace(" ", "");
             }
         }
         /// <summary>
@@ -345,6 +327,7 @@ namespace SecurityPackage
             set
             {
                 CipherText = value;
+                CipherText = CipherText.Replace(" ", "");
             }
         }
         #endregion

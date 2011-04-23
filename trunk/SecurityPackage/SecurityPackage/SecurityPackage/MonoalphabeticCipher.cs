@@ -22,8 +22,8 @@ namespace SecurityPackage
         /// <param name="_Key"></param>
         public MonoalphabeticCipher(string _PlainText , string _Key) 
         {
-            PlainText = _PlainText;
-            PrepareKey(_Key);
+            PlainText = _PlainText.Replace(" ", "");
+            PrepareKey(_Key.Replace(" ", ""));
         }
         #endregion
 
@@ -35,7 +35,6 @@ namespace SecurityPackage
                 Key.Add(Alphabetic[++j], NewKey[i]);
                 Key.Add(Alphabetic[++j], NewKey[i]);
             }
-            Key.Add(' ', ' ');
         }
         #endregion
 
@@ -141,6 +140,7 @@ namespace SecurityPackage
             set
             {
                 PlainText = value;
+                PlainText = PlainText.Replace(" ", "");
             }
         }
         /// <summary>
@@ -151,7 +151,7 @@ namespace SecurityPackage
             set
             {
                 TempKey = value;
-                PrepareKey(TempKey);
+                PrepareKey(TempKey.Replace(" ", ""));
             }
         }
         /// <summary>
@@ -166,6 +166,7 @@ namespace SecurityPackage
             set
             {
                 CipherText = value;
+                CipherText = CipherText.Replace(" ", "");
             }
         }
         #endregion

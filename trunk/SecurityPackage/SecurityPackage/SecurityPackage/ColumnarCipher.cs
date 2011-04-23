@@ -23,7 +23,7 @@ namespace SecurityPackage
         /// <param name="_Key"></param>
         public ColumnarCipher(string _PlainText, int _Key)
         {
-            PlainText = _PlainText;
+            PlainText = _PlainText.Replace(" ", "");
             PrepareKey(_Key);
         }
         #endregion
@@ -88,7 +88,7 @@ namespace SecurityPackage
             int Length = CipherText.Length, NumberOfCharInCol, ExtraChars;
             for (int i = 0; i < NumberOfColumns; i++)
                 Columns[i] = new List<char>();
-            int k = 0, ColIndex , p = 0;
+            int k = 0, ColIndex, p = 0;
             NumberOfCharInCol = Length / NumberOfColumns;
             ExtraChars = Length % NumberOfColumns;
             for (int j = 0; j < NumberOfColumns; j++)
@@ -125,7 +125,7 @@ namespace SecurityPackage
         {
             set
             {
-                PlainText = value;
+                PlainText = value.Replace(" ", "");
             }
         }
         /// <summary>
@@ -150,7 +150,7 @@ namespace SecurityPackage
             }
             set
             {
-                CipherText = value;
+                CipherText = value.Replace(" ", "");
             }
         }
         #endregion

@@ -22,7 +22,7 @@ namespace SecurityPackage
         /// <param name="_Key"></param>
         public CeaserCipher(string _PlainText , int _Key)
         {
-            PlainText = _PlainText;
+            PlainText = _PlainText.Replace(" ", "");
             Key = _Key;
         }
         /// <summary>
@@ -103,7 +103,7 @@ namespace SecurityPackage
         {
             set
             {
-                PlainText = value;
+                PlainText = value.Replace(" ", "");
             }
         }
         /// <summary>
@@ -127,7 +127,7 @@ namespace SecurityPackage
             }
             set
             {
-                CipherText = value;
+                CipherText = value.Replace(" ", "");
             }
         }
         #endregion

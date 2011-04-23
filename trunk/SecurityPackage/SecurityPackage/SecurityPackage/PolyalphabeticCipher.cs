@@ -23,7 +23,7 @@ namespace SecurityPackage
         /// <param name="_Key"></param>
         public PolyalphabeticCipher(string _PlainText, string _Key, int Mode) // Mode = 0 "AutoKey" , Mode = 1 "RepeatKey"
         {
-            PlainText = _PlainText.ToLower();
+            PlainText = _PlainText.ToLower().Replace(" ","");
             PrepareKey(_Key,PlainText, Mode);
         }
         #endregion
@@ -72,10 +72,9 @@ namespace SecurityPackage
         void FillIndex()
         {
             char Initial = 'A';
+            AlphaIndex = new Dictionary<char, int>();
             for (int i = 0; i < 26; i++)
-            {
                 AlphaIndex.Add(Convert.ToChar(Convert.ToInt32(Initial) + i), i);
-            }
         }
         int SearchMatrixRow(int RowIndex , char X)
         {
@@ -100,15 +99,7 @@ namespace SecurityPackage
             int i = -1;
             string TPlainText = PlainText.ToUpper();
             foreach (char item in TPlainText)
-            {
-                if (item == ' ')
-                {
-                    CipherText += " ";
-                    i++;
-                    continue;
-                }
                 CipherText += Matrix[AlphaIndex[item], AlphaIndex[Key[++i]]];
-            }
             return CipherText;
         }
         #endregion
@@ -126,15 +117,7 @@ namespace SecurityPackage
             string PlainText = "";
             int i = -1;
             foreach (char item in CipherText)
-            {
-                if (item == ' ')
-                {
-                    PlainText += " ";
-                    i++;
-                    continue;
-                }
                 PlainText += Matrix[SearchMatrixRow(AlphaIndex[Key[++i]], item), 0];
-            }
             return PlainText;
         }
         #endregion
@@ -148,6 +131,7 @@ namespace SecurityPackage
             set
             {
                 PlainText = value;
+                PlainText = PlainText.Replace(" ", "");
             }
         }
         /// <summary>
@@ -158,6 +142,7 @@ namespace SecurityPackage
             set
             {
                 Key = value;
+                Key = Key.Replace(" ", "");
             }
         }
         /// <summary>
@@ -172,6 +157,7 @@ namespace SecurityPackage
             set
             {
                 CipherText = value;
+                CipherText = CipherText.Replace(" ", "");
             }
         }
         /// <summary>

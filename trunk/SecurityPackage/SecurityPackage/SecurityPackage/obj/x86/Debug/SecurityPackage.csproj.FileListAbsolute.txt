@@ -10,3 +10,11 @@ C:\Users\dydy\Desktop\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\De
 C:\Users\dydy\Desktop\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.pdb
 C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.exe
 C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.pdb
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\bin\Debug\SecurityPackage.exe
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\bin\Debug\SecurityPackage.pdb
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.HillKeyForm.resources
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.MainForm.resources
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\SecurityPackage.Properties.Resources.resources
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\My Files\FCIS\Seniors\CS\Second Term\Computer Security\Package Code\SecurityPackage\SecurityPackage\SecurityPackage\obj\x86\Debug\GenerateResource.write.1.tlog
