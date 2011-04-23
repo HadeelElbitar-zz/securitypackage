@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 using System.Windows.Media;
 
 namespace SecurityPackage
@@ -162,6 +163,7 @@ namespace SecurityPackage
         #region Decryption
         public string Decrypt()
         {
+            Euclidean MI = new Euclidean();
             if (CipherText == null)
                 return "There is no Encrypted CipherText to Decrypt !";
             if (Key == null)
@@ -169,10 +171,16 @@ namespace SecurityPackage
             CipherText = CipherText.ToUpper();
             int Determinant = MatrixDet(Key);
             if (Determinant < 0)
-                Determinant = 26 - (Math.Abs(Determinant) % 26);
+                Determinant = 26 - ((Determinant * -1) % 26);
             else
                 Determinant %= 26;
-            Determinant = 26 - (27 / (26 - Determinant));
+            //Determinant = 26 - (27 / (26 - Determinant));
+            Determinant = MI.MultiplicativeInverse(Determinant, 26);
+            if (Determinant == int.MinValue)
+            {
+                MessageBox.Show("The Determinant can't be converted into base 26! .. unable to decrypt text!");
+                return null;
+            }
             int[,] CofactorMatrix = GetCofactorMatrix(Key);
             
             for (int i = 0; i < NumberOfChars; i++)

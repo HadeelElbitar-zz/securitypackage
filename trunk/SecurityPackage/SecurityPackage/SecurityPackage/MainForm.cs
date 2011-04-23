@@ -18,7 +18,7 @@ namespace SecurityPackage
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
+            //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
             //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
             //int[,] K = { { 7, 4, 2, 0, 6 }, { 6, 3, -1, 2, -1 }, { 4, 6, 2, 5, 4 }, { 8, 2, -7, 1, 2 }, { 9, 3, 7, 0, 5 } };
             //HillCipher p = new HillCipher("paybac", K);
@@ -39,9 +39,11 @@ namespace SecurityPackage
             //MonoalphabeticCipher p = new MonoalphabeticCipher("hadeel hisham sadek mohamed albetar", "qwertyuiopasdfghjklzxcvbnm");
             //p.Encrypt();
             //p.Decrypt();
-            CeaserCipher p = new CeaserCipher("advance attack two hours from now plz", 2);
-            p.Encrypt();
-            p.Decrypt();
+            //CeaserCipher p = new CeaserCipher("advance attack two hours from now plz", 2);
+            //p.Encrypt();
+            //p.Decrypt();
+            //Euclidean A = new Euclidean();
+            //A.MultiplicativeInverse(23, 26);   
         }
 
         #region Menu Items
