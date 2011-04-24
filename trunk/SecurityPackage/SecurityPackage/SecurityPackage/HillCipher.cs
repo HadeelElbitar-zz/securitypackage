@@ -127,7 +127,7 @@ namespace SecurityPackage
         {
             if (PlainText == null || Key == null)
                 return "Please choose a valid Plain Text and Key !";
-            int[,] PT = new int[1, NumberOfChars];
+            int[,] PT;
             int[,] CT;
             int count = PlainText.Length;
             string Temp = "";
@@ -142,6 +142,7 @@ namespace SecurityPackage
                     Temp = PlainText.Substring(i);
                 }
                 int Count = Temp.Length;
+                PT = new int[1, NumberOfChars];
                 for (int j = 0; j < Count; j++)
                     PT[0, j] = AlphaIndex[Temp[j]];
                 CT = MatrixMul(PT, Key);
@@ -191,7 +192,7 @@ namespace SecurityPackage
                     CofactorMatrix[i, j] %= 26;
                     KeyInverse[j, i] = (CofactorMatrix[i, j] * Determinant) % 26;
                 }
-            int[,] CT = new int[1, NumberOfChars];
+            int[,] CT;
             int[,] PT;
             PlainText = "";
             int count = CipherText.Length;
@@ -207,6 +208,7 @@ namespace SecurityPackage
                     Temp = CipherText.Substring(i);
                 }
                 int Count = Temp.Length;
+                CT = new int[1, NumberOfChars];
                 for (int j = 0; j < Count; j++)
                     CT[0, j] = AlphaIndex[Temp[j]];
                 PT = MatrixMul(CT , KeyInverse);
