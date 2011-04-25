@@ -44,7 +44,7 @@ namespace SecurityPackage
             //p.Decrypt();
             //Euclidean A = new Euclidean();
             //A.MultiplicativeInverse(23, 26); 
-            AES p = new AES("hadeel hisham", "123ab");
+            AES p = new AES("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
             p.Encrypt();
         }
 
