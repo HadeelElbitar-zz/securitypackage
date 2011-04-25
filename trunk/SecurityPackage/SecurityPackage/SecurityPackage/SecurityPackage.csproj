@@ -47,6 +47,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AES.cs" />
     <Compile Include="CeaserCipher.cs" />
     <Compile Include="ColumnarCipher.cs" />
     <Compile Include="DES.cs" />
