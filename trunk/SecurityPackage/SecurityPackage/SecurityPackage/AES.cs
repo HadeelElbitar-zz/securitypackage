@@ -116,7 +116,8 @@ namespace SecurityPackage
                 LastColumn[i] = SBox[HexInt[LastColumn[i][0].ToString()], HexInt[LastColumn[i][1].ToString()]];
             string[] Rconstant = RoundConstant[Round].Split(' ');
             for (int i = 0; i < 4; i++)
-                NewKey[i, 0] = BinaryXOR(HexToBinary(LastColumn[i]), HexToBinary(Rconstant[i]));
+                NewKey[i, 0] = BinaryXOR(HexToBinary(BinaryXOR(HexToBinary(LastColumn[i]), HexToBinary(Rconstant[i]))), HexToBinary(PreviousKey[i, 0]));
+                //NewKey[i, 0] = BinaryXOR(HexToBinary(LastColumn[i]), HexToBinary(Rconstant[i]));
             for (int i = 1; i < 4; i++)
                 for (int j = 0; j < 4; j++)
                     NewKey[j, i] = BinaryXOR(HexToBinary(NewKey[j, i - 1]), HexToBinary(PreviousKey[j, i]));
