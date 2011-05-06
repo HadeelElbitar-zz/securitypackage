@@ -146,7 +146,7 @@ namespace SecurityPackage
                 for (int j = 0; j < Count; j++)
                     PT[0, j] = AlphaIndex[Temp[j]];
                 CT = MatrixMul(PT, Key);
-                for (int k = 0; k < Count; k++)
+                for (int k = 0; k < NumberOfChars; k++)
                 {
                     CT[0, k] = CT[0, k] % 26;
                     foreach (KeyValuePair<char, int> item in AlphaIndex)
@@ -188,8 +188,9 @@ namespace SecurityPackage
                 for (int j = 0; j < NumberOfChars; j++)
                 {
                     if (CofactorMatrix[i, j] < 0)
-                        CofactorMatrix[i, j] *= -1;
-                    CofactorMatrix[i, j] %= 26;
+                        CofactorMatrix[i, j] = 26 - ((CofactorMatrix[i, j] * -1) % 26);
+                    else
+                        CofactorMatrix[i, j] %= 26;
                     KeyInverse[j, i] = (CofactorMatrix[i, j] * Determinant) % 26;
                 }
             int[,] CT;
@@ -209,12 +210,15 @@ namespace SecurityPackage
                 }
                 int Count = Temp.Length;
                 CT = new int[1, NumberOfChars];
-                for (int j = 0; j < Count; j++)
+                for (int j = 0; j < NumberOfChars; j++)
                     CT[0, j] = AlphaIndex[Temp[j]];
                 PT = MatrixMul(CT , KeyInverse);
-                for (int k = 0; k < Count; k++)
+                for (int k = 0; k < NumberOfChars; k++)
                 {
-                    PT[0, k] = PT[0, k] % 26;
+                    if (PT[0, k] < 0)
+                        PT[0, k] = 26 - ((-1 * PT[0, k]) % 26);
+                    else
+                        PT[0, k] = PT[0, k] % 26;
                     foreach (KeyValuePair<char, int> item in AlphaIndex)
                         if (item.Value == PT[0, k])
                         {

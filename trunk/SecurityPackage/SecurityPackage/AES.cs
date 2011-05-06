@@ -60,8 +60,10 @@ namespace SecurityPackage
             Key = HexaKey.Replace(" ", "").ToUpper();
             if (Key.Length != 32)
                 Complete(ref Key);
+            Key = "0F1571C947D9E8590CB7ADD6AF7F6798";
             BinaryText = TextToBinary(PlainText);
             HexText = BinaryTextToHex(BinaryText);
+            HexText = "0123456789ABCDEFFEDCBA9876543210";
             if (HexText.Length < 32)
                 Complete(ref HexText);
         }
@@ -350,7 +352,16 @@ namespace SecurityPackage
             if (Result[8] == '1')
             {
                 //da msh sa7 lazm a2sem :S bs ha2agelo now 3ashan msh 3arfa a3melo ezaii!!
-                Result[8] = '0';
+                //XOR Result with 1 0001 1011
+                //char[] Irriversable = { '1', '1', '0', '1', '1', '0', '0', '0', '1' };
+                string Irriversable = "110110001";
+                string Res = new string(Result);
+                Res = BinaryXOR(Irriversable, Res);
+                Res = HexToBinary(Res);
+                Result = Res.ToCharArray();
+                //Array.Reverse(Temp);
+                //Res = new string(Temp);
+                //Result[8] = '0';
             }
             #endregion
 

@@ -284,6 +284,8 @@ namespace SecurityPackage
                 }
                 else
                 {
+                    //PlainText += Matrix[Index1[0], Index2[1]];
+                    //PlainText += Matrix[Index2[0], Index1[1]];
                     PlainText += Matrix[Index1[0], Index2[1]];
                     PlainText += Matrix[Index2[0], Index1[1]];
                 }
