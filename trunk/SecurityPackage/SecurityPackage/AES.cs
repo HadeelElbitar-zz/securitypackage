@@ -33,22 +33,22 @@ namespace SecurityPackage
                          {"8C","A1","89","0D","BF","E6","42","68","41","99","2D","0F","B0","54","BB","16"},};
         #endregion
         #region Inverse SBox
-        string[,] InverseSBox = {{"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},
-                                 {"","","","","","","","","","","","","","","",""},};
+        string[,] InverseSBox = {{"52","09","6A","D5","30","36","A5","38","BF","40","A3","9E","81","F3","D7","FB"},
+                                 {"7C","E3","39","82","9B","2F","FF","87","34","8E","43","44","C4","DE","E9","CB"},
+                                 {"54","7B","94","32","A6","C2","23","3D","EE","4C","95","0B","42","FA","C3","4E"},
+                                 {"08","2E","A1","66","28","D9","24","B2","76","5B","A2","49","6D","8B","D1","25"},
+                                 {"72","F8","F6","64","86","68","98","16","D4","A4","5C","CC","5D","65","B6","92"},
+                                 {"6C","70","48","50","FD","ED","B9","DA","5E","15","46","57","A7","8D","9D","84"},
+                                 {"90","D8","AB","00","8C","BC","D3","0A","F7","E4","58","05","B8","B3","45","06"},
+                                 {"D0","2C","1E","8F","CA","3F","0F","02","C1","AF","BD","03","01","13","8A","6B"},
+                                 {"3A","91","11","41","4F","67","DC","EA","97","F2","CF","CE","F0","B4","E6","73"},
+                                 {"96","AC","74","22","E7","AD","35","85","E2","F9","37","E8","1C","75","DF","6E"},
+                                 {"47","F1","1A","71","1D","29","C5","89","6F","B7","62","0E","AA","18","BE","1B"},
+                                 {"FC","56","3E","4B","C6","D2","79","20","9A","DB","C0","FE","78","CD","5A","F4"},
+                                 {"1F","DD","A8","33","88","07","C7","31","B1","12","10","59","27","80","EC","5F"},
+                                 {"60","51","7F","A9","19","B5","4A","0D","2D","E5","7A","9F","93","C9","9C","EF"},
+                                 {"A0","E0","3B","4D","AE","2A","F5","B0","C8","EB","BB","3C","83","53","99","61"},
+                                 {"17","2B","04","7E","BA","77","D6","26","E1","69","14","63","55","21","0C","7D"},};
         #endregion
         string[] RoundConstant = { "01 00 00 00", "02 00 00 00", "04 00 00 00", "08 00 00 00", "10 00 00 00", "20 00 00 00", "40 00 00 00", "80 00 00 00", "1B 00 00 00", "36 00 00 00", };
         string[,] MixColumnsMatrix = { { "02", "03", "01", "01" }, { "01", "02", "03", "01" }, { "01", "01", "02", "03" }, { "03", "01", "01", "02" } };
@@ -62,10 +62,10 @@ namespace SecurityPackage
             Key = HexaKey.Replace(" ", "").ToUpper();
             if (Key.Length != 32)
                 Complete(ref Key);
-            Key = "0F1571C947D9E8590CB7ADD6AF7F6798";
+            //Key = "0F1571C947D9E8590CB7ADD6AF7F6798";
             BinaryText = TextToBinary(PlainText);
             HexText = BinaryTextToHex(BinaryText);
-            HexText = "0123456789ABCDEFFEDCBA9876543210";
+            //HexText = "0123456789ABCDEFFEDCBA9876543210";
             if (HexText.Length < 32)
                 Complete(ref HexText);
         } 
@@ -77,6 +77,7 @@ namespace SecurityPackage
             string CipherText = "", SubText;
             string[,] PlainTextMatrix, KeyMatrix, StepResults;
             KeyMatrix = ConstructMatrix(Key);
+            Keys.Clear();
             Keys.Add(KeyMatrix);
             while (HexText.Length != 0)
             {
@@ -104,7 +105,126 @@ namespace SecurityPackage
         }
         #endregion
 
+        #region Decryotion
+        public string Decrypt()
+        {
+            string PT = "", SubText, CipherText = HexText;
+            //CipherText = "FF0B844A0853BF7C6934AB4364148FB9";
+            string[,] CipherTextMatrix, KeyMatrix, StepResults;
+            KeyMatrix = ConstructMatrix(Key);
+            Keys.Clear();
+            Keys.Add(KeyMatrix);
+            for (int i = 0; i < 10; i++)
+                Keys.Add(ExpandKey(Keys[Keys.Count - 1], i));
+            while (CipherText.Length != 0)
+            {
+                if (CipherText.Length < 32)
+                    Complete(ref HexText);
+                SubText = CipherText.Substring(0, 32);
+                CipherText = CipherText.Remove(0, 32);
+                CipherTextMatrix = ConstructMatrix(SubText);
+                StepResults = AddRoundKey(CipherTextMatrix, Keys[10]);
+                for (int i = 0; i < 9; i++)
+                {
+                    StepResults = InverseShiftRows(StepResults);
+                    InverseSubstituteByte(ref StepResults);
+                    StepResults = AddRoundKey(StepResults, Keys[9 - i]);
+                    StepResults = InverseMixColumns(StepResults);
+                }
+                StepResults = InverseShiftRows(StepResults);
+                InverseSubstituteByte(ref StepResults);
+                StepResults = AddRoundKey(StepResults, Keys[0]);
+                PT += GetTextFromMatrix(StepResults);
+            }
+            return PT;
+        }
+        #endregion
+
         #region Helping Functions
+        string[,] InverseMixColumns(string[,] Matrix)
+        {
+            string[,] Result = new string[4, 4];
+            #region First Row
+            Result[0, 0] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[0, 0]), InverseMulHex("0B", Matrix[1, 0]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[2, 0]), InverseMulHex("09", Matrix[3, 0]))));
+
+            Result[0, 1] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[0, 1]), InverseMulHex("0B", Matrix[1, 1]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[2, 1]), InverseMulHex("09", Matrix[3, 1]))));
+
+            Result[0, 2] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[0, 2]), InverseMulHex("0B", Matrix[1, 2]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[2, 2]), InverseMulHex("09", Matrix[3, 2]))));
+
+            Result[0, 3] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[0, 3]), InverseMulHex("0B", Matrix[1, 3]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[2, 3]), InverseMulHex("09", Matrix[3, 3]))));
+            #endregion
+            #region Second Row
+            Result[1, 0] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[0, 0]), InverseMulHex("0E", Matrix[1, 0]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[2, 0]), InverseMulHex("0D", Matrix[3, 0]))));
+
+            Result[1, 1] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[0, 1]), InverseMulHex("0E", Matrix[1, 1]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[2, 1]), InverseMulHex("0D", Matrix[3, 1]))));
+
+            Result[1, 2] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[0, 2]), InverseMulHex("0E", Matrix[1, 2]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[2, 2]), InverseMulHex("0D", Matrix[3, 2]))));
+
+            Result[1, 3] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[0, 3]), InverseMulHex("0E", Matrix[1, 3]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[2, 3]), InverseMulHex("0D", Matrix[3, 3]))));
+            #endregion
+            #region Third Row
+            Result[2, 0] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[0, 0]), InverseMulHex("09", Matrix[1, 0]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[2, 0]), InverseMulHex("0B", Matrix[3, 0]))));
+
+            Result[2, 1] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[0, 1]), InverseMulHex("09", Matrix[1, 1]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[2, 1]), InverseMulHex("0B", Matrix[3, 1]))));
+
+            Result[2, 2] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[0, 2]), InverseMulHex("09", Matrix[1, 2]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[2, 2]), InverseMulHex("0B", Matrix[3, 2]))));
+
+            Result[2, 3] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0D", Matrix[0, 3]), InverseMulHex("09", Matrix[1, 3]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("0E", Matrix[2, 3]), InverseMulHex("0B", Matrix[3, 3]))));
+            #endregion
+            #region Fourth Row
+            Result[3, 0] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[0, 0]), InverseMulHex("0D", Matrix[1, 0]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[2, 0]), InverseMulHex("0E", Matrix[3, 0]))));
+
+            Result[3, 1] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[0, 1]), InverseMulHex("0D", Matrix[1, 1]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[2, 1]), InverseMulHex("0E", Matrix[3, 1]))));
+
+            Result[3, 2] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[0, 2]), InverseMulHex("0D", Matrix[1, 2]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[2, 2]), InverseMulHex("0E", Matrix[3, 2]))));
+
+            Result[3, 3] = BinaryXOR(HexToBinary(BinaryXOR(InverseMulHex("0B", Matrix[0, 3]), InverseMulHex("0D", Matrix[1, 3]))),
+                           HexToBinary(BinaryXOR(InverseMulHex("09", Matrix[2, 3]), InverseMulHex("0E", Matrix[3, 3]))));
+            #endregion
+            return Result;
+        }
+        string[,] InverseShiftRows(string[,] Matrix)
+        {
+            string[,] Result = new string[4, 4];
+            Result[0, 0] = Matrix[0, 0];
+            Result[0, 1] = Matrix[0, 1];
+            Result[0, 2] = Matrix[0, 2];
+            Result[0, 3] = Matrix[0, 3];
+            Result[1, 0] = Matrix[1, 3];
+            Result[1, 1] = Matrix[1, 0];
+            Result[1, 2] = Matrix[1, 1];
+            Result[1, 3] = Matrix[1, 2];
+            Result[2, 0] = Matrix[2, 2];
+            Result[2, 1] = Matrix[2, 3];
+            Result[2, 2] = Matrix[2, 0];
+            Result[2, 3] = Matrix[2, 1];
+            Result[3, 0] = Matrix[3, 1];
+            Result[3, 1] = Matrix[3, 2];
+            Result[3, 2] = Matrix[3, 3];
+            Result[3, 3] = Matrix[3, 0];
+            return Result;
+        }
+        void InverseSubstituteByte(ref string[,] Matrix)
+        {
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++)
+                    Matrix[i, j] = InverseSBox[HexInt[Matrix[i, j][0].ToString()], HexInt[Matrix[i, j][1].ToString()]];
+        }
         string GetTextFromMatrix(string[,] Matrix)
         {
             string Result = "";
@@ -264,6 +384,7 @@ namespace SecurityPackage
         string BinaryXOR(string X, string Y)
         {
             string Result = "";
+            //int Size = Math.Min(X.Length, Y.Length);
             for (int i = 0; i < 8; i++)
             {
                 if ((X[i] == '0' && Y[i] == '0') || (X[i] == '1' && Y[i] == '1'))
@@ -369,6 +490,73 @@ namespace SecurityPackage
             #endregion
 
             string MulRes = new string(Result).TrimEnd('0');
+            Result = MulRes.ToCharArray();
+            Array.Reverse(Result);
+            MulRes = new string(Result);
+            if (MulRes.Length < 8)
+                MulRes = MulRes.PadLeft(8, '0');
+            //MulRes = BinaryTextToHex(MulRes);
+            return MulRes;
+        }
+        string InverseBinaryXOR(string X, string Y)
+        {
+            string Result = "";
+            //int Size = Math.Min(X.Length, Y.Length);
+            for (int i = 0; i < 11; i++)
+            {
+                if ((X[i] == '0' && Y[i] == '0') || (X[i] == '1' && Y[i] == '1'))
+                    Result += "0";
+                else
+                    Result += "1";
+            }
+            return Result;
+        }
+        string InverseMulHex(string X, string Y)
+        {
+            char[] Result = { '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0' };
+            X = HexToBinary(X); // from mix column matrix
+            Y = HexToBinary(Y); // from the matrix it self
+            char[] Temp = X.ToCharArray();
+            Array.Reverse(Temp);
+            X = new string(Temp);
+            Temp = Y.ToCharArray();
+            Array.Reverse(Temp);
+            Y = new string(Temp);
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 8; j++)
+                    if (X[i] == '1' && Y[j] == '1')
+                    {
+                        if (Result[j + i] == '1')
+                            Result[j + i] = '0';
+                        else
+                            Result[j + i] = '1';
+                    }
+            #region Mod if exist!
+            string MulRes;
+            if (Result[10] == '1')
+            {
+                string Irriversable = "00110110001";
+                string Res = new string(Result);
+                Res = InverseBinaryXOR(Irriversable, Res);
+                Result = Res.ToCharArray();
+            }
+            if (Result[9] == '1')
+            {
+                string Irriversable = "01101100010";
+                string Res = new string(Result);
+                Res = InverseBinaryXOR(Irriversable, Res);
+                Result = Res.ToCharArray();
+            }
+            if (Result[8] == '1') //x^8
+            {
+                string Irriversable = "11011000100";
+                string Res = new string(Result);
+                Res = InverseBinaryXOR(Irriversable, Res);
+                Result = Res.ToCharArray();
+            }
+            #endregion
+
+            MulRes = new string(Result).TrimEnd('0');
             Result = MulRes.ToCharArray();
             Array.Reverse(Result);
             MulRes = new string(Result);

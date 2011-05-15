@@ -48,12 +48,18 @@ namespace SecurityPackage
 
             //AES p = new AES("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
             //p.Encrypt();
+            //p.Decrypt();
 
             //DES des = new DES("abcd");
             //ModifiedTextBox.Text = des.Encrypt();
 
             //RC4 rc4 = new RC4();
             //ModifiedTextBox.Text = rc4.Encrypt("abcd");
+
+            //DiffieHellman DH = new DiffieHellman(29, 2);
+            //int Key = DH.GetSharedKey(8, 3);
+            //Key = DH.GetSharedKey();
+            //Key = DH.GetSharedKey(28, 13);
         }
         #endregion
 
