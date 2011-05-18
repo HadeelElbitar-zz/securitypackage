@@ -51,6 +51,7 @@
     <Compile Include="CeaserCipher.cs" />
     <Compile Include="ColumnarCipher.cs" />
     <Compile Include="DES.cs" />
+    <Compile Include="EllipticCurveHelpingFunctions.cs" />
     <Compile Include="KeyExchange.cs" />
     <Compile Include="HillCipher.cs" />
     <Compile Include="HillKeyForm.cs">

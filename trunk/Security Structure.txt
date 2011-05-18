@@ -28,3 +28,5 @@
 
 6. Number Theory
 	Extended Euclid's Algorithm (Multiplicative Inverse of a Number Under Base N)
+	GCD
+	Calculate big powers
