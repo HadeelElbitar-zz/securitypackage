@@ -20,6 +20,13 @@ namespace SecurityPackage
             Result %= Mod;
             return Result;
         }
+        public double BigPower(int Base, int Power)
+        {
+            double Result = 1.0;
+            for (int i = 0; i < Power; i++)
+                Result *= Base;
+            return Result;
+        }
         #endregion
 
         #region Number "N" Multiplicative Inverse under Base "B"

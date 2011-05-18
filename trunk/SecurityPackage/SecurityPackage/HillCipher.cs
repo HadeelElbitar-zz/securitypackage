@@ -137,7 +137,11 @@ namespace SecurityPackage
                 CT = MatrixMul(PT, Key);
                 for (int k = 0; k < NumberOfChars; k++)
                 {
-                    CT[0, k] = CT[0, k] % 26;
+                    if (CT[0, k] < 0)
+                        CT[0, k] = 26 - ((-1 * CT[0, k]) % 26);
+                    else
+                        CT[0, k] = CT[0, k] % 26;
+                   // CT[0, k] = CT[0, k] % 26;
                     foreach (KeyValuePair<char, int> item in AlphaIndex)
                         if (item.Value == CT[0, k])
                         {
@@ -153,10 +157,6 @@ namespace SecurityPackage
         #region Decryption
         public string Decrypt(string CipherText, int[,] _Key)
         {
-            if (CipherText == null)
-                return "There is no Encrypted CipherText to Decrypt !";
-            if (Key == null)
-                return "please choose a valid key !";
             NumberTheory MI = new NumberTheory();
             CipherText = CipherText.ToUpper().Replace(" ", "");
             PrepareKey(_Key);

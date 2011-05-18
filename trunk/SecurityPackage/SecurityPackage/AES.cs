@@ -117,6 +117,7 @@ namespace SecurityPackage
             //Key = "0F1571C947D9E8590CB7ADD6AF7F6798";
             BinaryText = TextToBinary(PlainText);
             HexText = BinaryTextToHex(BinaryText);
+            //HexText = PlainText;
             //HexText = "0123456789ABCDEFFEDCBA9876543210";
             if (HexText.Length < 32)
                 Complete(ref HexText);

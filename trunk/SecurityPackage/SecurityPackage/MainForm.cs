@@ -22,33 +22,41 @@ namespace SecurityPackage
             //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
             //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
             //int[,] K = { { 7, 4, 2, 0, 6 }, { 6, 3, -1, 2, -1 }, { 4, 6, 2, 5, 4 }, { 8, 2, -7, 1, 2 }, { 9, 3, 7, 0, 5 } };
-            //HillCipher p = new HillCipher("paye", K);
-            //p.Encrypt();
-            //p.Decrypt();
-            //RailFenceCipher p = new RailFenceCipher("advance attack two hours from nw", 3);
-            //p.Encrypt();
-            //p.Decrypt();
-            //ColumnarCipher p = new ColumnarCipher("advance attack two hours from now", 52314);
-            //p.Encrypt();
-            //p.Decrypt();
-            //PolyalphabeticCipher p = new PolyalphabeticCipher("advance attack two hours from now plz", "AVS", 0);
-            //p.Encrypt();
-            //p.Decrypt();
-            //PlayFairCipher p = new PlayFairCipher("advance attack two hours from now plz", "islam");
-            //p.Encrypt();
-            //p.Decrypt();
-            //MonoalphabeticCipher p = new MonoalphabeticCipher("hadeel hisham sadek mohamed albetar", "qwertyuiopasdfghjklzxcvbnm");
-            //p.Encrypt();
-            //p.Decrypt();
-            //CeaserCipher p = new CeaserCipher("advance attack two hours from now plz", 2);
-            //p.Encrypt();
-            //p.Decrypt();
-            //Euclidean A = new Euclidean();
-            //A.MultiplicativeInverse(23, 26); 
+            //HillCipher p = new HillCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", K);
+            //s = p.Decrypt("COIPDCUCBTSKITIEPUDNYEYXILEURUUT", K);
 
-            //AES p = new AES("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
-            //p.Encrypt();
-            //p.Decrypt();
+            //RailFenceCipher p = new RailFenceCipher();
+            //string s =  p.Encrypt("advance attack two hours from nw", 7);
+            //s = p.Decrypt("aawfdtorvthoaaomncunckrwets", 7);
+
+            //ColumnarCipher p = new ColumnarCipher();
+            //string s = p.Encrypt("advance attack two hours from now", 52314);
+            //s = p.Decrypt("attuodechfovakorwntwrmacaosn", 52314);
+
+            //PolyalphabeticCipher p = new PolyalphabeticCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", "AVS", 0);
+            //s = p.Decrypt("AYNAAEIAMMAEUMSCOCOIKKICYACSEWY","AVSANCEATTACKTWOHOURSFROMNOWPLZ",0);
+            //s = p.Encrypt("advance attack two hours from now plz", "AVS", 1);
+            //s = p.Decrypt("AYNAIUEVLTVUKOOOCGUMKFMGMIGWKDZ", "AVSAVSAVSAVSAVSAVSAVSAVSAVSAVSA", 1);
+
+            //PlayFairCipher p = new PlayFairCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", "islam");
+            //s = p.Encrypt("advance attack two hours from now plz", "eslam");
+            //s = p.Decrypt("LEYIJHENERYYEDHQYGKUZQLDUUFOGVQMX", "islam");
+            //s = p.Decrypt("LFYEIJFSMRYYFDIJQYHIJUZQLDTUGOHVQMX", "eslam");
+
+            //MonoalphabeticCipher p = new MonoalphabeticCipher();
+            //string s = p.Encrypt("hadeel hisham sadek mohamed albetar", "qwertyuiopasdfghjklzxcvbnm");
+            //s = p.Decrypt("iqrttsioliqdlqrtadgiqdtrqswtzqk", "qwertyuiopasdfghjklzxcvbnm");
+
+            //CeaserCipher p = new CeaserCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", 2);
+            //s = p.Decrypt("cfxcpegcvvcemvyqjqwtuhtqopqyrn|",2);
+
+            //AES p = new AES();
+            //string s= p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
+            //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E0B399C7F689CB3A678C2AC28C58996A46BE4B4959B645DEE156500C21F8FDE2AC5238CEF112A783AA17D9A6632441199", "123456789abcdef123456789abcdef");
 
             //DES des = new DES("abcd");
             //ModifiedTextBox.Text = des.Encrypt();
@@ -56,15 +64,15 @@ namespace SecurityPackage
             //RC4 rc4 = new RC4();
             //ModifiedTextBox.Text = rc4.Encrypt("abcd");
 
-            //DiffieHellman DH = new DiffieHellman(29, 2);
-            //int Key = DH.GetSharedKey(8, 3);
-            //Key = DH.GetSharedKey();
-            //Key = DH.GetSharedKey(28, 13);
-
             //KeyExchange KE = new KeyExchange();
             //Point PublicA = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 3);
             //Point PublicB = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 7);
             //Point Key = KE.EllipticCurveGetSharedKeyUsingResidueClass(1, 11, new Point(2, 7), 3, 7);
+
+            //NumberTheory NT = new NumberTheory();
+            //int x = NT.GCD(11, 55);
+            //double y = NT.BigPower(2, 50);
+            //int g = NT.MultiplicativeInverse(7, 26);
         }
         #endregion
 
@@ -648,9 +656,9 @@ namespace SecurityPackage
             if (FirstChecked)
                 keyExchange.DiffieHellmanGetSharedKey(PrimeBase, PrimitiveRoot);
             else if (SecondChecked)
-                keyExchange.DiffieHellmanGetSharedKey(PrimeBase, PrimitiveRoot,numOne,numTwo);
+                keyExchange.DiffieHellmanGetSharedKey(PrimeBase, PrimitiveRoot, numOne, numTwo);
             else if (ThirdChecked)
-                keyExchange.DiffieHellmanGetPublicKey(PrimeBase, PrimitiveRoot,numOne);
+                keyExchange.DiffieHellmanGetPublicKey(PrimeBase, PrimitiveRoot, numOne);
         }
         #endregion
 

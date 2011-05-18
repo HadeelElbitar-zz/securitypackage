@@ -27,8 +27,9 @@ namespace SecurityPackage
             }
             else if (Key.Length < PT.Length && KeyMode == 1)
             {
-                int Difference = PT.Length - Key.Length;
-                Key += Key.Substring(0, Difference);
+                while (Key.Length < PT.Length)
+                    Key += Key;
+                Key = Key.Substring(0, PT.Length);
             }
             BuildMatrix();
             FillIndex();
