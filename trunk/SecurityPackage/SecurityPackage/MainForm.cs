@@ -497,6 +497,8 @@ namespace SecurityPackage
             TextBox FirstNumberText = DefineTextBox();
             Label SecondNumberLabel = DefineLabel("Second Number (q)");
             TextBox SecondNumberText = DefineTextBox();
+            Label KeyLabel = DefineLabel("Key (e)");
+            TextBox KeyText = DefineTextBox();
             GroupBox InputGroupBox = DefineGroupBox("", new Size(300, 90));
             InputGroupBox.Controls.Add(SecondNumberText);
             InputGroupBox.Controls.Add(SecondNumberLabel);
@@ -505,23 +507,23 @@ namespace SecurityPackage
 
             Button EncryptButton = DefineButton("Encrypt");
             Button DecryptButton = DefineButton("Decrypt");
-            EncryptButton.Click += delegate(object sender1, EventArgs e1) { RSAEncryptButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text)); };
-            DecryptButton.Click += delegate(object sender1, EventArgs e1) { RSADecryptButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text)); };
+            EncryptButton.Click += delegate(object sender1, EventArgs e1) { RSAEncryptButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text), int.Parse(KeyText.Text)); };
+            DecryptButton.Click += delegate(object sender1, EventArgs e1) { RSADecryptButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text), int.Parse(KeyText.Text)); };
 
             PublicKeyCryptosystemsContainer.Panel2.Controls.Clear();
             PublicKeyCryptosystemsContainer.Panel2.Controls.Add(DecryptButton);
             PublicKeyCryptosystemsContainer.Panel2.Controls.Add(EncryptButton);
             PublicKeyCryptosystemsContainer.Panel2.Controls.Add(InputGroupBox);
         }
-        void RSAEncryptButton_Click(object sender, EventArgs e, int p, int q)
+        void RSAEncryptButton_Click(object sender, EventArgs e, int p, int q, int Key)
         {
             RSA rsa = new RSA();
-            ModifiedTextBox.Text = rsa.Encrypt(OriginalTextBox.Text, p, q);
+            ModifiedTextBox.Text = rsa.Encrypt(OriginalTextBox.Text, p, q, Key);
         }
-        void RSADecryptButton_Click(object sender, EventArgs e, int p, int q)
+        void RSADecryptButton_Click(object sender, EventArgs e, int p, int q, int Key)
         {
             RSA rsa = new RSA();
-            ModifiedTextBox.Text = rsa.Decrypt(OriginalTextBox.Text, p, q);
+            ModifiedTextBox.Text = rsa.Decrypt(OriginalTextBox.Text, p, q, Key);
         }
         #endregion
 

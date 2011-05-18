@@ -95,7 +95,8 @@ namespace SecurityPackage
 
         public string Encrypt(string PlainText)
         {
-            //Remember to Trim!!
+            PlainText = PlainText.Replace(" ", "").ToUpper();
+
             #region Convert To Binary
             string BinaryText = TextToBinary(PlainText);
             string BinaryKey = KeyToBinary(InputKey);

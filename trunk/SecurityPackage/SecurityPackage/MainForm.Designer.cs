@@ -219,7 +219,7 @@
             this.ClassicalEncryptionTechniquesTabPage.Location = new System.Drawing.Point(4, 40);
             this.ClassicalEncryptionTechniquesTabPage.Name = "ClassicalEncryptionTechniquesTabPage";
             this.ClassicalEncryptionTechniquesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ClassicalEncryptionTechniquesTabPage.Size = new System.Drawing.Size(481, 210);
+            this.ClassicalEncryptionTechniquesTabPage.Size = new System.Drawing.Size(481, 302);
             this.ClassicalEncryptionTechniquesTabPage.TabIndex = 0;
             this.ClassicalEncryptionTechniquesTabPage.Text = "Classical Encryption Techniques";
             // 
@@ -231,7 +231,7 @@
             this.ClassicalEncryptionTabControl.Location = new System.Drawing.Point(3, 3);
             this.ClassicalEncryptionTabControl.Name = "ClassicalEncryptionTabControl";
             this.ClassicalEncryptionTabControl.SelectedIndex = 0;
-            this.ClassicalEncryptionTabControl.Size = new System.Drawing.Size(475, 204);
+            this.ClassicalEncryptionTabControl.Size = new System.Drawing.Size(475, 296);
             this.ClassicalEncryptionTabControl.TabIndex = 1;
             // 
             // SubstitutionTechniquesTabPage
@@ -241,7 +241,7 @@
             this.SubstitutionTechniquesTabPage.Location = new System.Drawing.Point(4, 22);
             this.SubstitutionTechniquesTabPage.Name = "SubstitutionTechniquesTabPage";
             this.SubstitutionTechniquesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SubstitutionTechniquesTabPage.Size = new System.Drawing.Size(467, 178);
+            this.SubstitutionTechniquesTabPage.Size = new System.Drawing.Size(467, 270);
             this.SubstitutionTechniquesTabPage.TabIndex = 0;
             this.SubstitutionTechniquesTabPage.Text = "Substitution Techniques";
             // 
@@ -259,7 +259,7 @@
             // SubstitutionContainer.Panel2
             // 
             this.SubstitutionContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.SubstitutionContainer.Size = new System.Drawing.Size(461, 172);
+            this.SubstitutionContainer.Size = new System.Drawing.Size(461, 264);
             this.SubstitutionContainer.SplitterDistance = 227;
             this.SubstitutionContainer.TabIndex = 7;
             // 
@@ -281,7 +281,7 @@
             this.SubstitutionTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.SubstitutionTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.SubstitutionTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.SubstitutionTablePanel.Size = new System.Drawing.Size(227, 172);
+            this.SubstitutionTablePanel.Size = new System.Drawing.Size(227, 264);
             this.SubstitutionTablePanel.TabIndex = 0;
             // 
             // HillCipherLabel
@@ -291,9 +291,9 @@
             this.HillCipherLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HillCipherLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HillCipherLabel.ForeColor = System.Drawing.Color.Orange;
-            this.HillCipherLabel.Location = new System.Drawing.Point(3, 102);
+            this.HillCipherLabel.Location = new System.Drawing.Point(3, 156);
             this.HillCipherLabel.Name = "HillCipherLabel";
-            this.HillCipherLabel.Size = new System.Drawing.Size(221, 34);
+            this.HillCipherLabel.Size = new System.Drawing.Size(221, 52);
             this.HillCipherLabel.TabIndex = 5;
             this.HillCipherLabel.Text = "Hill Cipher";
             this.HillCipherLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -306,9 +306,9 @@
             this.PlayFairCipherLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PlayFairCipherLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlayFairCipherLabel.ForeColor = System.Drawing.Color.Orange;
-            this.PlayFairCipherLabel.Location = new System.Drawing.Point(3, 68);
+            this.PlayFairCipherLabel.Location = new System.Drawing.Point(3, 104);
             this.PlayFairCipherLabel.Name = "PlayFairCipherLabel";
-            this.PlayFairCipherLabel.Size = new System.Drawing.Size(221, 34);
+            this.PlayFairCipherLabel.Size = new System.Drawing.Size(221, 52);
             this.PlayFairCipherLabel.TabIndex = 4;
             this.PlayFairCipherLabel.Text = "Play Fair Cipher";
             this.PlayFairCipherLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -321,9 +321,9 @@
             this.MonoalphabeticLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MonoalphabeticLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonoalphabeticLabel.ForeColor = System.Drawing.Color.Orange;
-            this.MonoalphabeticLabel.Location = new System.Drawing.Point(3, 34);
+            this.MonoalphabeticLabel.Location = new System.Drawing.Point(3, 52);
             this.MonoalphabeticLabel.Name = "MonoalphabeticLabel";
-            this.MonoalphabeticLabel.Size = new System.Drawing.Size(221, 34);
+            this.MonoalphabeticLabel.Size = new System.Drawing.Size(221, 52);
             this.MonoalphabeticLabel.TabIndex = 3;
             this.MonoalphabeticLabel.Text = "Monoalphabetic Cipher";
             this.MonoalphabeticLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -338,7 +338,7 @@
             this.CeaserCipherLabel.ForeColor = System.Drawing.Color.Orange;
             this.CeaserCipherLabel.Location = new System.Drawing.Point(3, 0);
             this.CeaserCipherLabel.Name = "CeaserCipherLabel";
-            this.CeaserCipherLabel.Size = new System.Drawing.Size(221, 34);
+            this.CeaserCipherLabel.Size = new System.Drawing.Size(221, 52);
             this.CeaserCipherLabel.TabIndex = 2;
             this.CeaserCipherLabel.Text = "Ceaser Cipher";
             this.CeaserCipherLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -351,9 +351,9 @@
             this.PolyalphabeticLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PolyalphabeticLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PolyalphabeticLabel.ForeColor = System.Drawing.Color.Orange;
-            this.PolyalphabeticLabel.Location = new System.Drawing.Point(3, 136);
+            this.PolyalphabeticLabel.Location = new System.Drawing.Point(3, 208);
             this.PolyalphabeticLabel.Name = "PolyalphabeticLabel";
-            this.PolyalphabeticLabel.Size = new System.Drawing.Size(221, 36);
+            this.PolyalphabeticLabel.Size = new System.Drawing.Size(221, 56);
             this.PolyalphabeticLabel.TabIndex = 1;
             this.PolyalphabeticLabel.Text = "Polyalphabetic Cipher";
             this.PolyalphabeticLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -366,7 +366,7 @@
             this.TranspositionTechniquesTabPage.Location = new System.Drawing.Point(4, 22);
             this.TranspositionTechniquesTabPage.Name = "TranspositionTechniquesTabPage";
             this.TranspositionTechniquesTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.TranspositionTechniquesTabPage.Size = new System.Drawing.Size(467, 178);
+            this.TranspositionTechniquesTabPage.Size = new System.Drawing.Size(467, 270);
             this.TranspositionTechniquesTabPage.TabIndex = 1;
             this.TranspositionTechniquesTabPage.Text = "Transposition Techniques";
             // 
@@ -441,7 +441,7 @@
             this.BlockCipherTabPage.Location = new System.Drawing.Point(4, 40);
             this.BlockCipherTabPage.Name = "BlockCipherTabPage";
             this.BlockCipherTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.BlockCipherTabPage.Size = new System.Drawing.Size(481, 210);
+            this.BlockCipherTabPage.Size = new System.Drawing.Size(481, 302);
             this.BlockCipherTabPage.TabIndex = 1;
             this.BlockCipherTabPage.Text = "Block Cipher";
             // 
@@ -459,7 +459,7 @@
             // BlockCipherContainer.Panel2
             // 
             this.BlockCipherContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BlockCipherContainer.Size = new System.Drawing.Size(475, 204);
+            this.BlockCipherContainer.Size = new System.Drawing.Size(475, 296);
             this.BlockCipherContainer.SplitterDistance = 156;
             this.BlockCipherContainer.TabIndex = 0;
             // 
@@ -478,7 +478,7 @@
             this.BlockCipherTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.44481F));
             this.BlockCipherTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.44482F));
             this.BlockCipherTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.11037F));
-            this.BlockCipherTablePanel.Size = new System.Drawing.Size(156, 204);
+            this.BlockCipherTablePanel.Size = new System.Drawing.Size(156, 296);
             this.BlockCipherTablePanel.TabIndex = 0;
             // 
             // AESLabel
@@ -488,9 +488,9 @@
             this.AESLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AESLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AESLabel.ForeColor = System.Drawing.Color.Orange;
-            this.AESLabel.Location = new System.Drawing.Point(5, 136);
+            this.AESLabel.Location = new System.Drawing.Point(5, 198);
             this.AESLabel.Name = "AESLabel";
-            this.AESLabel.Size = new System.Drawing.Size(146, 66);
+            this.AESLabel.Size = new System.Drawing.Size(146, 96);
             this.AESLabel.TabIndex = 6;
             this.AESLabel.Text = "Advanced Encryption Standard (AES)";
             this.AESLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -503,9 +503,9 @@
             this.TripleDESLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TripleDESLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TripleDESLabel.ForeColor = System.Drawing.Color.Orange;
-            this.TripleDESLabel.Location = new System.Drawing.Point(5, 69);
+            this.TripleDESLabel.Location = new System.Drawing.Point(5, 100);
             this.TripleDESLabel.Name = "TripleDESLabel";
-            this.TripleDESLabel.Size = new System.Drawing.Size(146, 65);
+            this.TripleDESLabel.Size = new System.Drawing.Size(146, 96);
             this.TripleDESLabel.TabIndex = 5;
             this.TripleDESLabel.Text = "Triple DES";
             this.TripleDESLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -520,7 +520,7 @@
             this.DESLabel.ForeColor = System.Drawing.Color.Orange;
             this.DESLabel.Location = new System.Drawing.Point(5, 2);
             this.DESLabel.Name = "DESLabel";
-            this.DESLabel.Size = new System.Drawing.Size(146, 65);
+            this.DESLabel.Size = new System.Drawing.Size(146, 96);
             this.DESLabel.TabIndex = 4;
             this.DESLabel.Text = "Data Encryption Standard (DES)";
             this.DESLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -533,7 +533,7 @@
             this.StreamCipherTabPage.Location = new System.Drawing.Point(4, 40);
             this.StreamCipherTabPage.Name = "StreamCipherTabPage";
             this.StreamCipherTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.StreamCipherTabPage.Size = new System.Drawing.Size(481, 210);
+            this.StreamCipherTabPage.Size = new System.Drawing.Size(481, 302);
             this.StreamCipherTabPage.TabIndex = 2;
             this.StreamCipherTabPage.Text = "Stream Cipher";
             // 
@@ -551,7 +551,7 @@
             // StreamCipherContainer.Panel2
             // 
             this.StreamCipherContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.StreamCipherContainer.Size = new System.Drawing.Size(475, 204);
+            this.StreamCipherContainer.Size = new System.Drawing.Size(475, 296);
             this.StreamCipherContainer.SplitterDistance = 156;
             this.StreamCipherContainer.TabIndex = 0;
             // 
@@ -566,7 +566,7 @@
             this.StreamCipherTablePanel.Name = "StreamCipherTablePanel";
             this.StreamCipherTablePanel.RowCount = 1;
             this.StreamCipherTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.StreamCipherTablePanel.Size = new System.Drawing.Size(156, 204);
+            this.StreamCipherTablePanel.Size = new System.Drawing.Size(156, 296);
             this.StreamCipherTablePanel.TabIndex = 0;
             // 
             // RC4Label
@@ -578,7 +578,7 @@
             this.RC4Label.ForeColor = System.Drawing.Color.Orange;
             this.RC4Label.Location = new System.Drawing.Point(5, 2);
             this.RC4Label.Name = "RC4Label";
-            this.RC4Label.Size = new System.Drawing.Size(146, 200);
+            this.RC4Label.Size = new System.Drawing.Size(146, 292);
             this.RC4Label.TabIndex = 5;
             this.RC4Label.Text = "RC4";
             this.RC4Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -591,7 +591,7 @@
             this.PuplicKeyCryptosystemsTabPage.Location = new System.Drawing.Point(4, 40);
             this.PuplicKeyCryptosystemsTabPage.Name = "PuplicKeyCryptosystemsTabPage";
             this.PuplicKeyCryptosystemsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.PuplicKeyCryptosystemsTabPage.Size = new System.Drawing.Size(481, 210);
+            this.PuplicKeyCryptosystemsTabPage.Size = new System.Drawing.Size(481, 302);
             this.PuplicKeyCryptosystemsTabPage.TabIndex = 4;
             this.PuplicKeyCryptosystemsTabPage.Text = "Public-Key Cryptosystems";
             // 
@@ -609,7 +609,7 @@
             // PublicKeyCryptosystemsContainer.Panel2
             // 
             this.PublicKeyCryptosystemsContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PublicKeyCryptosystemsContainer.Size = new System.Drawing.Size(475, 204);
+            this.PublicKeyCryptosystemsContainer.Size = new System.Drawing.Size(475, 296);
             this.PublicKeyCryptosystemsContainer.SplitterDistance = 165;
             this.PublicKeyCryptosystemsContainer.TabIndex = 0;
             // 
@@ -626,7 +626,7 @@
             this.PublicKeyCryptosystemsTablePanel.RowCount = 2;
             this.PublicKeyCryptosystemsTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.PublicKeyCryptosystemsTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.PublicKeyCryptosystemsTablePanel.Size = new System.Drawing.Size(165, 204);
+            this.PublicKeyCryptosystemsTablePanel.Size = new System.Drawing.Size(165, 296);
             this.PublicKeyCryptosystemsTablePanel.TabIndex = 0;
             // 
             // PublicKeyEllipticCurveLabel
@@ -636,9 +636,9 @@
             this.PublicKeyEllipticCurveLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PublicKeyEllipticCurveLabel.Font = new System.Drawing.Font("Harrington", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PublicKeyEllipticCurveLabel.ForeColor = System.Drawing.Color.Orange;
-            this.PublicKeyEllipticCurveLabel.Location = new System.Drawing.Point(5, 103);
+            this.PublicKeyEllipticCurveLabel.Location = new System.Drawing.Point(5, 149);
             this.PublicKeyEllipticCurveLabel.Name = "PublicKeyEllipticCurveLabel";
-            this.PublicKeyEllipticCurveLabel.Size = new System.Drawing.Size(155, 99);
+            this.PublicKeyEllipticCurveLabel.Size = new System.Drawing.Size(155, 145);
             this.PublicKeyEllipticCurveLabel.TabIndex = 7;
             this.PublicKeyEllipticCurveLabel.Text = "Elliptic Curve";
             this.PublicKeyEllipticCurveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -653,7 +653,7 @@
             this.RSALabel.ForeColor = System.Drawing.Color.Orange;
             this.RSALabel.Location = new System.Drawing.Point(5, 2);
             this.RSALabel.Name = "RSALabel";
-            this.RSALabel.Size = new System.Drawing.Size(155, 99);
+            this.RSALabel.Size = new System.Drawing.Size(155, 145);
             this.RSALabel.TabIndex = 6;
             this.RSALabel.Text = "RSA";
             this.RSALabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -735,7 +735,7 @@
             this.NumberTheoryTabPage.Location = new System.Drawing.Point(4, 40);
             this.NumberTheoryTabPage.Name = "NumberTheoryTabPage";
             this.NumberTheoryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.NumberTheoryTabPage.Size = new System.Drawing.Size(481, 210);
+            this.NumberTheoryTabPage.Size = new System.Drawing.Size(481, 302);
             this.NumberTheoryTabPage.TabIndex = 5;
             this.NumberTheoryTabPage.Text = "Number Theory";
             // 
@@ -753,7 +753,7 @@
             // NumberTheoryContainer.Panel2
             // 
             this.NumberTheoryContainer.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.NumberTheoryContainer.Size = new System.Drawing.Size(475, 204);
+            this.NumberTheoryContainer.Size = new System.Drawing.Size(475, 296);
             this.NumberTheoryContainer.SplitterDistance = 156;
             this.NumberTheoryContainer.TabIndex = 0;
             // 
@@ -768,7 +768,7 @@
             this.NumberTheoryTablePanel.Name = "NumberTheoryTablePanel";
             this.NumberTheoryTablePanel.RowCount = 1;
             this.NumberTheoryTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.NumberTheoryTablePanel.Size = new System.Drawing.Size(156, 204);
+            this.NumberTheoryTablePanel.Size = new System.Drawing.Size(156, 296);
             this.NumberTheoryTablePanel.TabIndex = 0;
             // 
             // ExtendedEuclidMILabel
@@ -780,7 +780,7 @@
             this.ExtendedEuclidMILabel.ForeColor = System.Drawing.Color.Orange;
             this.ExtendedEuclidMILabel.Location = new System.Drawing.Point(5, 2);
             this.ExtendedEuclidMILabel.Name = "ExtendedEuclidMILabel";
-            this.ExtendedEuclidMILabel.Size = new System.Drawing.Size(146, 200);
+            this.ExtendedEuclidMILabel.Size = new System.Drawing.Size(146, 292);
             this.ExtendedEuclidMILabel.TabIndex = 8;
             this.ExtendedEuclidMILabel.Text = "Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)";
             this.ExtendedEuclidMILabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
