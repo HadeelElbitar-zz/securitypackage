@@ -60,6 +60,11 @@ namespace SecurityPackage
             //int Key = DH.GetSharedKey(8, 3);
             //Key = DH.GetSharedKey();
             //Key = DH.GetSharedKey(28, 13);
+
+            //KeyExchange KE = new KeyExchange();
+            //Point PublicA = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 3);
+            //Point PublicB = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 7);
+            //Point Key = KE.EllipticCurveGetSharedKeyUsingResidueClass(1, 11, new Point(2, 7), 3, 7);
         }
         #endregion
 
