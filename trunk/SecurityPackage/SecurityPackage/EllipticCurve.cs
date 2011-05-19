@@ -6,25 +6,74 @@ using System.Drawing;
 
 namespace SecurityPackage
 {
-    class EllipticCurveHelpingFunctions
+    class EllipticCurve
     {
-        public EllipticCurveHelpingFunctions() { }
+        #region Vairables and Constructor
+        Random rand;
+        NumberTheory NumberTheoryOperations;
+        public EllipticCurve()
+        {
+            rand = new Random();
+            NumberTheoryOperations = new NumberTheory();
+        } 
+        #endregion
+
+        #region Elliptic Curve Shared Key
+        public Point EllipticCurveGetSharedKeyUsingResidueClass(int a, int Base, Point G, int PrivateKeyA, int PrivateKeyB)
+        {
+            Point SharedKey = new Point();
+            Point PublicB = ResidueClassMultiplyPoint(PrivateKeyB, G, Base, a);
+            SharedKey = ResidueClassMultiplyPoint(PrivateKeyA, PublicB, Base, a);
+            return SharedKey;
+        }
+        public Point EllipticCurveGetSharedKeyUsingResidueClass(int a, int Base, Point G, int n)
+        {
+            int nA = rand.Next(1, n);
+            int nB = rand.Next(1, n);
+            return EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, nA, nB);
+        }
+        public Point EllipticCurveGetSharedKeyUsingGaloisField(int a, int Base, Point G, int PrivateKeyA, int PrivateKeyB)
+        {
+            Point SharedKey = new Point();
+            Point PublicB = GaloisFieldMultiplyPoint(PrivateKeyB, G, Base, a);
+            SharedKey = GaloisFieldMultiplyPoint(PrivateKeyA, PublicB, Base, a);
+            return SharedKey;
+        }
+        public Point EllipticCurveGetSharedKeyUsingGaloisField(int a, int Base, Point G, int n)
+        {
+            int nA = rand.Next(1, n);
+            int nB = rand.Next(1, n);
+            return EllipticCurveGetSharedKeyUsingGaloisField(a, Base, G, nA, nB);
+        }
+        #endregion
+
+        #region Elliptic Curve Get Public Key
+        public Point EllipticCurveGetPublicKeyGaloisField(int a, int Base, Point G, int PrivateKey)
+        {
+            return GaloisFieldMultiplyPoint(PrivateKey, G, Base, a);
+        }
+        public Point EllipticCurveGetPublicKeyResidueClass(int a, int Base, Point G, int PrivateKey)
+        {
+            return ResidueClassMultiplyPoint(PrivateKey, G, Base, a);
+        }
+        #endregion
+
         #region Elliptic Curve Helping Functions
-        public Point ResidueClassMultiplyPoint(int Number, Point P, int Base, int a)
+        Point ResidueClassMultiplyPoint(int Number, Point P, int Base, int a)
         {
             Point Result = ResidueClassAddPoints(P, P, Base, a);
             for (int i = 0; i < Number - 2; i++)
                 Result = ResidueClassAddPoints(P, Result, Base, a);
             return Result;
         }
-        public Point GaloisFieldMultiplyPoint(int Number, Point P, int Base, int a)
+        Point GaloisFieldMultiplyPoint(int Number, Point P, int Base, int a)
         {
             Point Result = GaloisFieldAddPoints(P, P, Base, a);
             for (int i = 0; i < Number - 2; i++)
                 Result = GaloisFieldAddPoints(P, Result, Base, a);
             return Result;
         }
-        public Point ResidueClassAddPoints(Point P, Point Q, int Base, int a)
+        Point ResidueClassAddPoints(Point P, Point Q, int Base, int a)
         {
             NumberTheory Operations = new NumberTheory();
             Point Result = new Point();
@@ -91,7 +140,7 @@ namespace SecurityPackage
             #endregion
             return Result;
         }
-        public Point GaloisFieldAddPoints(Point P, Point Q, int Base, int a)
+        Point GaloisFieldAddPoints(Point P, Point Q, int Base, int a)
         {
             NumberTheory Operations = new NumberTheory();
             Point Result = new Point();
@@ -146,11 +195,11 @@ namespace SecurityPackage
             #endregion
             return Result;
         }
-        public Point ResidueClassNegativePoint(Point P)
+        Point ResidueClassNegativePoint(Point P)
         {
             return new Point(P.X, -1 * P.Y);
         }
-        public Point GaloisFieldNegativePoint(Point P)
+        Point GaloisFieldNegativePoint(Point P)
         {
             return new Point(P.X, P.X + P.Y);
         }

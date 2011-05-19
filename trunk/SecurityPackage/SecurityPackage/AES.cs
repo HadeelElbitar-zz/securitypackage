@@ -73,12 +73,13 @@ namespace SecurityPackage
             //HexText = "0123456789ABCDEFFEDCBA9876543210";
             if (HexText.Length < 32)
                 Complete(ref HexText);
-            //
             string CipherText = "", SubText;
             string[,] PlainTextMatrix, KeyMatrix, StepResults;
             KeyMatrix = ConstructMatrix(Key);
             Keys.Clear();
             Keys.Add(KeyMatrix);
+            for (int i = 0; i < 10; i++)
+                Keys.Add(ExpandKey(Keys[Keys.Count - 1], i));
             while (HexText.Length != 0)
             {
                 if (HexText.Length < 32)
@@ -92,13 +93,11 @@ namespace SecurityPackage
                     SubstituteByte(ref StepResults);
                     StepResults = ShiftRows(StepResults);
                     StepResults = MixColumns(StepResults);
-                    Keys.Add(ExpandKey(Keys[Keys.Count - 1], i));
-                    StepResults = AddRoundKey(StepResults, Keys[Keys.Count - 1]);
+                    StepResults = AddRoundKey(StepResults, Keys[i + 1]);
                 }
                 SubstituteByte(ref StepResults);
                 StepResults = ShiftRows(StepResults);
-                Keys.Add(ExpandKey(Keys[Keys.Count - 1], 9));
-                StepResults = AddRoundKey(StepResults, Keys[Keys.Count - 1]);
+                StepResults = AddRoundKey(StepResults, Keys[10]);
                 CipherText += GetTextFromMatrix(StepResults);
             }
             return CipherText;
@@ -121,7 +120,6 @@ namespace SecurityPackage
             //HexText = "0123456789ABCDEFFEDCBA9876543210";
             if (HexText.Length < 32)
                 Complete(ref HexText);
-            //
             string PT = "", SubText, CipherText = HexText;
             //CipherText = "FF0B844A0853BF7C6934AB4364148FB9";
             string[,] CipherTextMatrix, KeyMatrix, StepResults;

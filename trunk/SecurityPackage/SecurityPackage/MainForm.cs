@@ -41,10 +41,8 @@ namespace SecurityPackage
             //s = p.Decrypt("AYNAIUEVLTVUKOOOCGUMKFMGMIGWKDZ", "AVSAVSAVSAVSAVSAVSAVSAVSAVSAVSA", 1);
 
             //PlayFairCipher p = new PlayFairCipher();
-            //string s = p.Encrypt("advance attack two hours from now plz", "islam");
-            //s = p.Encrypt("advance attack two hours from now plz", "eslam");
-            //s = p.Decrypt("LEYIJHENERYYEDHQYGKUZQLDUUFOGVQMX", "islam");
-            //s = p.Decrypt("LFYEIJFSMRYYFDIJQYHIJUZQLDTUGOHVQMX", "eslam");
+            //string s = p.Encrypt("advance attack two hours from now plz", "iklml");
+            //s = p.Decrypt("LFZIHDFMSYUMHCRYPNPTSTCUTEOPZHAX", "iklml");
 
             //MonoalphabeticCipher p = new MonoalphabeticCipher();
             //string s = p.Encrypt("hadeel hisham sadek mohamed albetar", "qwertyuiopasdfghjklzxcvbnm");
@@ -55,8 +53,8 @@ namespace SecurityPackage
             //s = p.Decrypt("cfxcpegcvvcemvyqjqwtuhtqopqyrn|",2);
 
             //AES p = new AES();
-            //string s= p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
-            //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E0B399C7F689CB3A678C2AC28C58996A46BE4B4959B645DEE156500C21F8FDE2AC5238CEF112A783AA17D9A6632441199", "123456789abcdef123456789abcdef");
+            //string s = p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
+            //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E5B4B99164739A8004F452718689602054D6D9BF786B9DEEC274AAD9D43B1FFC1DB0E9887F961E49E817A7C7133AA3703", "123456789ABCDEF123456789ABCDEF");
 
             //DES des = new DES("abcd");
             //ModifiedTextBox.Text = des.Encrypt();
@@ -652,7 +650,7 @@ namespace SecurityPackage
 
         void DiffieHellmanGetKeyButton_Click(object sender, EventArgs e, bool FirstChecked, bool SecondChecked, bool ThirdChecked, int PrimeBase, int PrimitiveRoot, int numOne, int numTwo)
         {
-            KeyExchange keyExchange = new KeyExchange();
+            DiffieHellman keyExchange = new DiffieHellman();
             if (FirstChecked)
                 keyExchange.DiffieHellmanGetSharedKey(PrimeBase, PrimitiveRoot);
             else if (SecondChecked)
