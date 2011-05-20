@@ -28,6 +28,7 @@ namespace SecurityPackage
             _Ya = NumberTheoryOperations.BigPower(PrimitiveRoot, _Xa, PrimeBase);
             _Yb = NumberTheoryOperations.BigPower(PrimitiveRoot, _Xb, PrimeBase);
             SharedKey = NumberTheoryOperations.BigPower((int)_Ya, _Xb, PrimeBase);
+            SharedKey = NumberTheoryOperations.BigPower((int)_Yb, _Xa, PrimeBase);
             return (int)SharedKey;
         }
         public int DiffieHellmanGetSharedKey(int PrimeBase, int PrimitiveRoot)
