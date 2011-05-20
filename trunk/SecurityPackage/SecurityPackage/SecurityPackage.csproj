@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AES.cs" />
+    <Compile Include="BigInt.cs" />
     <Compile Include="CeaserCipher.cs" />
     <Compile Include="ColumnarCipher.cs" />
     <Compile Include="DES.cs" />

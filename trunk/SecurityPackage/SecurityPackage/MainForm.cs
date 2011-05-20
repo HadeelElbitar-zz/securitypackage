@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using Swensen;
 
 namespace SecurityPackage
 {
@@ -67,13 +68,12 @@ namespace SecurityPackage
             //Point PublicB = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 7);
             //Point Key = KE.EllipticCurveGetSharedKeyUsingResidueClass(1, 11, new Point(2, 7), 3, 7);
 
-            DiffieHellman DH = new DiffieHellman();
-            int x = DH.DiffieHellmanGetSharedKey(71, 7, 5, 12);
+            //DiffieHellman DH = new DiffieHellman();
+            //BigInt x = DH.DiffieHellmanGetSharedKey(71, 7, 5, 12);
 
             //NumberTheory NT = new NumberTheory();
-            //int x = NT.GCD(11, 55);
-            //double y = NT.BigPower(2, 50);
-            //int g = NT.MultiplicativeInverse(7, 26);
+            //BigInt y = NT.BigPower(2, 1000);
+            //MessageBox.Show(y.ToString());
         }
         #endregion
 
