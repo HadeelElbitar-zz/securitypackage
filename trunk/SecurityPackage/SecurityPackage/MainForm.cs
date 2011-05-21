@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Swensen;
+using System.Threading;
 
 namespace SecurityPackage
 {
@@ -16,7 +17,15 @@ namespace SecurityPackage
         #region Constructor & Form Load
         public MainForm()
         {
+            Thread t = new Thread(new ThreadStart(SplashScreen));
+            t.Start();
+            Thread.Sleep(2000);
+            t.Abort();
             InitializeComponent();
+        }
+        private void SplashScreen()
+        {
+            Application.Run(new SplashScreenForm());
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
