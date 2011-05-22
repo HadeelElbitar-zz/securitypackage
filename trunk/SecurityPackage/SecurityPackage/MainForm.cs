@@ -178,10 +178,11 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { CeaserEncryptButton_Click(sender1, e1, (int.Parse(KeyText.Text))); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { CeaserDecryptButton_Click(sender1, e1, (int.Parse(KeyText.Text))); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void CeaserEncryptButton_Click(object sender, EventArgs e, int Key)
         {
@@ -207,10 +208,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { MonoalphabeticEncryptButton_Click(sender1, e1, KeyText.Text); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { MonoalphabeticDecryptButton_Click(sender1, e1, KeyText.Text); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void MonoalphabeticEncryptButton_Click(object sender, EventArgs e, string Key)
         {
@@ -236,10 +237,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { PlayFairEncryptButton_Click(sender1, e1, KeyText.Text); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { PlayFairDecryptButton_Click(sender1, e1, KeyText.Text); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void PlayFairEncryptButton_Click(object sender, EventArgs e, string Key)
         {
@@ -265,10 +266,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { HillEncryptButton_Click(sender1, e1, int.Parse(KeySizeText.Text)); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { HillDecryptButton_Click(sender1, e1, int.Parse(KeySizeText.Text)); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void HillEncryptButton_Click(object sender, EventArgs e, int KeySize)
         {
@@ -301,12 +302,12 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { PolyalphabeticEncryptButton_Click(sender1, e1, KeyText.Text, RepeatKeyRadioButton.Checked); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { PolyalphabeticDecryptButton_Click(sender1, e1, KeyText.Text, RepeatKeyRadioButton.Checked); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyModeGroupBox);
-            AllCiphersContainer.Panel2.Controls.Add(KeyText);
-            AllCiphersContainer.Panel2.Controls.Add(KeyLabel);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyModeGroupBox);
+            CipherCntrolPanel.Controls.Add(KeyText);
+            CipherCntrolPanel.Controls.Add(KeyLabel);
         }
         void PolyalphabeticEncryptButton_Click(object sender, EventArgs e, string Key, bool KeyMode)
         {
@@ -342,10 +343,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { RailFenceEncryptButton_Click(sender1, e1, (int.Parse(DepthLevelText.Text))); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { RailFenceDecryptButton_Click(sender1, e1, (int.Parse(DepthLevelText.Text))); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void RailFenceEncryptButton_Click(object sender, EventArgs e, int DepthLevel)
         {
@@ -371,10 +372,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { ColumnarEncryptButton_Click(sender1, e1, (int.Parse(KeyText.Text))); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { ColumnarDecryptButton_Click(sender1, e1, (int.Parse(KeyText.Text))); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void ColumnarEncryptButton_Click(object sender, EventArgs e, int Key)
         {
@@ -402,9 +403,9 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { DESEncryptButton_Click(sender1, e1); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { DESDecryptButton_Click(sender1, e1); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
         }
         void DESEncryptButton_Click(object sender, EventArgs e)
         {
@@ -426,9 +427,9 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { TripleDESEncryptButton_Click(sender1, e1); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { TripleDESDecryptButton_Click(sender1, e1); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
         }
         void TripleDESEncryptButton_Click(object sender, EventArgs e)
         {
@@ -454,10 +455,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { AESEncryptButton_Click(sender1, e1, KeyText.Text); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { AESDecryptButton_Click(sender1, e1, KeyText.Text); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void AESEncryptButton_Click(object sender, EventArgs e, string HexadecimalKey)
         {
@@ -487,10 +488,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { RC4EncryptButton_Click(sender1, e1, KeyText.Text); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { RC4DecryptButton_Click(sender1, e1, KeyText.Text); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(KeyGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
         void RC4EncryptButton_Click(object sender, EventArgs e, string Key)
         {
@@ -528,10 +529,10 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { RSAEncryptButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text), int.Parse(KeyText.Text)); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { RSADecryptButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text), int.Parse(KeyText.Text)); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(InputGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
         }
         void RSAEncryptButton_Click(object sender, EventArgs e, int p, int q, int Key)
         {
@@ -553,9 +554,9 @@ namespace SecurityPackage
             EncryptButton.Click += delegate(object sender1, EventArgs e1) { PublicKeyEllipticCurveEncryptButton_Click(sender1, e1); };
             DecryptButton.Click += delegate(object sender1, EventArgs e1) { PublicKeyEllipticCurveDecryptButton_Click(sender1, e1); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(DecryptButton);
-            AllCiphersContainer.Panel2.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
         }
         void PublicKeyEllipticCurveEncryptButton_Click(object sender, EventArgs e)
         {
@@ -623,10 +624,10 @@ namespace SecurityPackage
             Button GetKeyButton = DefineButton("Get Key");
             GetKeyButton.Click += delegate(object sender1, EventArgs e1) { DiffieHellmanGetKeyButton_Click(sender1, e1, SharedKeyRadioButton.Checked, SharedKeyNumberRadioButton.Checked, PublicNumberRadioButton.Checked, int.Parse(PrimeBaseText.Text), int.Parse(PrimeBaseText.Text), int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text)); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(GetKeyButton);
-            AllCiphersContainer.Panel2.Controls.Add(InputGroupBox);
-            AllCiphersContainer.Panel2.Controls.Add(KeyModeGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(GetKeyButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
+            CipherCntrolPanel.Controls.Add(KeyModeGroupBox);
         }
 
         #region RadioButtons Checked Changed
@@ -696,9 +697,9 @@ namespace SecurityPackage
             Button MIButton = DefineButton("Multiplicative Inverse");
             MIButton.Click += delegate(object sender1, EventArgs e1) { MIButton_Click(sender1, e1, int.Parse(NumberText.Text), int.Parse(BaseText.Text)); };
 
-            AllCiphersContainer.Panel2.Controls.Clear();
-            AllCiphersContainer.Panel2.Controls.Add(MIButton);
-            AllCiphersContainer.Panel2.Controls.Add(InputGroupBox);
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(MIButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
         }
         void MIButton_Click(object sender, EventArgs e, int Number, int Base)
         {
@@ -783,6 +784,11 @@ namespace SecurityPackage
             else if (AllCiphersTreeView.SelectedNode.Name == "PolyalphabeticCipherNode")
                 PolyalphabeticCipherNodeClicked(); 
             #endregion
+
+        }
+
+        private void OriginalTextBox_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
