@@ -1,7 +1,7 @@
 1. Classical Encryption Techniques
 	1.1. Substitution Techniques
-		Caesar Cipher
-		Monoalphabetic Ciphers
+		Caeser Cipher
+		Monoalphabetic Cipher
 		Playfair Cipher
 		Hill Cipher
 		Polyalphabetic Ciphers (Auto key , Repeat Key)
@@ -22,7 +22,7 @@
 	RSA
 	Elliptic Curve Encryption/Decryption
 
-5. Key Extchange Algorithms
+5. Key Exchange Algorithms
 	Diffie - Hellman
 	Elliptic Curve
 
