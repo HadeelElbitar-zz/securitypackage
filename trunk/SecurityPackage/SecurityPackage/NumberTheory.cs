@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Swensen;
+using System.Numerics;
 
 namespace SecurityPackage
 {
@@ -13,28 +13,13 @@ namespace SecurityPackage
         #endregion
 
         #region Calculate Big Powers
-        //public double BigPower(int Base, int Power, int Mod)
-        //{
-        //    double Result = 1.0;
-        //    for (int i = 0; i < Power; i++)
-        //        Result *= (Base % Mod);
-        //    Result %= Mod;
-        //    return Result;
-        //}
-        public BigInt BigPower(BigInt Base, BigInt Power, BigInt Mod)
+        public BigInteger BigPower(BigInteger Base, BigInteger Power, BigInteger Mod)
         {
-            BigInt Result = 1;
-            for (int i = 0; i < Power; i++)
-                Result *= (Base % Mod);
-            Result %= Mod;
-            return Result;
+            return BigInteger.ModPow(Base, Power, Mod);
         }
-        public BigInt BigPower(BigInt Base, BigInt Power)
+        public BigInteger BigPower(BigInteger Base, int Power)
         {
-            BigInt Result = 1;
-            for (int i = 0; i < Power; i++)
-                Result *= Base;
-            return Result;
+            return BigInteger.Pow(Base, Power);
         }
         #endregion
 

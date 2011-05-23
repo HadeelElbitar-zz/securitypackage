@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
-using Swensen;
+using System.Numerics;
 using System.Threading;
 
 namespace SecurityPackage
@@ -80,9 +80,9 @@ namespace SecurityPackage
             //DiffieHellman DH = new DiffieHellman();
             //BigInt x = DH.DiffieHellmanGetSharedKey(71, 7, 5, 12);
 
-            //NumberTheory NT = new NumberTheory();
-            //BigInt y = NT.BigPower(2, 1000);
-            //MessageBox.Show(y.ToString());
+            NumberTheory NT = new NumberTheory();
+            BigInteger y = NT.BigPower(2, 5, 6);
+            MessageBox.Show(y.ToString());
         }
         #endregion
 
