@@ -66,8 +66,8 @@ namespace SecurityPackage
             //string s = p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
             //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E5B4B99164739A8004F452718689602054D6D9BF786B9DEEC274AAD9D43B1FFC1DB0E9887F961E49E817A7C7133AA3703", "123456789ABCDEF123456789ABCDEF");
 
-            //DES des = new DES("abcd");
-            //ModifiedTextBox.Text = des.Encrypt();
+            //DES des = new DES();
+            //ModifiedTextBox.Text = des.Encrypt("0x 12f b", "0x1234");
 
             //RC4 rc4 = new RC4();
             //ModifiedTextBox.Text = rc4.Encrypt("abcd");
@@ -395,51 +395,108 @@ namespace SecurityPackage
 
         #region Block Cipher
 
-        #region Data Encryption Standard (DES) Encryption/Decryption
+        #region DES Encryption/Decryption
         private void DESNodeClicked()
         {
+            TextBox KeyText = DefineTextBox();
+            GroupBox KeyGroupBox = DefineGroupBox("DES Key", new Size(260, 45));
+            KeyGroupBox.Controls.Add(KeyText);
+
             Button EncryptButton = DefineButton("Encrypt");
             Button DecryptButton = DefineButton("Decrypt");
-            EncryptButton.Click += delegate(object sender1, EventArgs e1) { DESEncryptButton_Click(sender1, e1); };
-            DecryptButton.Click += delegate(object sender1, EventArgs e1) { DESDecryptButton_Click(sender1, e1); };
+            EncryptButton.Click += delegate(object sender1, EventArgs e1) { DESEncryptButton_Click(sender1, e1, KeyText.Text); };
+            DecryptButton.Click += delegate(object sender1, EventArgs e1) { DESDecryptButton_Click(sender1, e1, KeyText.Text); };
 
             CipherCntrolPanel.Controls.Clear();
             CipherCntrolPanel.Controls.Add(DecryptButton);
             CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
-        void DESEncryptButton_Click(object sender, EventArgs e)
+        void DESEncryptButton_Click(object sender, EventArgs e, string Key)
         {
             DES des = new DES();
-            ModifiedTextBox.Text = des.Encrypt(OriginalTextBox.Text);
+            ModifiedTextBox.Text = des.Encrypt(OriginalTextBox.Text, Key);
         }
-        void DESDecryptButton_Click(object sender, EventArgs e)
+        void DESDecryptButton_Click(object sender, EventArgs e, string Key)
         {
             DES des = new DES();
-            ModifiedTextBox.Text = des.Decrypt(OriginalTextBox.Text);
+            ModifiedTextBox.Text = des.Decrypt(OriginalTextBox.Text, Key);
+        }
+        #endregion
+
+        #region Double DES Encryption/Decryption
+        private void DoubleDESNodeClicked()
+        {
+            Label FirstKeyLabel = DefineLabel("First Key");
+            TextBox FirstKeyText = DefineTextBox();
+            Label SecondKeyLabel = DefineLabel("Second Key");
+            TextBox SecondKeyText = DefineTextBox();
+            GroupBox KeyGroupBox = DefineGroupBox("", new Size(260, 90));
+            KeyGroupBox.AutoSize = true;
+            KeyGroupBox.Controls.Add(SecondKeyText);
+            KeyGroupBox.Controls.Add(SecondKeyLabel);
+            KeyGroupBox.Controls.Add(FirstKeyText);
+            KeyGroupBox.Controls.Add(FirstKeyLabel);
+
+            Button EncryptButton = DefineButton("Encrypt");
+            Button DecryptButton = DefineButton("Decrypt");
+            EncryptButton.Click += delegate(object sender1, EventArgs e1) { DoubleDESEncryptButton_Click(sender1, e1, FirstKeyText.Text, SecondKeyText.Text); };
+            DecryptButton.Click += delegate(object sender1, EventArgs e1) { DoubleDESDecryptButton_Click(sender1, e1, FirstKeyText.Text, SecondKeyText.Text); };
+
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(DecryptButton);
+            CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
+        }
+        void DoubleDESEncryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText)
+        {
+            DES des = new DES();
+            ModifiedTextBox.Text = des.Encrypt(des.Encrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
+        }
+        void DoubleDESDecryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText)
+        {
+            DES des = new DES();
+            ModifiedTextBox.Text = des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
         }
         #endregion
 
         #region Triple DES Encryption/Decryption
         private void TripleDESNodeClicked()
         {
+            Label FirstKeyLabel = DefineLabel("First Key");
+            TextBox FirstKeyText = DefineTextBox();
+            Label SecondKeyLabel = DefineLabel("Second Key");
+            TextBox SecondKeyText = DefineTextBox();
+            Label ThirdKeyLabel = DefineLabel("Third Key");
+            TextBox ThirdKeyText = DefineTextBox();
+            GroupBox KeyGroupBox = DefineGroupBox("", new Size(260, 90));
+            KeyGroupBox.AutoSize = true;
+            KeyGroupBox.Controls.Add(ThirdKeyText);
+            KeyGroupBox.Controls.Add(ThirdKeyLabel);
+            KeyGroupBox.Controls.Add(SecondKeyText);
+            KeyGroupBox.Controls.Add(SecondKeyLabel);
+            KeyGroupBox.Controls.Add(FirstKeyText);
+            KeyGroupBox.Controls.Add(FirstKeyLabel);
+
             Button EncryptButton = DefineButton("Encrypt");
             Button DecryptButton = DefineButton("Decrypt");
-            EncryptButton.Click += delegate(object sender1, EventArgs e1) { TripleDESEncryptButton_Click(sender1, e1); };
-            DecryptButton.Click += delegate(object sender1, EventArgs e1) { TripleDESDecryptButton_Click(sender1, e1); };
+            EncryptButton.Click += delegate(object sender1, EventArgs e1) { TripleDESEncryptButton_Click(sender1, e1, FirstKeyText.Text, SecondKeyText.Text, ThirdKeyText.Text); };
+            DecryptButton.Click += delegate(object sender1, EventArgs e1) { TripleDESDecryptButton_Click(sender1, e1, FirstKeyText.Text, SecondKeyText.Text, ThirdKeyText.Text); };
 
             CipherCntrolPanel.Controls.Clear();
             CipherCntrolPanel.Controls.Add(DecryptButton);
             CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
-        void TripleDESEncryptButton_Click(object sender, EventArgs e)
+        void TripleDESEncryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText, string ThirdKeyText)
         {
-            //DES des = new DES();
-            //ModifiedTextBox.Text = des.Encrypt(OriginalTextBox.Text);
+            DES des = new DES();
+            ModifiedTextBox.Text = des.Encrypt(des.Encrypt(des.Encrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
         }
-        void TripleDESDecryptButton_Click(object sender, EventArgs e)
+        void TripleDESDecryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText, string ThirdKeyText)
         {
-            //DES des = new DES();
-            //ModifiedTextBox.Text = des.Decrypt(OriginalTextBox.Text);
+            DES des = new DES();
+            ModifiedTextBox.Text = des.Decrypt(des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
         }
         #endregion
 
@@ -447,7 +504,7 @@ namespace SecurityPackage
         private void AESNodeClicked()
         {
             TextBox KeyText = DefineTextBox();
-            GroupBox KeyGroupBox = DefineGroupBox("AES Hexadecimal Key", new Size(260, 45));
+            GroupBox KeyGroupBox = DefineGroupBox("AES Key", new Size(260, 45));
             KeyGroupBox.Controls.Add(KeyText);
 
             Button EncryptButton = DefineButton("Encrypt");
@@ -460,15 +517,15 @@ namespace SecurityPackage
             CipherCntrolPanel.Controls.Add(EncryptButton);
             CipherCntrolPanel.Controls.Add(KeyGroupBox);
         }
-        void AESEncryptButton_Click(object sender, EventArgs e, string HexadecimalKey)
+        void AESEncryptButton_Click(object sender, EventArgs e, string Key)
         {
             AES aes = new AES();
-            ModifiedTextBox.Text = aes.Encrypt(OriginalTextBox.Text, HexadecimalKey);
+            ModifiedTextBox.Text = aes.Encrypt(OriginalTextBox.Text, Key);
         }
-        void AESDecryptButton_Click(object sender, EventArgs e, string HexadecimalKey)
+        void AESDecryptButton_Click(object sender, EventArgs e, string Key)
         {
             AES aes = new AES();
-            ModifiedTextBox.Text = aes.Decrypt(OriginalTextBox.Text, HexadecimalKey);
+            ModifiedTextBox.Text = aes.Decrypt(OriginalTextBox.Text, Key);
         }
         #endregion
 
@@ -519,6 +576,9 @@ namespace SecurityPackage
             Label KeyLabel = DefineLabel("Key (e)");
             TextBox KeyText = DefineTextBox();
             GroupBox InputGroupBox = DefineGroupBox("", new Size(300, 90));
+            InputGroupBox.AutoSize = true;
+            InputGroupBox.Controls.Add(KeyText);
+            InputGroupBox.Controls.Add(KeyLabel);
             InputGroupBox.Controls.Add(SecondNumberText);
             InputGroupBox.Controls.Add(SecondNumberLabel);
             InputGroupBox.Controls.Add(FirstNumberText);
@@ -575,8 +635,8 @@ namespace SecurityPackage
         {
             #region Radio Buttons GroupBox
             RadioButton SharedKeyRadioButton = DefineRadioButton("Shared Key");
-            RadioButton SharedKeyNumberRadioButton = DefineRadioButton("Shared Key with two initial numbers");
-            RadioButton PublicNumberRadioButton = DefineRadioButton("Public Number");
+            RadioButton SharedKeyNumberRadioButton = DefineRadioButton("Shared Key with two initial keys");
+            RadioButton PublicNumberRadioButton = DefineRadioButton("Public Key");
 
             GroupBox KeyModeGroupBox = DefineGroupBox("Key Mode", new Size(300, 90));
             KeyModeGroupBox.Controls.Add(PublicNumberRadioButton);
@@ -590,9 +650,9 @@ namespace SecurityPackage
             Label PrimitiveRootLabel = DefineLabel("Primitive Root");
             TextBox PrimitiveRootText = DefineTextBox();
 
-            Label FirstNumberLabel = DefineLabel("First Initial Number");
+            Label FirstNumberLabel = DefineLabel("First Initial Key");
             TextBox FirstNumberText = DefineTextBox();
-            Label SecondNumberLabel = DefineLabel("Second Initial Number");
+            Label SecondNumberLabel = DefineLabel("Second Initial Key");
             TextBox SecondNumberText = DefineTextBox();
 
             GroupBox InputGroupBox = DefineGroupBox("Input", new Size(300, 90));
@@ -643,7 +703,7 @@ namespace SecurityPackage
             {
                 for (int i = 3; i >= 0; i--)
                     SharedControls[i].Show();
-                SharedControls[0].Text = "First Initial Number";
+                SharedControls[0].Text = "First Initial Key";
             }
         }
         void PublicNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
@@ -654,7 +714,7 @@ namespace SecurityPackage
                     SharedControls[i].Show();
                 for (int i = 2; i < 4; i++)
                     SharedControls[i].Hide();
-                SharedControls[0].Text = "Public Number";
+                SharedControls[0].Text = "Public Key";
             }
         }
         #endregion
@@ -681,6 +741,7 @@ namespace SecurityPackage
         #endregion
 
         #region Number Theory
+
         #region Extended Euclid's Algorithm
         private void ExtendedEuclidAlgorithmNodeClicked()
         {
@@ -711,16 +772,62 @@ namespace SecurityPackage
         #region GCD
         private void GCDNodeClicked()
         {
+            Label FirstNumberLabel = DefineLabel("First Number");
+            TextBox FirstNumberText = DefineTextBox();
+            Label SecondNumberLabel = DefineLabel("Second Number");
+            TextBox SecondNumberText = DefineTextBox();
+            GroupBox InputGroupBox = DefineGroupBox("", new Size(200, 90));
+            InputGroupBox.Controls.Add(SecondNumberText);
+            InputGroupBox.Controls.Add(SecondNumberLabel);
+            InputGroupBox.Controls.Add(FirstNumberText);
+            InputGroupBox.Controls.Add(FirstNumberLabel);
 
+            Button GCDButton = DefineButton("Greatest Common Divisor");
+            GCDButton.Click += delegate(object sender1, EventArgs e1) { GCDButton_Click(sender1, e1, int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text)); };
+
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(GCDButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
+        }
+        void GCDButton_Click(object sender, EventArgs e, int FirstNumber, int SecondNumber)
+        {
+            NumberTheory euclidean = new NumberTheory();
+            ModifiedTextBox.Text = euclidean.GCD(FirstNumber, SecondNumber).ToString();
         }
         #endregion
 
         #region Big Power
         private void BigPowerNodeClicked()
         {
+            Label BaseLabel = DefineLabel("Base");
+            TextBox BaseText = DefineTextBox();
+            Label PowerLabel = DefineLabel("Power");
+            TextBox PowerText = DefineTextBox();
+            Label ModLabel = DefineLabel("Mod");
+            TextBox ModText = DefineTextBox();
+            GroupBox InputGroupBox = DefineGroupBox("", new Size(200, 90));
+            InputGroupBox.AutoSize = true;
+            InputGroupBox.Controls.Add(ModText);
+            InputGroupBox.Controls.Add(ModLabel);
+            InputGroupBox.Controls.Add(PowerText);
+            InputGroupBox.Controls.Add(PowerLabel);
+            InputGroupBox.Controls.Add(BaseText);
+            InputGroupBox.Controls.Add(BaseLabel);
 
+            Button BigPowerButton = DefineButton("Big Power");
+            BigPowerButton.Click += delegate(object sender1, EventArgs e1) { BigPowerButton_Click(sender1, e1, int.Parse(BaseText.Text), int.Parse(PowerText.Text), int.Parse(ModText.Text)); };
+
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(BigPowerButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
+        }
+        void BigPowerButton_Click(object sender, EventArgs e, int Base, int Power, int Mod)
+        {
+            NumberTheory euclidean = new NumberTheory();
+            ModifiedTextBox.Text = euclidean.BigPower(Base, Power, Mod).ToString();
         }
         #endregion
+
         #endregion
 
         private void AllCiphersTreeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -752,8 +859,8 @@ namespace SecurityPackage
                     MonoalphabeticCipherNodeClicked();
                 else if (AllCiphersTreeView.SelectedNode.Name == "ColumnarCipherNode")
                     ColumnarCipherNodeClicked();
-                else if (AllCiphersTreeView.SelectedNode.Name == "TripleDESNode")
-                    TripleDESNodeClicked();
+                else if (AllCiphersTreeView.SelectedNode.Name == "DoubleDESNode")
+                    DoubleDESNodeClicked();
                 else if (AllCiphersTreeView.SelectedNode.Name == "EllipticCurveNode")
                     KeyCryptosystemEllipticCurveNodeClicked();
                 else if (AllCiphersTreeView.SelectedNode.Name == "EllipticCurveNode")
@@ -768,27 +875,27 @@ namespace SecurityPackage
             {
                 if (AllCiphersTreeView.SelectedNode.Name == "PlayfairCipherNode")
                     PlayfairCipherNodeClicked();
-                else if (AllCiphersTreeView.SelectedNode.Name == "AESNode")
-                    AESNodeClicked();
+                else if (AllCiphersTreeView.SelectedNode.Name == "TripleDESNode")
+                    TripleDESNodeClicked();
                 else if (AllCiphersTreeView.SelectedNode.Name == "BigPowerNode")
                     BigPowerNodeClicked();
             }
             #endregion
 
             #region Index 3
-            else if (AllCiphersTreeView.SelectedNode.Name == "HillCipherNode")
-                HillCipherNodeClicked(); 
+            else if (AllCiphersTreeView.SelectedNode.Index == 3)
+            {
+                if (AllCiphersTreeView.SelectedNode.Name == "HillCipherNode")
+                    HillCipherNodeClicked();
+                else if (AllCiphersTreeView.SelectedNode.Name == "AESNode")
+                    AESNodeClicked();
+            }
             #endregion
 
             #region Index 4
             else if (AllCiphersTreeView.SelectedNode.Name == "PolyalphabeticCipherNode")
-                PolyalphabeticCipherNodeClicked(); 
+                PolyalphabeticCipherNodeClicked();
             #endregion
-
-        }
-
-        private void OriginalTextBox_TextChanged(object sender, EventArgs e)
-        {
 
         }
     }
