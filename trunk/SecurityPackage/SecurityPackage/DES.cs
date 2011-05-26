@@ -87,28 +87,29 @@ namespace SecurityPackage
         #region Encrypt/Decrypt
         public string Encrypt(string PlainText, string Key)
         {
+
             PlainText = PlainText.Replace(" ", "").ToUpper();
 
             #region Convert Text and Key To Binary
-
+            BaseConversion baseConversion = new BaseConversion();
             #region Text
             bool HexText = false;
             string BinaryText = "";
             if (PlainText.IndexOf("0x") != -1 || PlainText.IndexOf("0X") != -1)
             {
                 HexText = true;
-                BinaryText = HexadecimalToBinary(PlainText.Substring(2));
+                BinaryText = baseConversion.HexadecimalToBinary(PlainText.Substring(2));
             }
             else
-                BinaryText = TextToBinary(PlainText);
+                BinaryText = baseConversion.TextToBinary(PlainText);
             #endregion
 
             #region Key
             string BinaryKey = "";
             if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
-                BinaryKey = HexadecimalToBinary(Key.Substring(2));
+                BinaryKey = baseConversion.HexadecimalToBinary(Key.Substring(2));
             else
-                BinaryKey = TextToBinary(Key);
+                BinaryKey = baseConversion.TextToBinary(Key);
             #endregion
 
             #endregion
@@ -176,9 +177,9 @@ namespace SecurityPackage
                 permutedText = Rearrange(permutedText, IPInverse);
 
                 if (HexText)
-                    EncryptedText += BinaryToHexadecimal(permutedText);
+                    EncryptedText += baseConversion.BinaryToHexadecimal(permutedText);
                 else
-                    EncryptedText += BinaryToText(permutedText);
+                    EncryptedText += baseConversion.BinaryToText(permutedText);
             }
             if (HexText)
                 return "0x" + EncryptedText.ToUpper();
@@ -197,25 +198,25 @@ namespace SecurityPackage
             PlainText = PlainText.Replace(" ", "").ToUpper();
 
             #region Convert Text and Key To Binary
-
+            BaseConversion baseConversion=new BaseConversion();
             #region Text
             bool HexText = false;
             string BinaryText = "";
             if (PlainText.IndexOf("0x") != -1 || PlainText.IndexOf("0X") != -1)
             {
                 HexText = true;
-                BinaryText = HexadecimalToBinary(PlainText.Substring(2));
+                BinaryText = baseConversion.HexadecimalToBinary(PlainText.Substring(2));
             }
             else
-                BinaryText = TextToBinary(PlainText);
+                BinaryText = baseConversion.TextToBinary(PlainText);
             #endregion
 
             #region Key
             string BinaryKey = "";
             if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
-                BinaryKey = HexadecimalToBinary(Key.Substring(2));
+                BinaryKey = baseConversion.HexadecimalToBinary(Key.Substring(2));
             else
-                BinaryKey = TextToBinary(Key);
+                BinaryKey = baseConversion.TextToBinary(Key);
             #endregion
 
 
@@ -299,9 +300,9 @@ namespace SecurityPackage
                 permutedText = Rearrange(permutedText, IPInverse);
 
                 if (HexText)
-                    EncryptedText += BinaryToHexadecimal(permutedText);
+                    EncryptedText += baseConversion.BinaryToHexadecimal(permutedText);
                 else
-                    EncryptedText += BinaryToText(permutedText);
+                    EncryptedText += baseConversion.BinaryToText(permutedText);
             }
             if (HexText)
                 return "0x" + EncryptedText.ToUpper();
@@ -430,59 +431,6 @@ namespace SecurityPackage
         #endregion
 
         #region Helping Functions
-        private string TextToBinary(string Text)
-        {
-            int length = Text.Length;
-            string BinaryText = "";
-            for (int i = 0; i < length; i++)
-            {
-                string temp = Convert.ToString(Text[i], 2);
-                if (temp.Length != 8)
-                    temp = temp.PadLeft(8, '0');
-                BinaryText += temp;
-            }
-            return BinaryText;
-        }
-        private string HexadecimalToBinary(string Text)
-        {
-            int length = Text.Length;
-            string BinaryText = "";
-            for (int i = 0; i < length; i++)
-            {
-                BinaryText += Convert.ToString(Convert.ToInt32(Text[i].ToString(), 16), 2).PadLeft(4, '0');
-            }
-            return BinaryText;
-        }
-        string BinaryToHexadecimal(string Text)
-        {
-            int length = Text.Length;
-            string HexadecimalText = "";
-            for (int i = 0; i < length; i += 4)
-            {
-                try
-                {
-                    HexadecimalText += Convert.ToString(Convert.ToInt32(Text.Substring(i, 4), 2), 16);
-                }
-                catch { }
-            }
-            return HexadecimalText;
-        }
-        private string BinaryToText(string Text)
-        {
-            string returnText = "";
-            int length = Text.Length;
-            for (int i = 0; i < length; i += 8)
-            {
-                try
-                {
-                    returnText += Convert.ToChar(Convert.ToInt32(Text.Substring(0, 8), 2));
-                    Text = Text.Remove(0, 8);
-                }
-                catch { }
-            }
-            return returnText;
-        }
-
         private string Rearrange(string Text, int[] Permutation)
         {
             int length = Permutation.Count();
