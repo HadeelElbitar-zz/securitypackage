@@ -29,54 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Ceaser Cipher");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Monoalphabetic Cipher");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Playfair Cipher");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Hill Cipher");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Polyalphabetic Cipher");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Substitution Techniques", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Rail Fence");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Columnar Cipher");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Transposition Techniques", new System.Windows.Forms.TreeNode[] {
-            treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Classical Encryption Techniques", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("DES");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Double DES");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Triple DES");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("AES");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Block Cipher", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("RC4");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Stream Cipher", new System.Windows.Forms.TreeNode[] {
-            treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("RSA");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Elliptic Curve");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Public Key Cryptosystems", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode19});
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Diffie - Hellman");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Elliptic Curve");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Key Exchange Algorithms", new System.Windows.Forms.TreeNode[] {
-            treeNode21,
-            treeNode22});
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Greatest Common Divisor");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Big Power");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Number Theory", new System.Windows.Forms.TreeNode[] {
-            treeNode24,
-            treeNode25,
-            treeNode26});
+            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("Ceaser Cipher");
+            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("Monoalphabetic Cipher");
+            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("Playfair Cipher");
+            System.Windows.Forms.TreeNode treeNode58 = new System.Windows.Forms.TreeNode("Hill Cipher");
+            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("Polyalphabetic Cipher");
+            System.Windows.Forms.TreeNode treeNode60 = new System.Windows.Forms.TreeNode("Substitution Techniques", new System.Windows.Forms.TreeNode[] {
+            treeNode55,
+            treeNode56,
+            treeNode57,
+            treeNode58,
+            treeNode59});
+            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("Rail Fence");
+            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("Columnar Cipher");
+            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("Transposition Techniques", new System.Windows.Forms.TreeNode[] {
+            treeNode61,
+            treeNode62});
+            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("Classical Encryption Techniques", new System.Windows.Forms.TreeNode[] {
+            treeNode60,
+            treeNode63});
+            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("DES");
+            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("Double DES");
+            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("Triple DES");
+            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("AES");
+            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("Block Cipher", new System.Windows.Forms.TreeNode[] {
+            treeNode65,
+            treeNode66,
+            treeNode67,
+            treeNode68});
+            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("RC4");
+            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("Stream Cipher", new System.Windows.Forms.TreeNode[] {
+            treeNode70});
+            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("RSA");
+            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("Elliptic Curve");
+            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("Public Key Cryptosystems", new System.Windows.Forms.TreeNode[] {
+            treeNode72,
+            treeNode73});
+            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("Diffie - Hellman");
+            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("Elliptic Curve");
+            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("Key Exchange Algorithms", new System.Windows.Forms.TreeNode[] {
+            treeNode75,
+            treeNode76});
+            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)");
+            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("Greatest Common Divisor");
+            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("Big Power");
+            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("Number Theory", new System.Windows.Forms.TreeNode[] {
+            treeNode78,
+            treeNode79,
+            treeNode80});
             this.FileMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -317,121 +317,121 @@
             this.AllCiphersTreeView.ItemHeight = 25;
             this.AllCiphersTreeView.Location = new System.Drawing.Point(0, 0);
             this.AllCiphersTreeView.Name = "AllCiphersTreeView";
-            treeNode1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode1.Name = "CeaserCipherNode";
-            treeNode1.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            treeNode1.Text = "Ceaser Cipher";
-            treeNode2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode2.Name = "MonoalphabeticCipherNode";
-            treeNode2.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode2.Text = "Monoalphabetic Cipher";
-            treeNode3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode3.Name = "PlayfairCipherNode";
-            treeNode3.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode3.Text = "Playfair Cipher";
-            treeNode4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode4.Name = "HillCipherNode";
-            treeNode4.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode4.Text = "Hill Cipher";
-            treeNode5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode5.Name = "PolyalphabeticCipherNode";
-            treeNode5.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode5.Text = "Polyalphabetic Cipher";
-            treeNode6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode6.Name = "SubstitutionNode";
-            treeNode6.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            treeNode6.Text = "Substitution Techniques";
-            treeNode7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode7.Name = "RailFenceNode";
-            treeNode7.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode7.Text = "Rail Fence";
-            treeNode8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            treeNode8.Name = "ColumnarCipherNode";
-            treeNode8.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode8.Text = "Columnar Cipher";
-            treeNode9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode9.Name = "TranspositionNode";
-            treeNode9.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode9.Text = "Transposition Techniques";
-            treeNode10.ForeColor = System.Drawing.Color.Orange;
-            treeNode10.Name = "ClassicalEncryptionTechniquesNode";
-            treeNode10.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            treeNode10.Text = "Classical Encryption Techniques";
-            treeNode11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode11.Name = "DESNode";
-            treeNode11.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode11.Text = "DES";
-            treeNode12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode12.Name = "DoubleDESNode";
-            treeNode12.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode12.Text = "Double DES";
-            treeNode13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode13.Name = "TripleDESNode";
-            treeNode13.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode13.Text = "Triple DES";
-            treeNode14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode14.Name = "AESNode";
-            treeNode14.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode14.Text = "AES";
-            treeNode15.ForeColor = System.Drawing.Color.Orange;
-            treeNode15.Name = "BlockCipherNode";
-            treeNode15.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
-            treeNode15.Text = "Block Cipher";
-            treeNode16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode16.Name = "RC4Node";
-            treeNode16.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode16.Text = "RC4";
-            treeNode17.ForeColor = System.Drawing.Color.Orange;
-            treeNode17.Name = "StreamCipherNode";
-            treeNode17.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
-            treeNode17.Text = "Stream Cipher";
-            treeNode18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode18.Name = "RSANode";
-            treeNode18.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode18.Text = "RSA";
-            treeNode19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode19.Name = "EllipticCurveNode";
-            treeNode19.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode19.Text = "Elliptic Curve";
-            treeNode20.ForeColor = System.Drawing.Color.Orange;
-            treeNode20.Name = "PublicKeyCryptosystemNode";
-            treeNode20.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
-            treeNode20.Text = "Public Key Cryptosystems";
-            treeNode21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode21.Name = "DiffieHellmanNode";
-            treeNode21.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode21.Text = "Diffie - Hellman";
-            treeNode22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode22.Name = "EllipticCurveNode";
-            treeNode22.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode22.Text = "Elliptic Curve";
-            treeNode23.ForeColor = System.Drawing.Color.Orange;
-            treeNode23.Name = "KeyExchangeAlgorithmsNode";
-            treeNode23.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
-            treeNode23.Text = "Key Exchange Algorithms";
-            treeNode24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode24.Name = "ExtendedEuclidAlgorithmNode";
-            treeNode24.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode24.Text = "Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)";
-            treeNode25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode25.Name = "GCDNode";
-            treeNode25.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode25.Text = "Greatest Common Divisor";
-            treeNode26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode26.Name = "BigPowerNode";
-            treeNode26.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode26.Text = "Big Power";
-            treeNode27.ForeColor = System.Drawing.Color.Orange;
-            treeNode27.Name = "NumberTheoryNode";
-            treeNode27.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
-            treeNode27.Text = "Number Theory";
+            treeNode55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode55.Name = "CeaserCipherNode";
+            treeNode55.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            treeNode55.Text = "Ceaser Cipher";
+            treeNode56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode56.Name = "MonoalphabeticCipherNode";
+            treeNode56.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode56.Text = "Monoalphabetic Cipher";
+            treeNode57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode57.Name = "PlayfairCipherNode";
+            treeNode57.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode57.Text = "Playfair Cipher";
+            treeNode58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode58.Name = "HillCipherNode";
+            treeNode58.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode58.Text = "Hill Cipher";
+            treeNode59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode59.Name = "PolyalphabeticCipherNode";
+            treeNode59.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode59.Text = "Polyalphabetic Cipher";
+            treeNode60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode60.Name = "SubstitutionNode";
+            treeNode60.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            treeNode60.Text = "Substitution Techniques";
+            treeNode61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode61.Name = "RailFenceNode";
+            treeNode61.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode61.Text = "Rail Fence";
+            treeNode62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            treeNode62.Name = "ColumnarCipherNode";
+            treeNode62.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode62.Text = "Columnar Cipher";
+            treeNode63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode63.Name = "TranspositionNode";
+            treeNode63.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode63.Text = "Transposition Techniques";
+            treeNode64.ForeColor = System.Drawing.Color.Orange;
+            treeNode64.Name = "ClassicalEncryptionTechniquesNode";
+            treeNode64.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            treeNode64.Text = "Classical Encryption Techniques";
+            treeNode65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode65.Name = "DESNode";
+            treeNode65.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode65.Text = "DES";
+            treeNode66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode66.Name = "DoubleDESNode";
+            treeNode66.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode66.Text = "Double DES";
+            treeNode67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode67.Name = "TripleDESNode";
+            treeNode67.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode67.Text = "Triple DES";
+            treeNode68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode68.Name = "AESNode";
+            treeNode68.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode68.Text = "AES";
+            treeNode69.ForeColor = System.Drawing.Color.Orange;
+            treeNode69.Name = "BlockCipherNode";
+            treeNode69.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
+            treeNode69.Text = "Block Cipher";
+            treeNode70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode70.Name = "RC4Node";
+            treeNode70.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode70.Text = "RC4";
+            treeNode71.ForeColor = System.Drawing.Color.Orange;
+            treeNode71.Name = "StreamCipherNode";
+            treeNode71.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
+            treeNode71.Text = "Stream Cipher";
+            treeNode72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode72.Name = "RSANode";
+            treeNode72.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode72.Text = "RSA";
+            treeNode73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode73.Name = "EllipticCurveNode";
+            treeNode73.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode73.Text = "Elliptic Curve";
+            treeNode74.ForeColor = System.Drawing.Color.Orange;
+            treeNode74.Name = "PublicKeyCryptosystemNode";
+            treeNode74.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
+            treeNode74.Text = "Public Key Cryptosystems";
+            treeNode75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode75.Name = "DiffieHellmanNode";
+            treeNode75.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode75.Text = "Diffie - Hellman";
+            treeNode76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode76.Name = "EllipticCurveNode";
+            treeNode76.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode76.Text = "Elliptic Curve";
+            treeNode77.ForeColor = System.Drawing.Color.Orange;
+            treeNode77.Name = "KeyExchangeAlgorithmsNode";
+            treeNode77.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
+            treeNode77.Text = "Key Exchange Algorithms";
+            treeNode78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode78.Name = "ExtendedEuclidAlgorithmNode";
+            treeNode78.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode78.Text = "Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)";
+            treeNode79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode79.Name = "GCDNode";
+            treeNode79.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode79.Text = "Greatest Common Divisor";
+            treeNode80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode80.Name = "BigPowerNode";
+            treeNode80.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode80.Text = "Big Power";
+            treeNode81.ForeColor = System.Drawing.Color.Orange;
+            treeNode81.Name = "NumberTheoryNode";
+            treeNode81.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
+            treeNode81.Text = "Number Theory";
             this.AllCiphersTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode15,
-            treeNode17,
-            treeNode20,
-            treeNode23,
-            treeNode27});
+            treeNode64,
+            treeNode69,
+            treeNode71,
+            treeNode74,
+            treeNode77,
+            treeNode81});
             this.AllCiphersTreeView.ShowLines = false;
             this.AllCiphersTreeView.ShowPlusMinus = false;
             this.AllCiphersTreeView.ShowRootLines = false;
@@ -492,6 +492,7 @@
             this.ClientSize = new System.Drawing.Size(735, 607);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.FileMenuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.FileMenuStrip;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

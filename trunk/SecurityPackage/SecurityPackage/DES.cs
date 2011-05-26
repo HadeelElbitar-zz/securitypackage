@@ -165,7 +165,6 @@ namespace SecurityPackage
                 {
                     CirculatedKey = LeftCircularShift(CirculatedKey, BitsRotated[i]);
                     string KeyI = Rearrange(CirculatedKey, PC2);
-
                     string[] TextArray = Round(permutedText, KeyI);
                     if (i == RoundsCount - 1)
                         permutedText = TextArray[1] + TextArray[0];
@@ -185,22 +184,30 @@ namespace SecurityPackage
                 return "0x" + EncryptedText.ToUpper();
             return EncryptedText;
         }
-        public string Decrypt(string CipherText, string Key)
+
+        public string Decrypt(string PlainText, string Key)
         {
-            CipherText = CipherText.Replace(" ", "").ToUpper();
+
+
+
+            //    //PlainText = "0x0123456789ABCDEF";
+            Key = "0x133457799BBCDFF1";
+            PlainText = "0x85E813540F0AB405";
+
+            PlainText = PlainText.Replace(" ", "").ToUpper();
 
             #region Convert Text and Key To Binary
 
             #region Text
             bool HexText = false;
             string BinaryText = "";
-            if (CipherText.IndexOf("0x") != -1 || CipherText.IndexOf("0X") != -1)
+            if (PlainText.IndexOf("0x") != -1 || PlainText.IndexOf("0X") != -1)
             {
                 HexText = true;
-                BinaryText = HexadecimalToBinary(CipherText.Substring(2));
+                BinaryText = HexadecimalToBinary(PlainText.Substring(2));
             }
             else
-                BinaryText = TextToBinary(CipherText);
+                BinaryText = TextToBinary(PlainText);
             #endregion
 
             #region Key
@@ -211,9 +218,12 @@ namespace SecurityPackage
                 BinaryKey = TextToBinary(Key);
             #endregion
 
+
+
+
             #endregion
 
-            string DecryptedText = "";
+            string EncryptedText = "";
             int keyIndex = 0;
             while (BinaryText != "")
             {
@@ -253,9 +263,22 @@ namespace SecurityPackage
 
                 #endregion
 
+
+                //char[] BinaryKeyChars = Key64.ToCharArray();
+                //Array.Reverse(BinaryKeyChars);
+                //Key64 = new string(BinaryKeyChars);
+
+
+                
+                
                 #region First Permutation
-                string permutedText = Rearrange(Text64, IPInverse);
+                string permutedText = Rearrange(Text64, IP);
                 string PermutedKey = Rearrange(Key64, PC1);
+
+
+                
+
+
                 #endregion
 
                 #region Rounds
@@ -265,7 +288,6 @@ namespace SecurityPackage
                 {
                     CirculatedKey = LeftCircularShift(CirculatedKey, BitsRotated[i]);
                     string KeyI = Rearrange(CirculatedKey, PC2);
-
                     string[] TextArray = Round(permutedText, KeyI);
                     if (i == RoundsCount - 1)
                         permutedText = TextArray[1] + TextArray[0];
@@ -274,17 +296,137 @@ namespace SecurityPackage
                 }
                 #endregion
 
-                permutedText = Rearrange(permutedText, IP);
+                permutedText = Rearrange(permutedText, IPInverse);
 
                 if (HexText)
-                    DecryptedText += BinaryToHexadecimal(permutedText);
+                    EncryptedText += BinaryToHexadecimal(permutedText);
                 else
-                    DecryptedText += BinaryToText(permutedText);
+                    EncryptedText += BinaryToText(permutedText);
             }
             if (HexText)
-                return "0x" + DecryptedText.ToUpper();
-            return DecryptedText;
+                return "0x" + EncryptedText.ToUpper();
+            return EncryptedText;
         }
+
+        //public string Decrypt(string CipherText, string Key)
+        //{
+
+        //    //PlainText = "0x0123456789ABCDEF";
+        //    Key = "0x133457799BBCDFF1";
+        //    CipherText = "0x85E813540F0AB405";
+        //    CipherText = CipherText.Replace(" ", "").ToUpper();
+
+        //    #region Convert Text and Key To Binary
+
+        //    #region Text
+        //    bool HexText = false;
+        //    string BinaryText = "";
+        //    if (CipherText.IndexOf("0x") != -1 || CipherText.IndexOf("0X") != -1)
+        //    {
+        //        HexText = true;
+        //        BinaryText = HexadecimalToBinary(CipherText.Substring(2));
+        //    }
+        //    else
+        //        BinaryText = TextToBinary(CipherText);
+        //    #endregion
+
+        //    #region Key
+        //    string BinaryKey = "";
+        //    if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
+        //    {
+        //        Key = Key.Substring(2);
+
+
+
+        //        char[] BinaryKeyChars = Key.ToCharArray();
+        //        Array.Reverse(BinaryKeyChars);
+        //        Key = new string(BinaryKeyChars);
+
+        //        BinaryKey = HexadecimalToBinary(Key);
+        //    }
+        //    else
+        //        BinaryKey = TextToBinary(Key);
+        //    #endregion
+
+        //    #endregion
+
+
+        //    //char[] BinaryKeyChars = BinaryKey.ToCharArray();
+        //    //Array.Reverse(BinaryKeyChars);
+        //    //BinaryKey = new string(BinaryKeyChars);
+
+
+        //    string DecryptedText = "";
+        //    int keyIndex = 0;
+        //    while (BinaryText != "")
+        //    {
+        //        #region Get Bits From Plain Text & Key
+
+        //        #region Binary Key
+        //        string Key64;
+        //        if (keyIndex + 64 <= BinaryKey.Length)
+        //        {
+        //            Key64 = BinaryKey.Substring(keyIndex, 64);
+        //            keyIndex += 64;
+        //            if (keyIndex >= BinaryKey.Length) keyIndex = 0;
+        //        }
+        //        else
+        //        {
+        //            Key64 = BinaryKey.Substring(keyIndex, BinaryKey.Length - keyIndex);
+        //            while (Key64.Length < 64)
+        //                Key64 += BinaryKey;
+        //            if (Key64.Length > 64)
+        //                Key64 = Key64.Remove(63);
+        //        }
+        //        #endregion
+
+        //        #region Plain Text
+        //        string Text64 = BinaryText;
+        //        if (Text64.Length >= 64)
+        //        {
+        //            Text64 = Text64.Substring(0, 64);
+        //            BinaryText = BinaryText.Remove(0, 64);
+        //        }
+        //        else
+        //        {
+        //            Text64 = Text64.PadLeft(64, '0');
+        //            BinaryText = "";
+        //        }
+        //        #endregion
+
+        //        #endregion
+
+        //        #region First Permutation
+        //        string permutedText = Rearrange(Text64, IPInverse);
+        //        string PermutedKey = Rearrange(Key64, PC1);
+        //        #endregion
+
+        //        #region Rounds
+        //        int RoundsCount = 16;
+        //        string CirculatedKey = PermutedKey;
+        //        for (int i = 0; i < RoundsCount; i++)
+        //        {
+        //            CirculatedKey = LeftCircularShift(CirculatedKey, BitsRotated[i]);
+        //            string KeyI = Rearrange(CirculatedKey, PC2);
+        //            string[] TextArray = Round(permutedText, KeyI);
+        //            if (i == RoundsCount - 1)
+        //                permutedText = TextArray[1] + TextArray[0];
+        //            else
+        //                permutedText = TextArray[0] + TextArray[1];
+        //        }
+        //        #endregion
+
+        //        permutedText = Rearrange(permutedText, IP);
+
+        //        if (HexText)
+        //            DecryptedText += BinaryToHexadecimal(permutedText);
+        //        else
+        //            DecryptedText += BinaryToText(permutedText);
+        //    }
+        //    if (HexText)
+        //        return "0x" + DecryptedText.ToUpper();
+        //    return DecryptedText;
+        //}
         #endregion
 
         #region Helping Functions

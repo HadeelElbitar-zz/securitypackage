@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HillKeyForm));
             this.KeyMatrixDataGrid = new System.Windows.Forms.DataGridView();
             this.DecryptButton = new System.Windows.Forms.Button();
             this.EncryptButton = new System.Windows.Forms.Button();
@@ -78,6 +79,7 @@
             this.Controls.Add(this.EncryptButton);
             this.Controls.Add(this.DecryptButton);
             this.Controls.Add(this.KeyMatrixDataGrid);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HillKeyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hill Cipher Key Matrix";

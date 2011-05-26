@@ -67,7 +67,7 @@ namespace SecurityPackage
             //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E5B4B99164739A8004F452718689602054D6D9BF786B9DEEC274AAD9D43B1FFC1DB0E9887F961E49E817A7C7133AA3703", "123456789ABCDEF123456789ABCDEF");
 
             DES des = new DES();
-            ModifiedTextBox.Text = des.Encrypt("0x0123456789ABCDEF", "0x133457799BBCDFF1");
+            ModifiedTextBox.Text = des.Decrypt("", "");
 
             //RC4 rc4 = new RC4();
             //ModifiedTextBox.Text = rc4.Encrypt("", "");
