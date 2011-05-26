@@ -7,8 +7,7 @@ namespace SecurityPackage
 {
     class BaseConversion
     {
-        public BaseConversion()
-        { }
+        #region From Text
         public string TextToBinary(string Text)
         {
             int length = Text.Length;
@@ -43,9 +42,9 @@ namespace SecurityPackage
             }
             return BinaryText;
         }
+        #endregion
 
-
-
+        #region From Hexadecimal
         public string HexadecimalToText(string HexadecimalText)
         {
             int length = HexadecimalText.Length;
@@ -56,7 +55,6 @@ namespace SecurityPackage
             }
             return Text;
         }
-
         public string HexadecimalToBinary(string Text)
         {
             int length = Text.Length;
@@ -91,12 +89,13 @@ namespace SecurityPackage
         {
             return int.Parse(Convert.ToString(Convert.ToInt32(Text.ToString(), 16), 10));
         }
-
         public int HexadecimalToDecimalTwo(string Text)
         {
             return int.Parse(Convert.ToString(Convert.ToInt32(Text, 16), 10));
         }
+        #endregion
 
+        #region From Binary
         public string BinaryToText(string Text)
         {
             string returnText = "";
@@ -126,5 +125,6 @@ namespace SecurityPackage
             }
             return HexadecimalText;
         }
+        #endregion
     }
 }

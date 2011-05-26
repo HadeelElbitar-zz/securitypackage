@@ -21,12 +21,17 @@ namespace SecurityPackage
 
         public string Encrypt(string PlainText, string Key)
         {
-            PlainText = "pedia";
-            Key = "0x6044db6d41b7";
+            #region Test Cases
+            //PlainText = "pedia";
+            //Key = "0x6044db6d41b7";
             //CipherText="0x1021BF0420";
 
+            PlainText = "Plaintext";
+            Key = "0xeb9f7781b734ca72a719";
+            //CipherText="0xBBF316E8D940AF0AD3"; 
+            #endregion
+
             PlainText = PlainText.Replace(" ", "");
-            int length = PlainText.Length;
             bool HexadecimalKey = false;
             int[] KeyIntegers = new int[1];
             BaseConversion baseConversion = new BaseConversion();
@@ -34,7 +39,7 @@ namespace SecurityPackage
             #region Text and Key preprocessing
 
             #region Convert Text to Binary
-            string[] BinaryPlainText = new string[length];
+            string[] BinaryPlainText = new string[PlainText.Length];
             if (PlainText.IndexOf("0x") != -1 || PlainText.IndexOf("0X") != -1)
             {
                 PlainText = PlainText.Substring(2);
@@ -51,7 +56,7 @@ namespace SecurityPackage
             {
                 Key = Key.Substring(2);
                 HexadecimalKey = true;
-                length = Key.Length;
+                int length = Key.Length;
                 KeyIntegers = new int[(length / 2) + (length % 2)];
                 for (int k = 0; k < length / 2; k++)
                 {
@@ -62,7 +67,7 @@ namespace SecurityPackage
             }
             else
             {
-                length = Key.Length;
+                int length = Key.Length;
                 for (int k = 0; k < length; k++)
                     KeyIntegers[k] = int.Parse(Key[k].ToString());
             }

@@ -188,12 +188,11 @@ namespace SecurityPackage
 
         public string Decrypt(string PlainText, string Key)
         {
-
-
-
+            #region Test Cases
             //    //PlainText = "0x0123456789ABCDEF";
             Key = "0x133457799BBCDFF1";
-            PlainText = "0x85E813540F0AB405";
+            PlainText = "0x85E813540F0AB405"; 
+            #endregion
 
             PlainText = PlainText.Replace(" ", "").ToUpper();
 
@@ -269,9 +268,6 @@ namespace SecurityPackage
                 //Array.Reverse(BinaryKeyChars);
                 //Key64 = new string(BinaryKeyChars);
 
-
-                
-                
                 #region First Permutation
                 string permutedText = Rearrange(Text64, IP);
                 string PermutedKey = Rearrange(Key64, PC1);
@@ -428,6 +424,7 @@ namespace SecurityPackage
         //        return "0x" + DecryptedText.ToUpper();
         //    return DecryptedText;
         //}
+
         #endregion
 
         #region Helping Functions
