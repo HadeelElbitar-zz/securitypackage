@@ -206,18 +206,18 @@ namespace SecurityPackage
         #endregion
 
         #region Encryption/Decryption Functions
-        Point[] Encrypt(int a, int Base, Point G, Point PT, Point BPublicKey, int k)
+        public Point[] Encrypt(int a, int Base, Point G, Point PT, Point BPublicKey, int k)
         {
             Point[] CT = new Point[2];
             CT[0] = ResidueClassMultiplyPoint(k, G, Base, a);
             CT[1] = ResidueClassAddPoints(PT, ResidueClassMultiplyPoint(k, BPublicKey, Base, a), Base, a);
             return CT;
         }
-        Point Decrypt(int a, int Base, Point[] CT, int nB)
+        public Point Decrypt(int a, int Base, Point[] CT, int nB)
         {
             Point Temp = ResidueClassNegativePoint(ResidueClassMultiplyPoint(nB, CT[0], Base, a));
-            return ResidueClassAddPoints(Temp, CT[1], Base, a);
-        } 
+            return ResidueClassAddPoints(CT[1], Temp, Base, a);
+        }
         #endregion
     }
 }

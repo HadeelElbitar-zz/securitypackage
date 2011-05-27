@@ -29,6 +29,10 @@ namespace SecurityPackage
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+            EllipticCurve Ec = new EllipticCurve();
+            Point[] CT = Ec.Encrypt(1, 11, new Point(2, 7), new Point(10, 9), new Point(7, 2), 3);
+            Point PT = Ec.Decrypt(1, 11, CT, 7);
+            int x = 0;
             //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
             //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
             //int[,] K = { { 7, 4, 2, 0, 6 }, { 6, 3, -1, 2, -1 }, { 4, 6, 2, 5, 4 }, { 8, 2, -7, 1, 2 }, { 9, 3, 7, 0, 5 } };
@@ -66,11 +70,11 @@ namespace SecurityPackage
             //string s = p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
             //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E5B4B99164739A8004F452718689602054D6D9BF786B9DEEC274AAD9D43B1FFC1DB0E9887F961E49E817A7C7133AA3703", "123456789ABCDEF123456789ABCDEF");
 
-            //DES des = new DES();
-            //ModifiedTextBox.Text = des.Decrypt("", "");
+            DES des = new DES();
+            ModifiedTextBox.Text = des.Decrypt("", "");
 
-            RC4 rc4 = new RC4();
-            ModifiedTextBox.Text = rc4.Encrypt("", "");
+            //RC4 rc4 = new RC4();
+            //ModifiedTextBox.Text = rc4.Encrypt("", "");
 
             //RSA rsa = new RSA();
             //ModifiedTextBox.Text = rsa.Encrypt("", "", "", "");
