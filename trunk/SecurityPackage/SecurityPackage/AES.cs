@@ -55,10 +55,19 @@ namespace SecurityPackage
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Creates an object of Advanced Encryption Standard Cipher (AES)
+        /// </summary>
         public AES() { }
         #endregion
 
         #region Encryption
+        /// <summary>
+        /// Encrypt the given text using the given hexadecimal key.
+        /// </summary>
+        /// <param name="Text">The text to be encrypted</param>
+        /// <param name="HexaKey">The hexadecimal key to be used in the encryption</param>
+        /// <returns>It returns a string contains the encrypted text.</returns>
         public string Encrypt(string Text, string HexaKey)
         {
             ClearFields();
@@ -105,6 +114,12 @@ namespace SecurityPackage
         #endregion
 
         #region Decryption
+        /// <summary>
+        /// Decrypt the given text using the given hexadecimal key.
+        /// </summary>
+        /// <param name="Text">The text to be decrypted</param>
+        /// <param name="HexaKey">The hexadecimal key to be used in the decryption</param>
+        /// <returns>It returns a string contains the decrypted text.</returns>
         public string Decrypt(string Text, string HexaKey)
         {
             ClearFields();

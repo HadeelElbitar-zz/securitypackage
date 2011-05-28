@@ -11,10 +11,19 @@ namespace SecurityPackage
         char[] Alphabetic = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
         string[,] Matrix;
         List<string> Diagrams;
+        /// <summary>
+        /// Creates an object of Plain Fair Cipher.
+        /// </summary>
         public PlayFairCipher() { }
         #endregion
 
         #region Encryption
+        /// <summary>
+        /// Encrypt the given text using the given key.
+        /// </summary>
+        /// <param name="PlainText">The text to be encrypted</param>
+        /// <param name="Key">The key that's used in the encryption</param>
+        /// <returns>It returns a string contains the encrypted text.</returns>
         public string Encrypt(string PlainText, string Key)
         {
             if (PlainText == null || Key == null)
@@ -50,6 +59,12 @@ namespace SecurityPackage
         #endregion
 
         #region Decryption
+        /// <summary>
+        /// Decrypt the given text using the given key.
+        /// </summary>
+        /// <param name="CipherText">The text to be decrypted</param>
+        /// <param name="Key">The key that's used in the decryption</param>
+        /// <returns>It returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, string Key)
         {
             string PlainText = "";
@@ -94,6 +109,10 @@ namespace SecurityPackage
             NewKey = NewKey.ToUpper().Replace(" ", "");
             Matrix = BuildMatrix(NewKey);
         }
+        /// <summary>
+        /// Given the text of encryption/decryption it prepares a list of the digrams.
+        /// </summary>
+        /// <param name="Text">The text to be encrypted/decrypted.</param>
         void GetDiagrams(string Text)
         {
             Diagrams = new List<string>();
@@ -116,6 +135,11 @@ namespace SecurityPackage
                 }
             }
         }
+        /// <summary>
+        /// Get the row index and column index in the matrix for the given character
+        /// </summary>
+        /// <param name="X">Character we are searching for.</param>
+        /// <returns>Integer array with size 2 that contains row index and column index</returns>
         int[] SearchMatrix(char X)
         {
             int[] Index = new int[2];
@@ -138,6 +162,11 @@ namespace SecurityPackage
 
             return Index;
         }
+        /// <summary>
+        /// Build the play fair matrix to be used in encryption/decryption using the given key.
+        /// </summary>
+        /// <param name="_Key">String represents the key of encryption/decryption operation.</param>
+        /// <returns>Returns the play fair matrix.</returns>
         string[,] BuildMatrix(string _Key)
         {
             string[,] NewMatrix = new string[5, 5];

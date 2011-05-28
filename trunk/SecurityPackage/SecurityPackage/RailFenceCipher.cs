@@ -9,10 +9,19 @@ namespace SecurityPackage
     {
         #region Constructors
         List<char>[] Arrays;
+        /// <summary>
+        /// Creates an object of Rail Fence Cipher
+        /// </summary>
         public RailFenceCipher() { }
         #endregion
 
         #region Encryption
+        /// <summary>
+        /// Encrypts the given text with the given depth level.
+        /// </summary>
+        /// <param name="PlainText"> Text to be encrypted</param>
+        /// <param name="DepthLevel"> An integer represents the depth level of encryption</param>
+        /// <returns>It returns a string contains the encrypted text.</returns>
         public string Encrypt(string PlainText, int DepthLevel)
         {
             PlainText = PlainText.Replace(" ", "");
@@ -36,6 +45,12 @@ namespace SecurityPackage
         #endregion
 
         #region Decryption
+        /// <summary>
+        /// Decrypts the given text with the given depth level.
+        /// </summary>
+        /// <param name="CipherText"> Text to be decrypted</param>
+        /// <param name="DepthLevel"> An integer represents the depth level of decryption</param>
+        /// <returns>It returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, int DepthLevel)
         {
             CipherText = CipherText.Replace(" ", "");
@@ -72,6 +87,10 @@ namespace SecurityPackage
         #endregion
 
         #region Helping Functions
+        /// <summary>
+        /// Prepares the lists of depth level to use it later in the cipher to store the chars.
+        /// </summary>
+        /// <param name="DL">Depth Level</param>
         void PrepareDepthLevel(int DL)
         {
             Arrays = new List<char>[DL];

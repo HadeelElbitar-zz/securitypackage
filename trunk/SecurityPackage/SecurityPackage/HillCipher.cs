@@ -14,10 +14,19 @@ namespace SecurityPackage
         int[,] KeyInverse;
         int NumberOfChars;
         Dictionary<char, int> AlphaIndex;
+        /// <summary>
+        /// Creates an object of Hill Cipher.
+        /// </summary>
         public HillCipher() { }
         #endregion
 
         #region Encryption
+        /// <summary>
+        /// Encrypts the given text using the given key matrix.
+        /// </summary>
+        /// <param name="PlainText">Text to be encrypted</param>
+        /// <param name="_Key">Key matrix to be used in the encryption</param>
+        /// <returns>It returns a string contains the encrypted text.</returns>
         public string Encrypt(string PlainText, int[,] _Key)
         {
             if (PlainText == null || _Key == null)
@@ -64,6 +73,12 @@ namespace SecurityPackage
         #endregion
 
         #region Decryption
+        /// <summary>
+        /// Decrypts the given text using the given key matrix.
+        /// </summary>
+        /// <param name="CipherText">Text to be decrypted</param>
+        /// <param name="_Key">Key matrix to be used in the decryption</param>
+        /// <returns>It returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, int[,] _Key)
         {
             NumberTheory MI = new NumberTheory();
@@ -137,6 +152,9 @@ namespace SecurityPackage
             KeyInverse = new int[NumberOfChars, NumberOfChars];
             FillIndex();
         }
+        /// <summary>
+        /// Fill a dectionary that contains every character with its index.
+        /// </summary>
         void FillIndex()
         {
             AlphaIndex = new Dictionary<char, int>();
@@ -144,6 +162,12 @@ namespace SecurityPackage
             for (int i = 0; i < 26; i++)
                 AlphaIndex.Add(Convert.ToChar(Convert.ToInt32(Initial) + i), i);
         }
+        /// <summary>
+        /// Multiplies two matrices.
+        /// </summary>
+        /// <param name="PT">The first matrix</param>
+        /// <param name="_Key">The second matrix</param>
+        /// <returns>The result of multiplication matrix</returns>
         int[,] MatrixMul(int[,] PT, int[,] _Key)
         {
             int[,] Result = new int[1, NumberOfChars];
@@ -154,6 +178,11 @@ namespace SecurityPackage
                 }
             return Result;
         }
+        /// <summary>
+        /// Finds the determinant for any matrix with any size.
+        /// </summary>
+        /// <param name="SubMatrix">The matrix to find the determinant for</param>
+        /// <returns>Returns an integer represents the determinant value.</returns>
         int MatrixDet(int[,] SubMatrix)
         {
             int res = 0;
@@ -183,7 +212,7 @@ namespace SecurityPackage
                     }
             }
             return res;
-        }
+        }   
         int CoMatrixDet(int[,] SubMatrix, int IndexI, int IndexJ)
         {
             int res = 0;
@@ -210,6 +239,11 @@ namespace SecurityPackage
             }
             return res;
         }
+        /// <summary>
+        /// Finds the cofacrot matrix for any given matrix with any size.
+        /// </summary>
+        /// <param name="Matrix">The matrix to find the cofactor matrix for.</param>
+        /// <returns>Returns the cofactor matrix with size of the same input matrix size.</returns>
         int[,] GetCofactorMatrix(int[,] Matrix)
         {
             int[,] Result = new int[NumberOfChars, NumberOfChars];

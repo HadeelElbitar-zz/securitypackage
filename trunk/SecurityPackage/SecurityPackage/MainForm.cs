@@ -41,7 +41,7 @@ namespace SecurityPackage
             //s = p.Decrypt("COIPDCUCBTSKITIEPUDNYEYXILEURUUT", K);
 
             //RailFenceCipher p = new RailFenceCipher();
-            //string s =  p.Encrypt("advance attack two hours from nw", 7);
+            //string s = p.Encrypt("advance attack two hours from nw", 7);
             //s = p.Decrypt("aawfdtorvthoaaomncunckrwets", 7);
 
             //ColumnarCipher p = new ColumnarCipher();

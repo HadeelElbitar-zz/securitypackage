@@ -8,10 +8,19 @@ namespace SecurityPackage
     class CeaserCipher
     {
         #region Constructors
+        /// <summary>
+        /// Creates an object of Ceaser Cipher.
+        /// </summary>
         public CeaserCipher() { }
         #endregion
 
         #region Encryption
+        /// <summary>
+        /// Encrypt the given text using the given key.
+        /// </summary>
+        /// <param name="PlainText">Text to be encyrpted</param>
+        /// <param name="Key">Key to be used in encryption</param>
+        /// <returns>It returns a string contains the encrypted text.</returns>
         public string Encrypt(string PlainText, int Key)
         {
             if (PlainText == null || Key <= 0)
@@ -25,6 +34,12 @@ namespace SecurityPackage
         #endregion
 
         #region Decryption
+        /// <summary>
+        /// Decrypt the given text using the given key.
+        /// </summary>
+        /// <param name="CipherText">Text to be decrypted</param>
+        /// <param name="Key">Key to be used in decryption</param>
+        /// <returns>It returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, int Key)
         {
             if (CipherText == null)

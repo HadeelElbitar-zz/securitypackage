@@ -12,10 +12,19 @@ namespace SecurityPackage
         int[] SortedKey;
         int NumberOfColumns;
         List<char>[] Columns;
+        /// <summary>
+        /// Creates an object of Columnar Cipher.
+        /// </summary>
         public ColumnarCipher() { }
         #endregion
 
         #region Encryption
+        /// <summary>
+        /// Encrypt the given text with the given key.
+        /// </summary>
+        /// <param name="PlainText">Text to be encrypted</param>
+        /// <param name="Key">Key to be used in the encryption</param>
+        /// <returns>Returns a string contains the encrypted text.</returns>
         public string Encrypt(string PlainText, int Key)
         {
             //if (PlainText == null || Key == null)
@@ -42,6 +51,12 @@ namespace SecurityPackage
         #endregion
 
         #region Decryption
+        /// <summary>
+        /// Decrypt the given text with the given key.
+        /// </summary>
+        /// <param name="CipherText">Text to be decrypted</param>
+        /// <param name="Key">Key to be used in the decryption</param>
+        /// <returns>Returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, int Key)
         {
             //if (CipherText == null)

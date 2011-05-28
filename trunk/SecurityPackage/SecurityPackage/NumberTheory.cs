@@ -9,14 +9,30 @@ namespace SecurityPackage
     class NumberTheory
     {
         #region Constructor
+        /// <summary>
+        /// Creates an object of Number Theory Class.
+        /// </summary>
         public NumberTheory() { }
         #endregion
 
         #region Calculate Big Powers
+        /// <summary>
+        /// Calculates (Base^Power) % Mod equation.
+        /// </summary>
+        /// <param name="Base">The Base value.</param>
+        /// <param name="Power">The Power value.</param>
+        /// <param name="Mod">The Modulus value</param>
+        /// <returns>Returns the result of the equation (Base^Power) % Mod</returns>
         public BigInteger BigPower(BigInteger Base, BigInteger Power, BigInteger Mod)
         {
             return BigInteger.ModPow(Base, Power, Mod);
         }
+        /// <summary>
+        /// Calculates (Base^Power) equation for numbers that doesn't fit in long datatype.
+        /// </summary>
+        /// <param name="Base">The Base value.</param>
+        /// <param name="Power">The Power value.</param>
+        /// <returns>Returns the result of the equation (Base^Power)</returns>
         public BigInteger BigPower(BigInteger Base, int Power)
         {
             return BigInteger.Pow(Base, Power);
@@ -24,6 +40,12 @@ namespace SecurityPackage
         #endregion
 
         #region Number "N" Multiplicative Inverse under Base "B"
+        /// <summary>
+        /// Get the Multiplicative Inverse of a number under specific base using Euclid's Algorithm
+        /// </summary>
+        /// <param name="Number">Number to find MI for</param>
+        /// <param name="Base">The base of the operation.</param>
+        /// <returns>Returns and integer representes the MI of the number in the base.</returns>
         public int MultiplicativeInverse(int Number, int Base)
         {
             int MI = int.MinValue;
@@ -58,6 +80,12 @@ namespace SecurityPackage
             }
             return MI;
         }
+        /// <summary>
+        /// Get the Multiplicative Inverse of a number under specific base using Euclid's Algorithm
+        /// </summary>
+        /// <param name="Number">Number to find MI for</param>
+        /// <param name="Base">The base of the operation.</param>
+        /// <returns>Returns and integer representes the MI of the number in the base.</returns>
         public BigInteger MultiplicativeInverse(BigInteger Number, BigInteger Base)
         {
             BigInteger MI = -1;
@@ -95,7 +123,6 @@ namespace SecurityPackage
         #endregion
 
         #region Greatest Common Divisor (GCD)
-
         /// <summary>
         /// Calculates the greatest common divisor of two numbers
         /// </summary>
@@ -108,7 +135,6 @@ namespace SecurityPackage
                 return n;
             return GCD(m, n % m);
         }
-
         #endregion
     }
 }
