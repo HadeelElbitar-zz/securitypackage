@@ -15,31 +15,6 @@ namespace SecurityPackage
         public ColumnarCipher() { }
         #endregion
 
-        #region Helping Functions
-        int[] SortKey(string _Key)
-        {
-            int length = _Key.Length;
-            int[] Numbers = new int[length];
-            SortedDictionary<char, int> Temp = new SortedDictionary<char, int>();
-            for (int i = 0; i < length; i++)
-                Temp.Add(_Key[i], i);
-            int j = -1;
-            foreach (KeyValuePair<char, int> item in Temp)
-                Numbers[++j] = item.Value;
-            return Numbers;
-        }
-        void PrepareKey(int NewKey)
-        {
-            Key = NewKey.ToString();
-            NumberOfColumns = Key.Length;
-            //MaxNumOfElements = PlainText.Length / NumberOfColumns;
-            Columns = new List<char>[NumberOfColumns];
-            for (int i = 0; i < NumberOfColumns; i++)
-                Columns[i] = new List<char>();
-            SortedKey = SortKey(Key);
-        }
-        #endregion
-
         #region Encryption
         public string Encrypt(string PlainText, int Key)
         {
@@ -105,6 +80,30 @@ namespace SecurityPackage
                     catch { }
                 }
             return PlainText;
+        }
+        #endregion
+
+        #region Helping Functions
+        int[] SortKey(string _Key)
+        {
+            int length = _Key.Length;
+            int[] Numbers = new int[length];
+            SortedDictionary<char, int> Temp = new SortedDictionary<char, int>();
+            for (int i = 0; i < length; i++)
+                Temp.Add(_Key[i], i);
+            int j = -1;
+            foreach (KeyValuePair<char, int> item in Temp)
+                Numbers[++j] = item.Value;
+            return Numbers;
+        }
+        void PrepareKey(int NewKey)
+        {
+            Key = NewKey.ToString();
+            NumberOfColumns = Key.Length;
+            Columns = new List<char>[NumberOfColumns];
+            for (int i = 0; i < NumberOfColumns; i++)
+                Columns[i] = new List<char>();
+            SortedKey = SortKey(Key);
         }
         #endregion
     }

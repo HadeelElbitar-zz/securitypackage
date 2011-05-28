@@ -14,6 +14,32 @@ namespace SecurityPackage
         public PolyalphabeticCipher() { }
         #endregion
 
+        #region Encryption
+        public string Encrypt(string PlainText, string Key, int Mode)
+        {
+            PlainText = PlainText.ToUpper().Replace(" ", "");
+            PrepareKey(ref Key, PlainText, Mode);
+            string CipherText = "";
+            int i = -1;
+            foreach (char item in PlainText)
+                CipherText += Matrix[AlphaIndex[item], AlphaIndex[Key[++i]]];
+            return CipherText;
+        }
+        #endregion
+
+        #region Decryption
+        public string Decrypt(string CipherText, string Key, int Mode)
+        {
+            CipherText = CipherText.ToUpper().Replace(" ", "");
+            PrepareKey(ref Key, CipherText, KeyMode);
+            string PlainText = "";
+            int i = -1;
+            foreach (char item in CipherText)
+                PlainText += Matrix[SearchMatrixRow(AlphaIndex[Key[++i]], item), 0];
+            return PlainText;
+        }
+        #endregion
+
         #region Helping Functions
         void PrepareKey(ref string Key, string PT, int Mode)
         {
@@ -68,32 +94,6 @@ namespace SecurityPackage
                 for (int j = 0; j < 26; j++)
                     if (Matrix[i, j] == X)
                         return j;
-        }
-        #endregion
-
-        #region Encryption
-        public string Encrypt(string PlainText, string Key, int Mode)
-        {
-            PlainText = PlainText.ToUpper().Replace(" ", "");
-            PrepareKey(ref Key, PlainText, Mode);
-            string CipherText = "";
-            int i = -1;
-            foreach (char item in PlainText)
-                CipherText += Matrix[AlphaIndex[item], AlphaIndex[Key[++i]]];
-            return CipherText;
-        }
-        #endregion
-
-        #region Decryption
-        public string Decrypt(string CipherText, string Key, int Mode)
-        {
-            CipherText = CipherText.ToUpper().Replace(" ", "");
-            PrepareKey(ref Key, CipherText, KeyMode);
-            string PlainText = "";
-            int i = -1;
-            foreach (char item in CipherText)
-                PlainText += Matrix[SearchMatrixRow(AlphaIndex[Key[++i]], item), 0];
-            return PlainText;
         }
         #endregion
     }

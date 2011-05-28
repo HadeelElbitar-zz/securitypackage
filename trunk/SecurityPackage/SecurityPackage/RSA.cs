@@ -8,9 +8,11 @@ namespace SecurityPackage
 {
     class RSA
     {
-        public RSA() { }
+        #region Constructor
+        public RSA() { } 
+        #endregion
 
-        #region Encrypt/Decrypt
+        #region Encryption/Decryption
         public string Encrypt(string PlainText, string pText, string qText, string eText)
         {
             BigInteger p = BigInteger.Parse(pText);

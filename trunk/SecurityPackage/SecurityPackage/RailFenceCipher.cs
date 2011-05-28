@@ -12,15 +12,6 @@ namespace SecurityPackage
         public RailFenceCipher() { }
         #endregion
 
-        #region Helping Functions
-        void PrepareDepthLevel(int DL)
-        {
-            Arrays = new List<char>[DL];
-            for (int i = 0; i < DL; i++)
-                Arrays[i] = new List<char>();
-        }
-        #endregion
-
         #region Encryption
         public string Encrypt(string PlainText, int DepthLevel)
         {
@@ -77,6 +68,15 @@ namespace SecurityPackage
                     catch { }
                 }
             return PlainText;
+        }
+        #endregion
+
+        #region Helping Functions
+        void PrepareDepthLevel(int DL)
+        {
+            Arrays = new List<char>[DL];
+            for (int i = 0; i < DL; i++)
+                Arrays[i] = new List<char>();
         }
         #endregion
     }

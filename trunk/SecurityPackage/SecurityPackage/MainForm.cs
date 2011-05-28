@@ -29,10 +29,10 @@ namespace SecurityPackage
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            EllipticCurve Ec = new EllipticCurve();
-            Point[] CT = Ec.Encrypt(1, 11, new Point(2, 7), new Point(10, 9), new Point(7, 2), 3);
-            Point PT = Ec.Decrypt(1, 11, CT, 7);
-            int x = 0;
+            //EllipticCurve Ec = new EllipticCurve();
+            //Point[] CT = Ec.Encrypt(1, 11, new Point(2, 7), new Point(10, 9), new Point(7, 2), 3);
+            //Point PT = Ec.Decrypt(1, 11, CT, 7);
+
             //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
             //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
             //int[,] K = { { 7, 4, 2, 0, 6 }, { 6, 3, -1, 2, -1 }, { 4, 6, 2, 5, 4 }, { 8, 2, -7, 1, 2 }, { 9, 3, 7, 0, 5 } };
@@ -70,8 +70,8 @@ namespace SecurityPackage
             //string s = p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
             //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E5B4B99164739A8004F452718689602054D6D9BF786B9DEEC274AAD9D43B1FFC1DB0E9887F961E49E817A7C7133AA3703", "123456789ABCDEF123456789ABCDEF");
 
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Decrypt("", "");
+            //DES des = new DES();
+            //ModifiedTextBox.Text = des.Decrypt("", "");
 
             //RC4 rc4 = new RC4();
             //ModifiedTextBox.Text = rc4.Encrypt("", "");
@@ -168,7 +168,15 @@ namespace SecurityPackage
             radioButton.Dock = DockStyle.Top;
             return radioButton;
         }
+        Point GetPoint(string point)
+        {
+            point = point.Replace(" ", "");
+            int Index = point.IndexOf(",");
+            return new Point(int.Parse(point.Substring(1, Index - 1)), int.Parse(point.Substring(Index + 1, point.Length - Index - 2)));
+        }
         #endregion
+
+        #region Encryption / Decryption
 
         #region Classical Encryption Techniques
 
@@ -194,13 +202,19 @@ namespace SecurityPackage
         }
         void CeaserEncryptButton_Click(object sender, EventArgs e, int Key)
         {
-            CeaserCipher ceaserCipher = new CeaserCipher();
-            ModifiedTextBox.Text = ceaserCipher.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ","") != "")
+            {
+                CeaserCipher ceaserCipher = new CeaserCipher();
+                ModifiedTextBox.Text = ceaserCipher.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void CeaserDecryptButton_Click(object sender, EventArgs e, int Key)
         {
-            CeaserCipher ceaserCipher = new CeaserCipher();
-            ModifiedTextBox.Text = ceaserCipher.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ","") != "")
+            {
+                CeaserCipher ceaserCipher = new CeaserCipher();
+                ModifiedTextBox.Text = ceaserCipher.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -223,13 +237,19 @@ namespace SecurityPackage
         }
         void MonoalphabeticEncryptButton_Click(object sender, EventArgs e, string Key)
         {
-            MonoalphabeticCipher monoalphabeticCipher = new MonoalphabeticCipher();
-            ModifiedTextBox.Text = monoalphabeticCipher.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                MonoalphabeticCipher monoalphabeticCipher = new MonoalphabeticCipher();
+                ModifiedTextBox.Text = monoalphabeticCipher.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void MonoalphabeticDecryptButton_Click(object sender, EventArgs e, string Key)
         {
-            MonoalphabeticCipher monoalphabeticCipher = new MonoalphabeticCipher();
-            ModifiedTextBox.Text = monoalphabeticCipher.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                MonoalphabeticCipher monoalphabeticCipher = new MonoalphabeticCipher();
+                ModifiedTextBox.Text = monoalphabeticCipher.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -252,13 +272,19 @@ namespace SecurityPackage
         }
         void PlayFairEncryptButton_Click(object sender, EventArgs e, string Key)
         {
-            PlayFairCipher playFairCipher = new PlayFairCipher();
-            ModifiedTextBox.Text = playFairCipher.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                PlayFairCipher playFairCipher = new PlayFairCipher();
+                ModifiedTextBox.Text = playFairCipher.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void PlayFairDecryptButton_Click(object sender, EventArgs e, string Key)
         {
-            PlayFairCipher playFairCipher = new PlayFairCipher();
-            ModifiedTextBox.Text = playFairCipher.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                PlayFairCipher playFairCipher = new PlayFairCipher();
+                ModifiedTextBox.Text = playFairCipher.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -281,13 +307,19 @@ namespace SecurityPackage
         }
         void HillEncryptButton_Click(object sender, EventArgs e, int KeySize)
         {
-            HillKeyForm HillKeyMatrix = new HillKeyForm(KeySize, OriginalTextBox.Text, ModifiedTextBox);
-            HillKeyMatrix.Show();
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                HillKeyForm HillKeyMatrix = new HillKeyForm(KeySize, OriginalTextBox.Text, ModifiedTextBox);
+                HillKeyMatrix.Show();
+            }
         }
         void HillDecryptButton_Click(object sender, EventArgs e, int KeySize)
         {
-            HillKeyForm HillKeyMatrix = new HillKeyForm(KeySize, OriginalTextBox.Text, ModifiedTextBox);
-            HillKeyMatrix.Show();
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                HillKeyForm HillKeyMatrix = new HillKeyForm(KeySize, OriginalTextBox.Text, ModifiedTextBox);
+                HillKeyMatrix.Show();
+            }
         }
         #endregion
 
@@ -319,19 +351,25 @@ namespace SecurityPackage
         }
         void PolyalphabeticEncryptButton_Click(object sender, EventArgs e, string Key, bool KeyMode)
         {
-            PolyalphabeticCipher polyalphabeticCipher = new PolyalphabeticCipher();
-            if (KeyMode)
-                ModifiedTextBox.Text = polyalphabeticCipher.Encrypt(OriginalTextBox.Text, Key, 0);
-            else
-                ModifiedTextBox.Text = polyalphabeticCipher.Encrypt(OriginalTextBox.Text, Key, 1);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                PolyalphabeticCipher polyalphabeticCipher = new PolyalphabeticCipher();
+                if (KeyMode)
+                    ModifiedTextBox.Text = polyalphabeticCipher.Encrypt(OriginalTextBox.Text, Key, 0);
+                else
+                    ModifiedTextBox.Text = polyalphabeticCipher.Encrypt(OriginalTextBox.Text, Key, 1);
+            }
         }
         void PolyalphabeticDecryptButton_Click(object sender, EventArgs e, string Key, bool KeyMode)
         {
-            PolyalphabeticCipher polyalphabeticCipher = new PolyalphabeticCipher();
-            if (KeyMode)
-                ModifiedTextBox.Text = polyalphabeticCipher.Decrypt(OriginalTextBox.Text, Key, 0);
-            else
-                ModifiedTextBox.Text = polyalphabeticCipher.Decrypt(OriginalTextBox.Text, Key, 1);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                PolyalphabeticCipher polyalphabeticCipher = new PolyalphabeticCipher();
+                if (KeyMode)
+                    ModifiedTextBox.Text = polyalphabeticCipher.Decrypt(OriginalTextBox.Text, Key, 0);
+                else
+                    ModifiedTextBox.Text = polyalphabeticCipher.Decrypt(OriginalTextBox.Text, Key, 1);
+            }
         }
         #endregion
 
@@ -358,13 +396,19 @@ namespace SecurityPackage
         }
         void RailFenceEncryptButton_Click(object sender, EventArgs e, int DepthLevel)
         {
-            RailFenceCipher railFenceCipher = new RailFenceCipher();
-            ModifiedTextBox.Text = railFenceCipher.Encrypt(OriginalTextBox.Text, DepthLevel);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                RailFenceCipher railFenceCipher = new RailFenceCipher();
+                ModifiedTextBox.Text = railFenceCipher.Encrypt(OriginalTextBox.Text, DepthLevel);
+            }
         }
         void RailFenceDecryptButton_Click(object sender, EventArgs e, int DepthLevel)
         {
-            RailFenceCipher railFenceCipher = new RailFenceCipher();
-            ModifiedTextBox.Text = railFenceCipher.Decrypt(OriginalTextBox.Text, DepthLevel);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                RailFenceCipher railFenceCipher = new RailFenceCipher();
+                ModifiedTextBox.Text = railFenceCipher.Decrypt(OriginalTextBox.Text, DepthLevel);
+            }
         }
         #endregion
 
@@ -387,13 +431,19 @@ namespace SecurityPackage
         }
         void ColumnarEncryptButton_Click(object sender, EventArgs e, int Key)
         {
-            ColumnarCipher ColumnarCipher = new ColumnarCipher();
-            ModifiedTextBox.Text = ColumnarCipher.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                ColumnarCipher ColumnarCipher = new ColumnarCipher();
+                ModifiedTextBox.Text = ColumnarCipher.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void ColumnarDecryptButton_Click(object sender, EventArgs e, int Key)
         {
-            ColumnarCipher ColumnarCipher = new ColumnarCipher();
-            ModifiedTextBox.Text = ColumnarCipher.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                ColumnarCipher ColumnarCipher = new ColumnarCipher();
+                ModifiedTextBox.Text = ColumnarCipher.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -422,13 +472,19 @@ namespace SecurityPackage
         }
         void DESEncryptButton_Click(object sender, EventArgs e, string Key)
         {
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                DES des = new DES();
+                ModifiedTextBox.Text = des.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void DESDecryptButton_Click(object sender, EventArgs e, string Key)
         {
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                DES des = new DES();
+                ModifiedTextBox.Text = des.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -458,13 +514,19 @@ namespace SecurityPackage
         }
         void DoubleDESEncryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText)
         {
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Encrypt(des.Encrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                DES des = new DES();
+                ModifiedTextBox.Text = des.Encrypt(des.Encrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
+            }
         }
         void DoubleDESDecryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText)
         {
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                DES des = new DES();
+                ModifiedTextBox.Text = des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
+            }
         }
         #endregion
 
@@ -498,13 +560,19 @@ namespace SecurityPackage
         }
         void TripleDESEncryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText, string ThirdKeyText)
         {
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Encrypt(des.Encrypt(des.Encrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                DES des = new DES();
+                ModifiedTextBox.Text = des.Encrypt(des.Encrypt(des.Encrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
+            }
         }
         void TripleDESDecryptButton_Click(object sender, EventArgs e, string FirstKeyText, string SecondKeyText, string ThirdKeyText)
         {
-            DES des = new DES();
-            ModifiedTextBox.Text = des.Decrypt(des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                DES des = new DES();
+                ModifiedTextBox.Text = des.Decrypt(des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
+            }
         }
         #endregion
 
@@ -527,13 +595,19 @@ namespace SecurityPackage
         }
         void AESEncryptButton_Click(object sender, EventArgs e, string Key)
         {
-            AES aes = new AES();
-            ModifiedTextBox.Text = aes.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                AES aes = new AES();
+                ModifiedTextBox.Text = aes.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void AESDecryptButton_Click(object sender, EventArgs e, string Key)
         {
-            AES aes = new AES();
-            ModifiedTextBox.Text = aes.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                AES aes = new AES();
+                ModifiedTextBox.Text = aes.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -560,13 +634,19 @@ namespace SecurityPackage
         }
         void RC4EncryptButton_Click(object sender, EventArgs e, string Key)
         {
-            RC4 rc4 = new RC4();
-            ModifiedTextBox.Text = rc4.Encrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                RC4 rc4 = new RC4();
+                ModifiedTextBox.Text = rc4.Encrypt(OriginalTextBox.Text, Key);
+            }
         }
         void RC4DecryptButton_Click(object sender, EventArgs e, string Key)
         {
-            RC4 rc4 = new RC4();
-            ModifiedTextBox.Text = rc4.Decrypt(OriginalTextBox.Text, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                RC4 rc4 = new RC4();
+                ModifiedTextBox.Text = rc4.Decrypt(OriginalTextBox.Text, Key);
+            }
         }
         #endregion
 
@@ -604,33 +684,76 @@ namespace SecurityPackage
         }
         void RSAEncryptButton_Click(object sender, EventArgs e, string p, string q, string Key)
         {
-            RSA rsa = new RSA();
-            ModifiedTextBox.Text = rsa.Encrypt(OriginalTextBox.Text, p, q, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                RSA rsa = new RSA();
+                ModifiedTextBox.Text = rsa.Encrypt(OriginalTextBox.Text, p, q, Key);
+            }
         }
         void RSADecryptButton_Click(object sender, EventArgs e, string p, string q, string Key)
         {
-            RSA rsa = new RSA();
-            ModifiedTextBox.Text = rsa.Decrypt(OriginalTextBox.Text, p, q, Key);
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                RSA rsa = new RSA();
+                ModifiedTextBox.Text = rsa.Decrypt(OriginalTextBox.Text, p, q, Key);
+            }
         }
         #endregion
 
         #region Elliptic Curve
         private void KeyCryptosystemEllipticCurveNodeClicked()
         {
+            Label aLabel = DefineLabel("a");
+            TextBox aText = DefineTextBox();
+            Label BaseLabel = DefineLabel("Base (p)");
+            TextBox BaseText = DefineTextBox();
+            Label GLabel = DefineLabel("Point of Curve (G)");
+            TextBox GText = DefineTextBox();
+            Label PublicKeyBLabel = DefineLabel("Public Key (B)");
+            TextBox PublicKeyBText = DefineTextBox();
+            Label kLabel = DefineLabel("k");
+            TextBox kText = DefineTextBox();
+
+            GroupBox InputGroupBox = DefineGroupBox("", new Size(300, 90));
+            InputGroupBox.AutoSize = true;
+            InputGroupBox.Controls.Add(kText);
+            InputGroupBox.Controls.Add(kLabel);
+            InputGroupBox.Controls.Add(GText);
+            InputGroupBox.Controls.Add(GLabel);
+            InputGroupBox.Controls.Add(PublicKeyBText);
+            InputGroupBox.Controls.Add(PublicKeyBLabel);
+            InputGroupBox.Controls.Add(BaseText);
+            InputGroupBox.Controls.Add(BaseLabel);
+            InputGroupBox.Controls.Add(aText);
+            InputGroupBox.Controls.Add(aLabel);
+
             Button EncryptButton = DefineButton("Encrypt");
             Button DecryptButton = DefineButton("Decrypt");
-            EncryptButton.Click += delegate(object sender1, EventArgs e1) { PublicKeyEllipticCurveEncryptButton_Click(sender1, e1); };
-            DecryptButton.Click += delegate(object sender1, EventArgs e1) { PublicKeyEllipticCurveDecryptButton_Click(sender1, e1); };
+            EncryptButton.Click += delegate(object sender1, EventArgs e1) { PublicKeyEllipticCurveEncryptButton_Click(sender1, e1, int.Parse(aText.Text), int.Parse(BaseText.Text), GetPoint(GText.Text), PublicKeyBText.Text, int.Parse(kText.Text)); };
+            DecryptButton.Click += delegate(object sender1, EventArgs e1) { PublicKeyEllipticCurveDecryptButton_Click(sender1, e1, int.Parse(aText.Text), int.Parse(BaseText.Text), PublicKeyBText.Text); };
 
             CipherCntrolPanel.Controls.Clear();
             CipherCntrolPanel.Controls.Add(DecryptButton);
             CipherCntrolPanel.Controls.Add(EncryptButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
         }
-        void PublicKeyEllipticCurveEncryptButton_Click(object sender, EventArgs e)
+        void PublicKeyEllipticCurveEncryptButton_Click(object sender, EventArgs e, int a, int Base, Point G, string BPublicKey, int k)
         {
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                EllipticCurve ellipticCurve = new EllipticCurve();
+                ellipticCurve.Encrypt(a, Base, G, GetPoint(OriginalTextBox.Text), GetPoint(BPublicKey), k);
+            }
         }
-        void PublicKeyEllipticCurveDecryptButton_Click(object sender, EventArgs e)
+        void PublicKeyEllipticCurveDecryptButton_Click(object sender, EventArgs e, int a, int Base, string BPublicKey)
         {
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
+            {
+                string[] CTString = OriginalTextBox.Text.Split(new char[] { '\n' });
+                Point[] CT = new Point[] { GetPoint(CTString[0]), GetPoint(CTString[1]) };
+                EllipticCurve ellipticCurve = new EllipticCurve();
+                ellipticCurve.Decrypt(a, Base, CT, int.Parse(BPublicKey));
+            }
         }
         #endregion
 
@@ -683,10 +806,10 @@ namespace SecurityPackage
             SharedControls.Add(FirstNumberText);
             SharedControls.Add(SecondNumberLabel);
             SharedControls.Add(SecondNumberText);
-            SharedKeyRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { SharedKeyRadioButton_CheckedChanged(sender1, e1, SharedKeyRadioButton.Checked, SharedControls); };
+            SharedKeyRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { DFSharedKeyRadioButton_CheckedChanged(sender1, e1, SharedKeyRadioButton.Checked, SharedControls); };
             SharedKeyRadioButton.Checked = true;
-            SharedKeyNumberRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { SharedKeyNumberRadioButton_CheckedChanged(sender1, e1, SharedKeyNumberRadioButton.Checked, SharedControls); };
-            PublicNumberRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { PublicNumberRadioButton_CheckedChanged(sender1, e1, PublicNumberRadioButton.Checked, SharedControls); };
+            SharedKeyNumberRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { DFSharedKeyNumberRadioButton_CheckedChanged(sender1, e1, SharedKeyNumberRadioButton.Checked, SharedControls); };
+            PublicNumberRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { DFPublicNumberRadioButton_CheckedChanged(sender1, e1, PublicNumberRadioButton.Checked, SharedControls); };
             #endregion
 
             Button GetKeyButton = DefineButton("Get Key");
@@ -699,13 +822,13 @@ namespace SecurityPackage
         }
 
         #region RadioButtons Checked Changed
-        void SharedKeyRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
+        void DFSharedKeyRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
         {
             if (Checked)
                 foreach (Control item in SharedControls)
                     item.Hide();
         }
-        void SharedKeyNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
+        void DFSharedKeyNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
         {
             if (Checked)
             {
@@ -714,7 +837,7 @@ namespace SecurityPackage
                 SharedControls[0].Text = "First Initial Key";
             }
         }
-        void PublicNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
+        void DFPublicNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
         {
             if (Checked)
             {
@@ -742,8 +865,106 @@ namespace SecurityPackage
         #region Elliptic Curve
         private void KeyExchangeEllipticCurveNodeClicked()
         {
+            #region Radio Buttons GroupBox
+            RadioButton SharedKeyRadioButton = DefineRadioButton("Shared key");
+            RadioButton SharedKeyNumberRadioButton = DefineRadioButton("Shared key with two private keys");
+            RadioButton PublicNumberRadioButton = DefineRadioButton("Public key");
 
+            GroupBox KeyModeGroupBox = DefineGroupBox("Key Mode", new Size(300, 90));
+            KeyModeGroupBox.Controls.Add(PublicNumberRadioButton);
+            KeyModeGroupBox.Controls.Add(SharedKeyNumberRadioButton);
+            KeyModeGroupBox.Controls.Add(SharedKeyRadioButton);
+            #endregion
+
+            #region Input GroupBox
+
+            Label aLabel = DefineLabel("(a)");
+            TextBox aText = DefineTextBox();
+            Label BaseLabel = DefineLabel("Base (p)");
+            TextBox BaseText = DefineTextBox();
+            Label GLabel = DefineLabel("Point of Curve (G)");
+            TextBox GText = DefineTextBox();
+            Label nLabel = DefineLabel("Random Secret Number (n)");
+            TextBox nText = DefineTextBox();
+            Label PrivateKeyBLabel = DefineLabel("Private Key (B)");
+            TextBox PrivateKeyBText = DefineTextBox();
+            GroupBox InputGroupBox = DefineGroupBox("Input", new Size(300, 90));
+            InputGroupBox.AutoSize = true;
+            InputGroupBox.Controls.Add(PrivateKeyBText);
+            InputGroupBox.Controls.Add(PrivateKeyBLabel);
+            InputGroupBox.Controls.Add(nText);
+            InputGroupBox.Controls.Add(nLabel);
+            InputGroupBox.Controls.Add(GText);
+            InputGroupBox.Controls.Add(GLabel);
+            InputGroupBox.Controls.Add(BaseText);
+            InputGroupBox.Controls.Add(BaseLabel);
+            InputGroupBox.Controls.Add(aText);
+            InputGroupBox.Controls.Add(aLabel);
+
+            #endregion
+
+            #region Radio Buttons Controlling
+            List<Control> SharedControls = new List<Control>();
+            SharedControls.Add(nLabel);
+            SharedControls.Add(nText);
+            SharedControls.Add(PrivateKeyBLabel);
+            SharedControls.Add(PrivateKeyBText);
+            SharedKeyRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { ECSharedKeyRadioButton_CheckedChanged(sender1, e1, SharedKeyRadioButton.Checked, SharedControls); };
+            SharedKeyRadioButton.Checked = true;
+            SharedKeyNumberRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { ECSharedKeyNumberRadioButton_CheckedChanged(sender1, e1, SharedKeyNumberRadioButton.Checked, SharedControls); };
+            PublicNumberRadioButton.CheckedChanged += delegate(object sender1, EventArgs e1) { ECPublicNumberRadioButton_CheckedChanged(sender1, e1, PublicNumberRadioButton.Checked, SharedControls); };
+            #endregion
+
+            Button GetKeyButton = DefineButton("Get Key");
+            GetKeyButton.Click += delegate(object sender1, EventArgs e1) { EllipticCurveGetKeyButton_Click(sender1, e1, SharedKeyRadioButton.Checked, SharedKeyNumberRadioButton.Checked, PublicNumberRadioButton.Checked, int.Parse(aText.Text), int.Parse(BaseText.Text), GetPoint(GText.Text), int.Parse(nText.Text), int.Parse(PrivateKeyBText.Text)); };
+
+            CipherCntrolPanel.Controls.Clear();
+            CipherCntrolPanel.Controls.Add(GetKeyButton);
+            CipherCntrolPanel.Controls.Add(InputGroupBox);
+            CipherCntrolPanel.Controls.Add(KeyModeGroupBox);
         }
+
+        #region RadioButtons Checked Changed
+        void ECSharedKeyRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
+        {
+            if (Checked)
+            {
+                for (int i = 2; i < 4; i++)
+                    SharedControls[i].Hide();
+                SharedControls[0].Text = "Random Secret Number (n)";
+            }
+        }
+        void ECSharedKeyNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
+        {
+            if (Checked)
+            {
+                for (int i = 3; i >= 2; i--)
+                    SharedControls[i].Show();
+                SharedControls[0].Text = "Private Key (A)";
+            }
+        }
+        void ECPublicNumberRadioButton_CheckedChanged(object sender, EventArgs e, bool Checked, List<Control> SharedControls)
+        {
+            if (Checked)
+            {
+                for (int i = 2; i < 4; i++)
+                    SharedControls[i].Hide();
+                SharedControls[0].Text = "Public Key";
+            }
+        }
+        #endregion
+
+        void EllipticCurveGetKeyButton_Click(object sender, EventArgs e, bool FirstChecked, bool SecondChecked, bool ThirdChecked, int a, int Base, Point G, int n, int PrivateKeyB)
+        {
+            EllipticCurve ellipticCurve = new EllipticCurve();
+            if (FirstChecked)
+                ellipticCurve.EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, n);
+            else if (SecondChecked)
+                ellipticCurve.EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, n, PrivateKeyB);
+            else if (ThirdChecked)
+                ellipticCurve.EllipticCurveGetPublicKeyResidueClass(a, Base, G, n);
+        }
+
         #endregion
 
         #endregion
@@ -838,6 +1059,8 @@ namespace SecurityPackage
 
         #endregion
 
+        #endregion
+
         private void AllCiphersTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             #region Index 0
@@ -869,9 +1092,9 @@ namespace SecurityPackage
                     ColumnarCipherNodeClicked();
                 else if (AllCiphersTreeView.SelectedNode.Name == "DoubleDESNode")
                     DoubleDESNodeClicked();
-                else if (AllCiphersTreeView.SelectedNode.Name == "EllipticCurveNode")
+                else if (AllCiphersTreeView.SelectedNode.Name == "KeyCryptosystemEllipticCurveNode")
                     KeyCryptosystemEllipticCurveNodeClicked();
-                else if (AllCiphersTreeView.SelectedNode.Name == "EllipticCurveNode")
+                else if (AllCiphersTreeView.SelectedNode.Name == "KeyExchangeEllipticCurveNode")
                     KeyExchangeEllipticCurveNodeClicked();
                 else if (AllCiphersTreeView.SelectedNode.Name == "GCDNode")
                     GCDNodeClicked();

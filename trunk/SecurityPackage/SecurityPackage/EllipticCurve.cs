@@ -18,6 +18,8 @@ namespace SecurityPackage
         }
         #endregion
 
+        #region Key Cryptosystem
+
         #region Elliptic Curve Shared Key
         public Point EllipticCurveGetSharedKeyUsingResidueClass(int a, int Base, Point G, int PrivateKeyA, int PrivateKeyB)
         {
@@ -55,6 +57,24 @@ namespace SecurityPackage
         public Point EllipticCurveGetPublicKeyResidueClass(int a, int Base, Point G, int PrivateKey)
         {
             return ResidueClassMultiplyPoint(PrivateKey, G, Base, a);
+        }
+        #endregion
+
+        #endregion
+
+        #region Key Exchange Encryption/Decryption
+        public Point[] Encrypt(int a, int Base, Point G, Point PT, Point BPublicKey, int k)
+        {
+            Point[] CT = new Point[2];
+            CT[0] = ResidueClassMultiplyPoint(k, G, Base, a);
+            CT[1] = ResidueClassAddPoints(PT, ResidueClassMultiplyPoint(k, BPublicKey, Base, a), Base, a);
+            return CT;
+        }
+        public Point Decrypt(int a, int Base, Point[] CT, int nB)
+        {
+            Point ay7aga = ResidueClassMultiplyPoint(7, new Point(8, 3), 11, 1);
+            Point Temp = ResidueClassNegativePoint(ResidueClassMultiplyPoint(nB, CT[0], Base, a));
+            return ResidueClassAddPoints(CT[1], Temp, Base, a);
         }
         #endregion
 
@@ -202,21 +222,6 @@ namespace SecurityPackage
         Point GaloisFieldNegativePoint(Point P)
         {
             return new Point(P.X, P.X + P.Y);
-        }
-        #endregion
-
-        #region Encryption/Decryption Functions
-        public Point[] Encrypt(int a, int Base, Point G, Point PT, Point BPublicKey, int k)
-        {
-            Point[] CT = new Point[2];
-            CT[0] = ResidueClassMultiplyPoint(k, G, Base, a);
-            CT[1] = ResidueClassAddPoints(PT, ResidueClassMultiplyPoint(k, BPublicKey, Base, a), Base, a);
-            return CT;
-        }
-        public Point Decrypt(int a, int Base, Point[] CT, int nB)
-        {
-            Point Temp = ResidueClassNegativePoint(ResidueClassMultiplyPoint(nB, CT[0], Base, a));
-            return ResidueClassAddPoints(CT[1], Temp, Base, a);
         }
         #endregion
     }

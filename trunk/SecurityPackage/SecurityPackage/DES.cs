@@ -86,7 +86,7 @@ namespace SecurityPackage
         }
         #endregion
 
-        #region Encrypt/Decrypt
+        #region Encryption/Decryption
         public string Encrypt(string PlainText, string Key)
         {
             PlainText = PlainText.Replace(" ", "").ToUpper();
@@ -186,7 +186,6 @@ namespace SecurityPackage
                 return "0x" + EncryptedText.ToUpper();
             return EncryptedText;
         }
-
         public string Decrypt(string CipherText, string Key)
         {
             CipherText = CipherText.Replace(" ", "").ToUpper();
@@ -288,7 +287,6 @@ namespace SecurityPackage
                 return "0x" + EncryptedText.ToUpper();
             return EncryptedText;
         }
-
         #endregion
 
         #region Helping Functions

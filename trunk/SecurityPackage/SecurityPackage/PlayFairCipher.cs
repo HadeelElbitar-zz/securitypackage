@@ -14,6 +14,80 @@ namespace SecurityPackage
         public PlayFairCipher() { }
         #endregion
 
+        #region Encryption
+        public string Encrypt(string PlainText, string Key)
+        {
+            if (PlainText == null || Key == null)
+                return "Please choose a valid Plain Text and Key !";
+            PlainText = PlainText.ToLower().Replace(" ", "");
+            GetDiagrams(PlainText);
+            PrepareKey(Key);
+            int[] Index1, Index2;
+            string CipherText = "";
+            foreach (string item in Diagrams)
+            {
+                string Titem = item.ToUpper();
+                Index1 = SearchMatrix(Titem[0]);
+                Index2 = SearchMatrix(Titem[1]);
+                if (Index1[0] == Index2[0]) // same i same row
+                {
+                    CipherText += Matrix[Index1[0], (Index1[1] + 1) % 5];
+                    CipherText += Matrix[Index2[0], (Index2[1] + 1) % 5];
+                }
+                else if (Index1[1] == Index2[1]) // same j same column
+                {
+                    CipherText += Matrix[(Index1[0] + 1) % 5, Index1[1]];
+                    CipherText += Matrix[(Index2[0] + 1) % 5, Index2[1]];
+                }
+                else
+                {
+                    CipherText += Matrix[Index1[0], Index2[1]];
+                    CipherText += Matrix[Index2[0], Index1[1]];
+                }
+            }
+            return CipherText;
+        }
+        #endregion
+
+        #region Decryption
+        public string Decrypt(string CipherText, string Key)
+        {
+            string PlainText = "";
+            CipherText = CipherText.ToLower().Replace(" ", "");
+            GetDiagrams(CipherText);
+            PrepareKey(Key);
+            int[] Index1, Index2;
+            foreach (string item in Diagrams)
+            {
+                string Titem = item.ToUpper();
+                Index1 = SearchMatrix(Titem[0]);
+                Index2 = SearchMatrix(Titem[1]);
+                if (Index1[0] == Index2[0]) // same i same row
+                {
+                    int col1 = Index1[1] - 1, col2 = Index2[1] - 1;
+                    if (Index1[1] - 1 < 0) col1 = 4;
+                    if (Index2[1] - 1 < 0) col2 = 4;
+                    PlainText += Matrix[Index1[0], col1];
+                    PlainText += Matrix[Index2[0], col2];
+                }
+                else if (Index1[1] == Index2[1]) // same j same column
+                {
+                    int row1 = Index1[0] - 1, row2 = Index2[0] - 1;
+                    if (Index1[0] - 1 < 0) row1 = 4;
+                    if (Index2[0] - 1 < 0) row2 = 4;
+                    PlainText += Matrix[row1, Index1[1]];
+                    PlainText += Matrix[row2, Index2[1]];
+                }
+                else
+                {
+                    PlainText += Matrix[Index1[0], Index2[1]];
+                    PlainText += Matrix[Index2[0], Index1[1]];
+                }
+            }
+            return PlainText;
+        }
+        #endregion
+
         #region Helping Functions
         void PrepareKey(string NewKey)
         {
@@ -133,80 +207,6 @@ namespace SecurityPackage
                 }
             }
             return NewMatrix;
-        }
-        #endregion
-
-        #region Encryption
-        public string Encrypt(string PlainText, string Key)
-        {
-            if (PlainText == null || Key == null)
-                return "Please choose a valid Plain Text and Key !";
-            PlainText = PlainText.ToLower().Replace(" ", "");
-            GetDiagrams(PlainText);
-            PrepareKey(Key);
-            int[] Index1, Index2;
-            string CipherText = "";
-            foreach (string item in Diagrams)
-            {
-                string Titem = item.ToUpper();
-                Index1 = SearchMatrix(Titem[0]);
-                Index2 = SearchMatrix(Titem[1]);
-                if (Index1[0] == Index2[0]) // same i same row
-                {
-                    CipherText += Matrix[Index1[0], (Index1[1] + 1) % 5];
-                    CipherText += Matrix[Index2[0], (Index2[1] + 1) % 5];
-                }
-                else if (Index1[1] == Index2[1]) // same j same column
-                {
-                    CipherText += Matrix[(Index1[0] + 1) % 5, Index1[1]];
-                    CipherText += Matrix[(Index2[0] + 1) % 5, Index2[1]];
-                }
-                else
-                {
-                    CipherText += Matrix[Index1[0], Index2[1]];
-                    CipherText += Matrix[Index2[0], Index1[1]];
-                }
-            }
-            return CipherText;
-        }
-        #endregion
-
-        #region Decryption
-        public string Decrypt(string CipherText, string Key)
-        {
-            string PlainText = "";
-            CipherText = CipherText.ToLower().Replace(" ", "");
-            GetDiagrams(CipherText);
-            PrepareKey(Key);
-            int[] Index1, Index2;
-            foreach (string item in Diagrams)
-            {
-                string Titem = item.ToUpper();
-                Index1 = SearchMatrix(Titem[0]);
-                Index2 = SearchMatrix(Titem[1]);
-                if (Index1[0] == Index2[0]) // same i same row
-                {
-                    int col1 = Index1[1] - 1, col2 = Index2[1] - 1;
-                    if (Index1[1] - 1 < 0) col1 = 4;
-                    if (Index2[1] - 1 < 0) col2 = 4;
-                    PlainText += Matrix[Index1[0], col1];
-                    PlainText += Matrix[Index2[0], col2];
-                }
-                else if (Index1[1] == Index2[1]) // same j same column
-                {
-                    int row1 = Index1[0] - 1, row2 = Index2[0] - 1;
-                    if (Index1[0] - 1 < 0) row1 = 4;
-                    if (Index2[0] - 1 < 0) row2 = 4;
-                    PlainText += Matrix[row1, Index1[1]];
-                    PlainText += Matrix[row2, Index2[1]];
-                }
-                else
-                {
-                    PlainText += Matrix[Index1[0], Index2[1]];
-                    PlainText += Matrix[Index2[0], Index1[1]];
-                }
-            }
-            return PlainText;
         }
         #endregion
     }

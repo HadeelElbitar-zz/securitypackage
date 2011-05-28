@@ -17,97 +17,6 @@ namespace SecurityPackage
         public HillCipher() { }
         #endregion
 
-        #region Helping Functions
-        void PrepareKey(int[,] NewKey)
-        {
-            Key = NewKey;
-            NumberOfChars = (int)Math.Sqrt(Key.Length);
-            KeyInverse = new int[NumberOfChars, NumberOfChars];
-            FillIndex();
-        }
-        void FillIndex()
-        {
-            AlphaIndex = new Dictionary<char, int>();
-            char Initial = 'A';
-            for (int i = 0; i < 26; i++)
-                AlphaIndex.Add(Convert.ToChar(Convert.ToInt32(Initial) + i), i);
-        }
-        int[,] MatrixMul(int[,] PT, int[,] _Key)
-        {
-            int[,] Result = new int[1, NumberOfChars];
-            for (int i = 0; i < NumberOfChars; i++)
-                for (int j = 0; j < NumberOfChars; j++)
-                {
-                    Result[0, i] += _Key[i, j] * PT[0, j];
-                }
-            return Result;
-        }
-        int MatrixDet(int[,] SubMatrix)
-        {
-            int res = 0;
-            if (SubMatrix.Length == 4)
-                res += SubMatrix[0, 0] * SubMatrix[1, 1] - SubMatrix[0, 1] * SubMatrix[1, 0];
-            else
-            {
-                int Count = (int)Math.Sqrt(SubMatrix.Length);
-                int[,] SmallMatrix = new int[Count - 1, Count - 1];
-                for (int i = 0; i < 1; i++)
-                    for (int j = 0; j < Count; j++)
-                    {
-                        for (int v = 0, c = 0; c < Count; c++)
-                            for (int k = 0, p = 0; p < Count; p++)
-                                if (c != i && p != j)
-                                {
-                                    SmallMatrix[v, k++] = SubMatrix[c, p];
-                                    if (k == Count - 1)
-                                    {
-                                        k = 0;
-                                        v++;
-                                    }
-                                    if (v == Count - 1)
-                                        break;
-                                }
-                        res += (SubMatrix[i, j] * (int)Math.Pow(-1, (i + j)) * MatrixDet(SmallMatrix));
-                    }
-            }
-            return res;
-        }
-        int CoMatrixDet(int[,] SubMatrix, int IndexI, int IndexJ)
-        {
-            int res = 0;
-            if (SubMatrix.Length == 4)
-                res += SubMatrix[0, 0] * SubMatrix[1, 1] - SubMatrix[0, 1] * SubMatrix[1, 0];
-            else
-            {
-                int Count = (int)Math.Sqrt(SubMatrix.Length);
-                int[,] SmallMatrix = new int[Count - 1, Count - 1];
-                for (int v = 0, c = 0; c < Count; c++)
-                    for (int k = 0, p = 0; p < Count; p++)
-                        if (c != IndexI && p != IndexJ)
-                        {
-                            SmallMatrix[v, k++] = SubMatrix[c, p];
-                            if (k == Count - 1)
-                            {
-                                k = 0;
-                                v++;
-                            }
-                            if (v == Count - 1)
-                                break;
-                        }
-                res += ((int)Math.Pow(-1, (IndexI + IndexJ)) * MatrixDet(SmallMatrix));
-            }
-            return res;
-        }
-        int[,] GetCofactorMatrix(int[,] Matrix)
-        {
-            int[,] Result = new int[NumberOfChars, NumberOfChars];
-            for (int i = 0; i < NumberOfChars; i++)
-                for (int j = 0; j < NumberOfChars; j++)
-                    Result[i, j] = CoMatrixDet(Matrix, i, j);
-            return Result;
-        }
-        #endregion
-
         #region Encryption
         public string Encrypt(string PlainText, int[,] _Key)
         {
@@ -217,6 +126,97 @@ namespace SecurityPackage
                 }
             }
             return PlainText;
+        }
+        #endregion
+
+        #region Helping Functions
+        void PrepareKey(int[,] NewKey)
+        {
+            Key = NewKey;
+            NumberOfChars = (int)Math.Sqrt(Key.Length);
+            KeyInverse = new int[NumberOfChars, NumberOfChars];
+            FillIndex();
+        }
+        void FillIndex()
+        {
+            AlphaIndex = new Dictionary<char, int>();
+            char Initial = 'A';
+            for (int i = 0; i < 26; i++)
+                AlphaIndex.Add(Convert.ToChar(Convert.ToInt32(Initial) + i), i);
+        }
+        int[,] MatrixMul(int[,] PT, int[,] _Key)
+        {
+            int[,] Result = new int[1, NumberOfChars];
+            for (int i = 0; i < NumberOfChars; i++)
+                for (int j = 0; j < NumberOfChars; j++)
+                {
+                    Result[0, i] += _Key[i, j] * PT[0, j];
+                }
+            return Result;
+        }
+        int MatrixDet(int[,] SubMatrix)
+        {
+            int res = 0;
+            if (SubMatrix.Length == 4)
+                res += SubMatrix[0, 0] * SubMatrix[1, 1] - SubMatrix[0, 1] * SubMatrix[1, 0];
+            else
+            {
+                int Count = (int)Math.Sqrt(SubMatrix.Length);
+                int[,] SmallMatrix = new int[Count - 1, Count - 1];
+                for (int i = 0; i < 1; i++)
+                    for (int j = 0; j < Count; j++)
+                    {
+                        for (int v = 0, c = 0; c < Count; c++)
+                            for (int k = 0, p = 0; p < Count; p++)
+                                if (c != i && p != j)
+                                {
+                                    SmallMatrix[v, k++] = SubMatrix[c, p];
+                                    if (k == Count - 1)
+                                    {
+                                        k = 0;
+                                        v++;
+                                    }
+                                    if (v == Count - 1)
+                                        break;
+                                }
+                        res += (SubMatrix[i, j] * (int)Math.Pow(-1, (i + j)) * MatrixDet(SmallMatrix));
+                    }
+            }
+            return res;
+        }
+        int CoMatrixDet(int[,] SubMatrix, int IndexI, int IndexJ)
+        {
+            int res = 0;
+            if (SubMatrix.Length == 4)
+                res += SubMatrix[0, 0] * SubMatrix[1, 1] - SubMatrix[0, 1] * SubMatrix[1, 0];
+            else
+            {
+                int Count = (int)Math.Sqrt(SubMatrix.Length);
+                int[,] SmallMatrix = new int[Count - 1, Count - 1];
+                for (int v = 0, c = 0; c < Count; c++)
+                    for (int k = 0, p = 0; p < Count; p++)
+                        if (c != IndexI && p != IndexJ)
+                        {
+                            SmallMatrix[v, k++] = SubMatrix[c, p];
+                            if (k == Count - 1)
+                            {
+                                k = 0;
+                                v++;
+                            }
+                            if (v == Count - 1)
+                                break;
+                        }
+                res += ((int)Math.Pow(-1, (IndexI + IndexJ)) * MatrixDet(SmallMatrix));
+            }
+            return res;
+        }
+        int[,] GetCofactorMatrix(int[,] Matrix)
+        {
+            int[,] Result = new int[NumberOfChars, NumberOfChars];
+            for (int i = 0; i < NumberOfChars; i++)
+                for (int j = 0; j < NumberOfChars; j++)
+                    Result[i, j] = CoMatrixDet(Matrix, i, j);
+            return Result;
         }
         #endregion
     }

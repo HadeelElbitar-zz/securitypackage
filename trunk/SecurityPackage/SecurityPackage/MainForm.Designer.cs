@@ -390,7 +390,7 @@
             treeNode18.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             treeNode18.Text = "RSA";
             treeNode19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode19.Name = "EllipticCurveNode";
+            treeNode19.Name = "KeyCryptosystemEllipticCurveNode";
             treeNode19.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             treeNode19.Text = "Elliptic Curve";
             treeNode20.ForeColor = System.Drawing.Color.Orange;
@@ -402,7 +402,7 @@
             treeNode21.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             treeNode21.Text = "Diffie - Hellman";
             treeNode22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode22.Name = "EllipticCurveNode";
+            treeNode22.Name = "KeyExchangeEllipticCurveNode";
             treeNode22.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             treeNode22.Text = "Elliptic Curve";
             treeNode23.ForeColor = System.Drawing.Color.Orange;
