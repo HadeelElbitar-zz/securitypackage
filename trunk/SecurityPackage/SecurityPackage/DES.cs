@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-
 
 namespace SecurityPackage
 {
@@ -22,6 +20,10 @@ namespace SecurityPackage
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Initializes the tables used in the encryption and decryption processes
+        /// </summary>
         public DES()
         {
             #region Tables Initialization
@@ -84,9 +86,18 @@ namespace SecurityPackage
 
             #endregion
         }
+
         #endregion
 
         #region Encryption/Decryption
+
+        #region Encryption
+        /// <summary>
+        /// Encrypts a text with 'Data Standard Encryption' - DES Algorithm
+        /// </summary>
+        /// <param name="PlainText">The plain text to encrypt (Text or Hexadecimal)</param>
+        /// <param name="Key">The key used to encrypt the plain text</param>
+        /// <returns>The encrypted string</returns>
         public string Encrypt(string PlainText, string Key)
         {
             PlainText = PlainText.Replace(" ", "").ToUpper();
@@ -163,9 +174,10 @@ namespace SecurityPackage
                 #region Rounds
                 int RoundsCount = 16;
                 string CirculatedKey = PermutedKey;
+                BinaryString binaryString = new BinaryString();
                 for (int i = 0; i < RoundsCount; i++)
                 {
-                    CirculatedKey = LeftCircularShift(CirculatedKey, BitsRotated[i]);
+                    CirculatedKey = binaryString.LeftCircularShift(CirculatedKey, BitsRotated[i]);
                     string KeyI = Rearrange(CirculatedKey, PC2);
                     string[] TextArray = Round(permutedText, KeyI);
                     if (i == RoundsCount - 1)
@@ -186,6 +198,15 @@ namespace SecurityPackage
                 return "0x" + EncryptedText.ToUpper();
             return EncryptedText;
         }
+        #endregion
+
+        #region Decryption
+        /// <summary>
+        /// Decrypts a text with 'Data Standard Encryption' - DES Algorithm
+        /// </summary>
+        /// <param name="PlainText">The plain text to decrypt (Text or Hexadecimal)</param>
+        /// <param name="Key">The key used to decrypt the plain text</param>
+        /// <returns>The decrypted string</returns>
         public string Decrypt(string CipherText, string Key)
         {
             CipherText = CipherText.Replace(" ", "").ToUpper();
@@ -263,7 +284,8 @@ namespace SecurityPackage
 
                 #region Rounds
                 int RoundsCount = 16;
-                string CirculatedKey = LeftCircularShift(PermutedKey, 28);
+                BinaryString binaryString = new BinaryString();
+                string CirculatedKey = binaryString.LeftCircularShift(PermutedKey, 28);
                 for (int i = 0; i < RoundsCount; i++)
                 {
                     string KeyI = Rearrange(CirculatedKey, PC2);
@@ -272,7 +294,7 @@ namespace SecurityPackage
                         permutedText = TextArray[1] + TextArray[0];
                     else
                         permutedText = TextArray[0] + TextArray[1];
-                    CirculatedKey = RightCircularShift(CirculatedKey, BitsRotated[RoundsCount - i - 1]);
+                    CirculatedKey = binaryString.RightCircularShift(CirculatedKey, BitsRotated[RoundsCount - i - 1]);
                 }
                 #endregion
 
@@ -289,7 +311,16 @@ namespace SecurityPackage
         }
         #endregion
 
+        #endregion
+
         #region Helping Functions
+
+        /// <summary>
+        /// Rearranges a text according to a permutation array
+        /// </summary>
+        /// <param name="Text">The text to rearrange</param>
+        /// <param name="Permutation">The permutation array whose values are used to rearrange the text</param>
+        /// <returns></returns>
         private string Rearrange(string Text, int[] Permutation)
         {
             int length = Permutation.Count();
@@ -298,58 +329,42 @@ namespace SecurityPackage
                 ArrangedText += Text[Permutation[i] - 1];
             return ArrangedText;
         }
-        private string LeftCircularShift(string Key, int BitsRotated)
-        {
-            int length = Key.Length / 2;
-            string LeftPart = Key.Substring(0, length);
-            string RightPart = Key.Substring(length, length);
 
-            for (int i = 0; i < BitsRotated; i++)
-            {
-                char temp = LeftPart[0];
-                LeftPart = LeftPart.Remove(0, 1);
-                LeftPart += temp.ToString();
-
-                temp = RightPart[0];
-                RightPart = RightPart.Remove(0, 1);
-                RightPart += temp.ToString();
-            }
-            return LeftPart + RightPart;
-        }
-        private string RightCircularShift(string Key, int BitsRotated)
-        {
-            int length = Key.Length / 2;
-            string LeftPart = Key.Substring(0, length);
-            string RightPart = Key.Substring(length, length);
-
-            for (int i = 0; i < BitsRotated; i++)
-            {
-                length = LeftPart.Length - 1;
-                char temp = LeftPart[length];
-                LeftPart = LeftPart.Remove(length, 1);
-                LeftPart = LeftPart.Insert(0, temp.ToString());
-
-                length = RightPart.Length - 1;
-                temp = RightPart[length];
-                RightPart = RightPart.Remove(length, 1);
-                RightPart = RightPart.Insert(0, temp.ToString());
-            }
-            return LeftPart + RightPart;
-        }
+        /// <summary>
+        /// Executes the round of the DES Algorithm
+        /// L(n) = R(n-1); The left part of the current round equals to the right part of the previous round
+        /// Applies function F (right part, key) of DES algorithm, that's is an intermediate result
+        /// Rn: The right part of the current round = XORs the left part and the intermediate result
+        /// </summary>
+        /// <param name="Text">The plain text = 64 bits</param>
+        /// <param name="Key">The key XORed with the right part of the plain text </param>
+        /// <returns>The plain text after applying DES round processes</returns>
         private string[] Round(string Text, string Key)
         {
+            BinaryString binaryString = new BinaryString();
             int length = Text.Length / 2;
             string LeftPart = Text.Substring(0, length);
             string RightPart = Text.Substring(length, length);
             string[] ReturnString = new string[] { RightPart, "" };
             RightPart = FunctionF(RightPart, Key);
-            ReturnString[1] = BinaryXOR(RightPart, LeftPart);
+            ReturnString[1] = binaryString.BinaryXOR(RightPart, LeftPart);
             return ReturnString;
         }
+
+        /// <summary>
+        /// Applies DES function F to the right part of plain text with the key
+        /// Rearranges the right part according to the expansion table (E Table)
+        /// Intermediate Result = XORs the right part and key
+        /// Rearranges this Intermediate Result according to the S-Boxes, then according to the permutaion table (P Table)
+        /// </summary>
+        /// <param name="RightPart">The right part of the plain text</param>
+        /// <param name="Key">The key used in XORing with the right part</param>
+        /// <returns>The plain text after applying DES function F</returns>
         private string FunctionF(string RightPart, string Key)
         {
             RightPart = Rearrange(RightPart, E);
-            string XOR = BinaryXOR(RightPart, Key);
+            BinaryString binaryString = new BinaryString();
+            string XOR = binaryString.BinaryXOR(RightPart, Key);
 
             //S-Boxes Substitution
             string SBoxesResult = "";
@@ -366,19 +381,7 @@ namespace SecurityPackage
             SBoxesResult = Rearrange(SBoxesResult, P);
             return SBoxesResult;
         }
-        string BinaryXOR(string F, string S)
-        {
-            int length = F.Length;
-            string returnString = "";
-            for (int i = 0; i < length; i++)
-            {
-                if (F[i] == S[i])
-                    returnString += '0';
-                else
-                    returnString += '1';
-            }
-            return returnString;
-        }
+
         #endregion
     }
 }

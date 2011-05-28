@@ -95,12 +95,20 @@ namespace SecurityPackage
         #endregion
 
         #region Greatest Common Divisor (GCD)
+
+        /// <summary>
+        /// Calculates the greatest common divisor of two numbers
+        /// </summary>
+        /// <param name="n">The first number</param>
+        /// <param name="m">The second number</param>
+        /// <returns>The greatest common divisor</returns>
         public int GCD(int n, int m)
         {
             if (m == 0)
                 return n;
             return GCD(m, n % m);
         }
+
         #endregion
     }
 }

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AES.cs" />
     <Compile Include="BaseConversion.cs" />
+    <Compile Include="BinaryString.cs" />
     <Compile Include="CeaserCipher.cs" />
     <Compile Include="ColumnarCipher.cs" />
     <Compile Include="DES.cs" />

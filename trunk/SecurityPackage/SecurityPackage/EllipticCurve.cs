@@ -63,19 +63,44 @@ namespace SecurityPackage
         #endregion
 
         #region Key Exchange Encryption/Decryption
+
+        #region Encryption
+        /// <summary>
+        /// Encrypts key (Point)
+        /// </summary>
+        /// <param name="a">a</param>
+        /// <param name="Base">The base</param>
+        /// <param name="G">The curve point (G)</param>
+        /// <param name="PT">The point to encrypt</param>
+        /// <param name="BPublicKey">Public key of B</param>
+        /// <param name="k">k</param>
+        /// <returns>The encrypted point (Array of two points)</returns>
         public Point[] Encrypt(int a, int Base, Point G, Point PT, Point BPublicKey, int k)
         {
             Point[] CT = new Point[2];
             CT[0] = ResidueClassMultiplyPoint(k, G, Base, a);
             CT[1] = ResidueClassAddPoints(PT, ResidueClassMultiplyPoint(k, BPublicKey, Base, a), Base, a);
             return CT;
-        }
+        } 
+        #endregion
+
+        #region Decryption
+        /// <summary>
+        /// Decrypts an array of two points
+        /// </summary>
+        /// <param name="a"> a </param>
+        /// <param name="Base">The base</param>
+        /// <param name="CT">The array of two points to deecrypt</param>
+        /// <param name="nB">n of Public Key of B</param>
+        /// <returns></returns>
         public Point Decrypt(int a, int Base, Point[] CT, int nB)
         {
             Point ay7aga = ResidueClassMultiplyPoint(7, new Point(8, 3), 11, 1);
             Point Temp = ResidueClassNegativePoint(ResidueClassMultiplyPoint(nB, CT[0], Base, a));
             return ResidueClassAddPoints(CT[1], Temp, Base, a);
-        }
+        } 
+        #endregion
+
         #endregion
 
         #region Elliptic Curve Helping Functions

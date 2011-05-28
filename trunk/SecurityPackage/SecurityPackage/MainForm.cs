@@ -202,7 +202,7 @@ namespace SecurityPackage
         }
         void CeaserEncryptButton_Click(object sender, EventArgs e, int Key)
         {
-            if (OriginalTextBox.Text.Replace(" ","") != "")
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
             {
                 CeaserCipher ceaserCipher = new CeaserCipher();
                 ModifiedTextBox.Text = ceaserCipher.Encrypt(OriginalTextBox.Text, Key);
@@ -210,7 +210,7 @@ namespace SecurityPackage
         }
         void CeaserDecryptButton_Click(object sender, EventArgs e, int Key)
         {
-            if (OriginalTextBox.Text.Replace(" ","") != "")
+            if (OriginalTextBox.Text.Replace(" ", "") != "")
             {
                 CeaserCipher ceaserCipher = new CeaserCipher();
                 ModifiedTextBox.Text = ceaserCipher.Decrypt(OriginalTextBox.Text, Key);
@@ -1129,5 +1129,35 @@ namespace SecurityPackage
             #endregion
 
         }
+
+        #region Image Encryption/Decryption
+        void OpenImageAsBytes()
+        {
+            try
+            {
+                Stream stream = null;
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Multiselect = false;
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                    stream = fileDialog.OpenFile();
+                if (stream != null)
+                {
+                    byte[] buffer = new byte[(int)stream.Length];
+                    int i = stream.Read(buffer, 0, buffer.Length);
+                    if (i > 0)
+                    {
+                        string[] ImageString = new string[i];
+
+                        for (int j = 0; j < i; j++)
+                        {
+                            ImageString[j] = buffer[j].ToString();
+                        }
+                        //Encrypt Or Decrypt
+                    }
+                }
+            }
+            catch { }
+        }
+        #endregion
     }
 }
