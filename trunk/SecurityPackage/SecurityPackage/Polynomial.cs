@@ -78,8 +78,7 @@ namespace SecurityPackage
                     Value = (-1 * Temp) % 2;
                     Value = 2 - Value;
                 }
-                else
-                    Value = Temp % 2;
+                Value = Temp % 2;
                 if (Value != 0)
                     Result._Terms.Add(item);
             }

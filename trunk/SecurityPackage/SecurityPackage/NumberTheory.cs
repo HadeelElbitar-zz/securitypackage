@@ -58,8 +58,7 @@ namespace SecurityPackage
                 TempVar = (-1 * Number) % Base;
                 Number = Base - TempVar;
             }
-            else
-                Number %= Base;
+            Number %= Base;
             Row[1] = 1;
             Row[2] = 0;
             Row[3] = Base;
@@ -84,7 +83,7 @@ namespace SecurityPackage
             {
                 MI = Table[Table.Count - 1][5];
                 if (MI < 0)
-                    MI = Base - ((MI * -1) % Base);
+                    MI = (Base - ((MI * -1) % Base)) % Base;
             }
             return MI;
         }
@@ -106,8 +105,7 @@ namespace SecurityPackage
                 TempVar = (-1 * Number) % Base;
                 Number = Base - TempVar;
             }
-            else
-                Number %= Base;
+            Number %= Base;
             Row[1] = 1;
             Row[2] = 0;
             Row[3] = Base;
@@ -132,7 +130,7 @@ namespace SecurityPackage
             {
                 MI = Table[Table.Count - 1][5];
                 if (MI < 0)
-                    MI = Base - ((MI * -1) % Base);
+                    MI = (Base - ((MI * -1) % Base)) % Base;
             }
             return MI;
         }

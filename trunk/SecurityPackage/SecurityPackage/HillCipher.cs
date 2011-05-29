@@ -57,9 +57,7 @@ namespace SecurityPackage
                 {
                     if (CT[0, k] < 0)
                         CT[0, k] = 26 - ((-1 * CT[0, k]) % 26);
-                    else
-                        CT[0, k] = CT[0, k] % 26;
-                   // CT[0, k] = CT[0, k] % 26;
+                    CT[0, k] = CT[0, k] % 26;
                     foreach (KeyValuePair<char, int> item in AlphaIndex)
                         if (item.Value == CT[0, k])
                         {
@@ -87,14 +85,15 @@ namespace SecurityPackage
             int Determinant = MatrixDet(Key);
             if (Determinant < 0)
                 Determinant = 26 - ((Determinant * -1) % 26);
-            else
-                Determinant %= 26;
+            Determinant %= 26;
             Determinant = MI.MultiplicativeInverse(Determinant, 26);
             if (Determinant == int.MinValue)
             {
                 MessageBox.Show("The Determinant can't be converted into base 26! .. unable to decrypt text!");
                 return null;
             }
+            else if (Determinant < 0)
+                Determinant = 26 - Determinant;
             int[,] CofactorMatrix = GetCofactorMatrix(Key);
 
             for (int i = 0; i < NumberOfChars; i++)
@@ -102,8 +101,7 @@ namespace SecurityPackage
                 {
                     if (CofactorMatrix[i, j] < 0)
                         CofactorMatrix[i, j] = 26 - ((CofactorMatrix[i, j] * -1) % 26);
-                    else
-                        CofactorMatrix[i, j] %= 26;
+                    CofactorMatrix[i, j] %= 26;
                     KeyInverse[j, i] = (CofactorMatrix[i, j] * Determinant) % 26;
                 }
             int[,] CT;
@@ -130,8 +128,7 @@ namespace SecurityPackage
                 {
                     if (PT[0, k] < 0)
                         PT[0, k] = 26 - ((-1 * PT[0, k]) % 26);
-                    else
-                        PT[0, k] = PT[0, k] % 26;
+                    PT[0, k] = PT[0, k] % 26;
                     foreach (KeyValuePair<char, int> item in AlphaIndex)
                         if (item.Value == PT[0, k])
                         {
@@ -212,7 +209,7 @@ namespace SecurityPackage
                     }
             }
             return res;
-        }   
+        }
         int CoMatrixDet(int[,] SubMatrix, int IndexI, int IndexJ)
         {
             int res = 0;

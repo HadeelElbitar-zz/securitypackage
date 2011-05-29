@@ -59,10 +59,6 @@ namespace SecurityPackage
         /// <returns>Returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, int Key)
         {
-            //if (CipherText == null)
-            //    return "There is no Encrypted CipherText to Decrypt !";
-            //if (Key == null)
-            //    return "please choose a valid key !";
             CipherText = CipherText.Replace(" ", "");
             PrepareKey(Key);
             string PlainText = "";

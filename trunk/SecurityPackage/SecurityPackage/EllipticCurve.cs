@@ -117,7 +117,7 @@ namespace SecurityPackage
             CT[0] = ResidueClassMultiplyPoint(k, G, Base, a);
             CT[1] = ResidueClassAddPoints(PT, ResidueClassMultiplyPoint(k, BPublicKey, Base, a), Base, a);
             return CT;
-        } 
+        }
         #endregion
 
         #region Decryption
@@ -134,7 +134,7 @@ namespace SecurityPackage
             Point ay7aga = ResidueClassMultiplyPoint(7, new Point(8, 3), 11, 1);
             Point Temp = ResidueClassNegativePoint(ResidueClassMultiplyPoint(nB, CT[0], Base, a));
             return ResidueClassAddPoints(CT[1], Temp, Base, a);
-        } 
+        }
         #endregion
 
         #endregion
@@ -200,8 +200,7 @@ namespace SecurityPackage
                     Temp %= Base;
                     Lambda = Base - Temp;
                 }
-                else
-                    Lambda %= Base;
+                Lambda %= Base;
             }
             #endregion
             #region Lambda NOT Equal Points Case
@@ -219,8 +218,7 @@ namespace SecurityPackage
                     Temp %= Base;
                     Lambda = Base - Temp;
                 }
-                else
-                    Lambda %= Base;
+                Lambda %= Base;
             }
             #endregion
             #region Calculate X,Y
@@ -231,8 +229,7 @@ namespace SecurityPackage
                 Temp %= Base;
                 Result.X = Base - Temp;
             }
-            else
-                Result.X %= Base;
+            Result.X %= Base;
             Result.Y = (Lambda * (P.X - Result.X)) - P.Y;
             if (Result.Y < 0)
             {
@@ -240,8 +237,7 @@ namespace SecurityPackage
                 Temp %= Base;
                 Result.Y = Base - Temp;
             }
-            else
-                Result.Y %= Base;
+            Result.Y %= Base;
             #endregion
             return Result;
         }
@@ -275,8 +271,7 @@ namespace SecurityPackage
                     Temp %= Base;
                     Lambda = Base - Temp;
                 }
-                else
-                    Lambda %= Base;
+                Lambda %= Base;
                 #region Calculate X,Y
                 Result.X = (int)Math.Pow(Lambda, 2) + Lambda + a;
                 Result.Y = (int)Math.Pow(P.X, 2) + ((Lambda + 1) * Result.X);
