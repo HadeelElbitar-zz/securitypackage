@@ -8,10 +8,42 @@ namespace SecurityPackage
     class CeaserCipher
     {
         #region Constructors
+        List<char> Chars;
         /// <summary>
         /// Creates an object of Ceaser Cipher.
         /// </summary>
-        public CeaserCipher() { }
+        public CeaserCipher()
+        {
+            Chars = new List<char>();
+            #region Fill List
+            Chars.Add('A');
+            Chars.Add('B');
+            Chars.Add('C');
+            Chars.Add('D');
+            Chars.Add('E');
+            Chars.Add('F');
+            Chars.Add('G');
+            Chars.Add('H');
+            Chars.Add('I');
+            Chars.Add('J');
+            Chars.Add('K');
+            Chars.Add('L');
+            Chars.Add('M');
+            Chars.Add('N');
+            Chars.Add('O');
+            Chars.Add('P');
+            Chars.Add('Q');
+            Chars.Add('R');
+            Chars.Add('S');
+            Chars.Add('T');
+            Chars.Add('U');
+            Chars.Add('V');
+            Chars.Add('W');
+            Chars.Add('X');
+            Chars.Add('Y');
+            Chars.Add('Z');
+            #endregion
+        }
         #endregion
 
         #region Encryption
@@ -24,9 +56,16 @@ namespace SecurityPackage
         public string Encrypt(string PlainText, int Key)
         {
             string CT = "";
-            PlainText = PlainText.Replace(" ", "");
+            PlainText = PlainText.Replace(" ", "").ToUpper();
+            int index;
             foreach (char p in PlainText)
-                CT += Convert.ToChar(Convert.ToInt32(p) + Key);
+            {
+                index = Chars.IndexOf(p) + Key;
+                if (index < 0)
+                    index = 26 - ((-1 * index) % 26);
+                index %= 26;
+                CT += Chars.ElementAt(index);
+            }
             return CT;
         }
         #endregion
@@ -40,10 +79,17 @@ namespace SecurityPackage
         /// <returns>It returns a string contains the decrypted text.</returns>
         public string Decrypt(string CipherText, int Key)
         {
-            CipherText = CipherText.Replace(" ", "");
+            CipherText = CipherText.Replace(" ", "").ToUpper();
             string PT = "";
+            int index;
             foreach (char p in CipherText)
-                PT += Convert.ToChar(Convert.ToInt32(p) - Key);
+            {
+                index = Chars.IndexOf(p) - Key;
+                if (index < 0)
+                    index = 26 - ((-1 * index) % 26);
+                index %= 26;
+                PT += Chars.ElementAt(index);
+            }
             return PT;
         }
         #endregion
