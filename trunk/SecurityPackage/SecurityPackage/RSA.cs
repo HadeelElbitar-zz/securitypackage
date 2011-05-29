@@ -9,6 +9,9 @@ namespace SecurityPackage
     class RSA
     {
         #region Constructor
+        /// <summary>
+        /// Makes a new instance of RSA class
+        /// </summary>
         public RSA() { }
         #endregion
 

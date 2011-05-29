@@ -63,6 +63,7 @@
     <Compile Include="HillKeyForm.Designer.cs">
       <DependentUpon>HillKeyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputOutputConversion.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

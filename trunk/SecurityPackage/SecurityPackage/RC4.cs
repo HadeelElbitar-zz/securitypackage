@@ -8,6 +8,9 @@ namespace SecurityPackage
     class RC4
     {
         #region Constructor
+        /// <summary>
+        /// Makes a new instance of RC4 class
+        /// </summary>
         public RC4() { }
         #endregion
 

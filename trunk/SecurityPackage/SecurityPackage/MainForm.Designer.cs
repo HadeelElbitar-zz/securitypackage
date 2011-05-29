@@ -71,12 +71,17 @@
             treeNode21,
             treeNode22});
             System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Greatest Common Divisor");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Big Power");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Number Theory", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Extended Euclid\'s Algorithm (Multiplicative Inverse of a Polynomial Under a Polyn" +
+                    "omial Base)");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Greatest Common Divisor (Numbers)");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Greatest Common Divisor (Polynomials)");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Big Power");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Number Theory", new System.Windows.Forms.TreeNode[] {
             treeNode24,
             treeNode25,
-            treeNode26});
+            treeNode26,
+            treeNode27,
+            treeNode28});
             this.FileMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +94,7 @@
             this.ModifiedTextContainer = new System.Windows.Forms.SplitContainer();
             this.ModifiedTextLabel = new System.Windows.Forms.Label();
             this.ModifiedTextBox = new System.Windows.Forms.RichTextBox();
-            this.CipherCntrolPanel = new System.Windows.Forms.Panel();
+            this.CipherControlPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.AllCiphersTreeView = new System.Windows.Forms.TreeView();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -175,7 +180,7 @@
             // 
             // CiphersAndTextContainer.Panel2
             // 
-            this.CiphersAndTextContainer.Panel2.Controls.Add(this.CipherCntrolPanel);
+            this.CiphersAndTextContainer.Panel2.Controls.Add(this.CipherControlPanel);
             this.CiphersAndTextContainer.Size = new System.Drawing.Size(540, 583);
             this.CiphersAndTextContainer.SplitterDistance = 289;
             this.CiphersAndTextContainer.SplitterWidth = 5;
@@ -287,13 +292,13 @@
             this.ModifiedTextBox.TabIndex = 0;
             this.ModifiedTextBox.Text = "";
             // 
-            // CipherCntrolPanel
+            // CipherControlPanel
             // 
-            this.CipherCntrolPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CipherCntrolPanel.Location = new System.Drawing.Point(0, 0);
-            this.CipherCntrolPanel.Name = "CipherCntrolPanel";
-            this.CipherCntrolPanel.Size = new System.Drawing.Size(538, 287);
-            this.CipherCntrolPanel.TabIndex = 5;
+            this.CipherControlPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CipherControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.CipherControlPanel.Name = "CipherControlPanel";
+            this.CipherControlPanel.Size = new System.Drawing.Size(538, 287);
+            this.CipherControlPanel.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -414,24 +419,33 @@
             treeNode24.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
             treeNode24.Text = "Extended Euclid\'s Algorithm (Multiplicative Inverse of a Number Under Base N)";
             treeNode25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode25.Name = "GCDNode";
+            treeNode25.Name = "PolynomialExtendedEuclidAlgorithmNode";
             treeNode25.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode25.Text = "Greatest Common Divisor";
+            treeNode25.Text = "Extended Euclid\'s Algorithm (Multiplicative Inverse of a Polynomial Under a Polyn" +
+                "omial Base)";
             treeNode26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            treeNode26.Name = "BigPowerNode";
+            treeNode26.Name = "GCDNode";
             treeNode26.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
-            treeNode26.Text = "Big Power";
-            treeNode27.ForeColor = System.Drawing.Color.Orange;
-            treeNode27.Name = "NumberTheoryNode";
-            treeNode27.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
-            treeNode27.Text = "Number Theory";
+            treeNode26.Text = "Greatest Common Divisor (Numbers)";
+            treeNode27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode27.Name = "PolynomialGCDNode";
+            treeNode27.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode27.Text = "Greatest Common Divisor (Polynomials)";
+            treeNode28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            treeNode28.Name = "BigPowerNode";
+            treeNode28.NodeFont = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold);
+            treeNode28.Text = "Big Power";
+            treeNode29.ForeColor = System.Drawing.Color.Orange;
+            treeNode29.Name = "NumberTheoryNode";
+            treeNode29.NodeFont = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Bold);
+            treeNode29.Text = "Number Theory";
             this.AllCiphersTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode10,
             treeNode15,
             treeNode17,
             treeNode20,
             treeNode23,
-            treeNode27});
+            treeNode29});
             this.AllCiphersTreeView.ShowLines = false;
             this.AllCiphersTreeView.ShowPlusMinus = false;
             this.AllCiphersTreeView.ShowRootLines = false;
@@ -549,7 +563,7 @@
         private System.Windows.Forms.RichTextBox OriginalTextBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel CipherCntrolPanel;
+        private System.Windows.Forms.Panel CipherControlPanel;
         private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }

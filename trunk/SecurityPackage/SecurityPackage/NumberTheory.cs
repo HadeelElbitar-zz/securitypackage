@@ -131,8 +131,8 @@ namespace SecurityPackage
             Polynomial MI = null;
             Polynomial OnePolynomial = new Polynomial();
             Polynomial ZeroPolynomial = new Polynomial();
-            SortedDictionary<int, double> Temp = new SortedDictionary<int, double>();
-            Temp.Add(0, 1);
+            SortedSet<int> Temp = new SortedSet<int>();
+            Temp.Add(0);
             OnePolynomial.InitializePolynomial(Temp);
             List<Polynomial[]> Table = new List<Polynomial[]>(); //Q A1 A2 A3 B1 B2 B3
             Polynomial[] Row = new Polynomial[7];

@@ -198,6 +198,91 @@ namespace SecurityPackage
                 return "0x" + EncryptedText.ToUpper();
             return EncryptedText;
         }
+
+
+        /// <summary>
+        /// Encrypts an array of bytes (64 bits) with 'Data Standard Encryption' - DES Algorithm
+        /// </summary>
+        /// <param name="PlainText">The bytes to encrypt (Text or Hexadecimal)</param>
+        /// <param name="Key">The key used to encrypt the plain text</param>
+        /// <returns>The encrypted string</returns>
+        public byte[] Encrypt(byte[] PlainText, string Key)
+        {
+            #region Convert Text and Key To Binary
+            BaseConversion baseConversion = new BaseConversion();
+
+            #region Text
+            string BinaryText = "";
+            int length = PlainText.Count();
+            for (int i = 0; i < length; i++)
+                BinaryText += Convert.ToString(PlainText[i], 2).PadLeft(8, '0');
+            if (length < 8)
+                BinaryText = BinaryText.PadLeft(64, '0');
+            #endregion
+
+            #region Key
+            string BinaryKey = "";
+            if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
+                BinaryKey = baseConversion.HexadecimalToBinary(Key.Substring(2));
+            else
+                BinaryKey = baseConversion.TextToBinary(Key);
+            #endregion
+
+            #endregion
+
+            int keyIndex = 0;
+
+            #region Get Bits From Key
+
+            #region Binary Key
+            string Key64;
+            if (keyIndex + 64 <= BinaryKey.Length)
+            {
+                Key64 = BinaryKey.Substring(keyIndex, 64);
+                keyIndex += 64;
+                if (keyIndex >= BinaryKey.Length) keyIndex = 0;
+            }
+            else
+            {
+                Key64 = BinaryKey.Substring(keyIndex, BinaryKey.Length - keyIndex);
+                while (Key64.Length < 64)
+                    Key64 += BinaryKey;
+                if (Key64.Length > 64)
+                    Key64 = Key64.Remove(63);
+            }
+            #endregion
+
+            #endregion
+
+            #region First Permutation
+            string permutedText = Rearrange(BinaryText, IP);
+            string PermutedKey = Rearrange(Key64, PC1);
+            #endregion
+
+            #region Rounds
+            int RoundsCount = 16;
+            string CirculatedKey = PermutedKey;
+            BinaryString binaryString = new BinaryString();
+            for (int i = 0; i < RoundsCount; i++)
+            {
+                CirculatedKey = binaryString.LeftCircularShift(CirculatedKey, BitsRotated[i]);
+                string KeyI = Rearrange(CirculatedKey, PC2);
+                string[] TextArray = Round(permutedText, KeyI);
+                if (i == RoundsCount - 1)
+                    permutedText = TextArray[1] + TextArray[0];
+                else
+                    permutedText = TextArray[0] + TextArray[1];
+            }
+            #endregion
+
+            permutedText = Rearrange(permutedText, IPInverse);
+            #region Convert to array of bytes
+            byte[] EncryptedByte = new byte[8];
+            for (int i = 0; i < 8; i++)
+                EncryptedByte[i] = (byte)Convert.ToByte(permutedText.Substring(i * 8, 8), 2);
+            #endregion
+            return EncryptedByte;
+        }
         #endregion
 
         #region Decryption

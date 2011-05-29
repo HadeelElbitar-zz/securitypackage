@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace SecurityPackage
 {
     class AES
@@ -60,6 +59,8 @@ namespace SecurityPackage
         /// </summary>
         public AES() { }
         #endregion
+
+        #region Encryption/Decryption
 
         #region Encryption
         /// <summary>
@@ -165,6 +166,8 @@ namespace SecurityPackage
             }
             return PT;
         }
+        #endregion 
+
         #endregion
 
         #region Helping Functions
