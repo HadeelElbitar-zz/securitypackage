@@ -52,6 +52,14 @@ namespace SecurityPackage
             List<int[]> Table = new List<int[]>(); //Q A1 A2 A3 B1 B2 B3
             int[] Row = new int[7];
             int[] TempRow;
+            int TempVar;
+            if (Number < 0)
+            {
+                TempVar = (-1 * Number) % Base;
+                Number = Base - TempVar;
+            }
+            else
+                Number %= Base;
             Row[1] = 1;
             Row[2] = 0;
             Row[3] = Base;
@@ -92,6 +100,14 @@ namespace SecurityPackage
             List<BigInteger[]> Table = new List<BigInteger[]>(); //Q A1 A2 A3 B1 B2 B3
             BigInteger[] Row = new BigInteger[7];
             BigInteger[] TempRow;
+            BigInteger TempVar;
+            if (Number < 0)
+            {
+                TempVar = (-1 * Number) % Base;
+                Number = Base - TempVar;
+            }
+            else
+                Number %= Base;
             Row[1] = 1;
             Row[2] = 0;
             Row[3] = Base;
