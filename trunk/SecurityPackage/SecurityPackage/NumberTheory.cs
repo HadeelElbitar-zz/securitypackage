@@ -39,7 +39,7 @@ namespace SecurityPackage
         }
         #endregion
 
-        #region Number "N" Multiplicative Inverse under Base "B"
+        #region Number "N" || Polynomials Multiplicative Inverse under Base "B"
         /// <summary>
         /// Get the Multiplicative Inverse of a number under specific base using Euclid's Algorithm
         /// </summary>
@@ -120,6 +120,46 @@ namespace SecurityPackage
             }
             return MI;
         }
+        /// <summary>
+        /// Get the Multiplicative Inverse of a polynomial under specific base using Euclid's Algorithm
+        /// </summary>
+        /// <param name="_Polynomial">Polynomial  to find MI for</param>
+        /// <param name="BasePolynomial">The base of the operation.</param>
+        /// <returns>Returns a polynomial representes the MI of the number in the base.</returns>
+        public Polynomial MultiplicativeInverse(Polynomial _Polynomial, Polynomial BasePolynomial)
+        {
+            Polynomial MI = null;
+            Polynomial OnePolynomial = new Polynomial();
+            Polynomial ZeroPolynomial = new Polynomial();
+            SortedDictionary<int, double> Temp = new SortedDictionary<int, double>();
+            Temp.Add(0, 1);
+            OnePolynomial.InitializePolynomial(Temp);
+            List<Polynomial[]> Table = new List<Polynomial[]>(); //Q A1 A2 A3 B1 B2 B3
+            Polynomial[] Row = new Polynomial[7];
+            Polynomial[] TempRow;
+            Row[1] = OnePolynomial;
+            Row[2] = ZeroPolynomial;
+            Row[3] = BasePolynomial;
+            Row[4] = ZeroPolynomial;
+            Row[5] = OnePolynomial;
+            Row[6] = _Polynomial;
+            Table.Add(Row);
+            while (!Polynomial.isEqual(OnePolynomial, Table[Table.Count - 1][6]) && !Polynomial.isEqual(ZeroPolynomial, Table[Table.Count - 1][6]))
+            {
+                int index = Table.Count - 1;
+                TempRow = new Polynomial[7];
+                Polynomial.DividPolynomials(Table[index][6], Table[index][3], ref TempRow[0], ref TempRow[6]);
+                TempRow[1] = Table[index][4];
+                TempRow[2] = Table[index][5];
+                TempRow[3] = Table[index][6];
+                TempRow[4] = Polynomial.AddPolynomials(Table[index][1], Polynomial.MultiplyPolynomials(TempRow[0], Table[index][4]));
+                TempRow[5] = Polynomial.AddPolynomials(Table[index][2], Polynomial.MultiplyPolynomials(TempRow[0], Table[index][5]));
+                Table.Add(TempRow);
+            }
+            if (Polynomial.isEqual(OnePolynomial, Table[Table.Count - 1][6]))
+                MI = Table[Table.Count - 1][5];
+            return MI;
+        }
         #endregion
 
         #region Greatest Common Divisor (GCD)
@@ -134,6 +174,19 @@ namespace SecurityPackage
             if (m == 0)
                 return n;
             return GCD(m, n % m);
+        }
+        /// <summary>
+        /// Get the GCD of two polynomials using Euclid's Algorithm
+        /// </summary>
+        /// <param name="a">First Polynomial</param>
+        /// <param name="b">Second Polynomial</param>
+        /// <returns>The GCD Polynomail</returns>
+        public Polynomial GCD(Polynomial a, Polynomial b)
+        {
+            Polynomial Zero = new Polynomial();
+            if (Polynomial.isEqual(b, Zero))
+                return a;
+            return GCD(b, Polynomial.GetModulus(b, a));
         }
         #endregion
     }

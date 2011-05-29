@@ -73,6 +73,7 @@
     <Compile Include="NumberTheory.cs" />
     <Compile Include="PlayFairCipher.cs" />
     <Compile Include="PolyalphabeticCipher.cs" />
+    <Compile Include="Polynomial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RailFenceCipher.cs" />
