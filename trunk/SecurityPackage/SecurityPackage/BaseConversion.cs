@@ -58,6 +58,23 @@ namespace SecurityPackage
             return BinaryText;
         }
 
+        /// <summary>
+        /// Converts a text string to a hexadecimal number string
+        /// </summary>
+        /// <param name="Text"> The text string to convert</param>
+        /// <returns>The hexadecimal string</returns>
+        public string TextToHexadecimal(string Text)
+        {
+            int length = Text.Length;
+            string BinaryText = "";
+            for (int i = 0; i < length; i++)
+            {
+                string temp = Convert.ToString(Text[i], 16);
+                BinaryText += temp;
+            }
+            return BinaryText;
+        }
+
         #endregion
 
         #region From Hexadecimal
@@ -131,8 +148,6 @@ namespace SecurityPackage
         {
             return int.Parse(Convert.ToString(Convert.ToInt32(Text, 16), 10));
         }
-
-
 
         #endregion
 

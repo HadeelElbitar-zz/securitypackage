@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace SecurityPackage
 {
@@ -36,8 +37,13 @@ namespace SecurityPackage
         public Point EllipticCurveGetSharedKeyUsingResidueClass(int a, int Base, Point G, int PrivateKeyA, int PrivateKeyB)
         {
             Point SharedKey = new Point();
+            InputOutputConversion IOConversion= new InputOutputConversion();
             Point PublicB = ResidueClassMultiplyPoint(PrivateKeyB, G, Base, a);
+            Point PublicA = ResidueClassMultiplyPoint(PrivateKeyA, G, Base, a);
             SharedKey = ResidueClassMultiplyPoint(PrivateKeyA, PublicB, Base, a);
+            MessageBox.Show(IOConversion.PointToString(SharedKey));
+            SharedKey = ResidueClassMultiplyPoint(PrivateKeyB, PublicA, Base, a);
+            MessageBox.Show(IOConversion.PointToString(SharedKey));
             return SharedKey;
         }
         /// <summary>

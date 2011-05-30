@@ -21,6 +21,7 @@ namespace SecurityPackage
         #endregion
 
         #region Encryption
+
         /// <summary>
         /// Encrypts the given text using the given key matrix.
         /// </summary>
@@ -74,6 +75,7 @@ namespace SecurityPackage
             }
             return CipherText;
         }
+
         #endregion
 
         #region Decryption
@@ -135,7 +137,7 @@ namespace SecurityPackage
                 CT = new int[1, NumberOfChars];
                 for (int j = 0; j < NumberOfChars; j++)
                     CT[0, j] = AlphaIndex[Temp[j]];
-                PT = MatrixMul(CT, KeyInverse);
+                PT = MatrixMul2(KeyInverse,CT);
                 for (int k = 0; k < NumberOfChars; k++)
                 {
                     if (PT[0, k] < 0)
@@ -184,6 +186,16 @@ namespace SecurityPackage
                 for (int j = 0; j < NumberOfChars; j++)
                 {
                     Result[0, i] += _Key[i, j] * PT[0, j];
+                }
+            return Result;
+        }
+        int[,] MatrixMul2(int[,] _Key, int[,] CT)
+        {
+            int[,] Result = new int[1, NumberOfChars];
+            for (int i = 0; i < NumberOfChars; i++)
+                for (int j = 0; j < NumberOfChars; j++)
+                {
+                    Result[0, i] += (_Key[i, j] * CT[0, j]);
                 }
             return Result;
         }
@@ -256,6 +268,14 @@ namespace SecurityPackage
         int[,] GetCofactorMatrix(int[,] Matrix)
         {
             int[,] Result = new int[NumberOfChars, NumberOfChars];
+            if (Matrix.Length == 4)
+            {
+                Result[0, 0] = Matrix[1, 1];
+                Result[0, 1] = Matrix[1, 0];
+                Result[1, 0] = Matrix[0, 1];
+                Result[1, 1] = Matrix[0, 0];
+                return Result;
+            }
             for (int i = 0; i < NumberOfChars; i++)
                 for (int j = 0; j < NumberOfChars; j++)
                     Result[i, j] = CoMatrixDet(Matrix, i, j);

@@ -40,6 +40,7 @@ namespace SecurityPackage
         #endregion
 
         #region Number "N" || Polynomials Multiplicative Inverse under Base "B"
+
         /// <summary>
         /// Get the Multiplicative Inverse of a number under specific base using Euclid's Algorithm
         /// </summary>
@@ -87,6 +88,7 @@ namespace SecurityPackage
             }
             return MI;
         }
+
         /// <summary>
         /// Get the Multiplicative Inverse of a number under specific base using Euclid's Algorithm
         /// </summary>
@@ -134,6 +136,7 @@ namespace SecurityPackage
             }
             return MI;
         }
+
         /// <summary>
         /// Get the Multiplicative Inverse of a polynomial under specific base using Euclid's Algorithm
         /// </summary>
@@ -171,12 +174,17 @@ namespace SecurityPackage
                 Table.Add(TempRow);
             }
             if (Polynomial.isEqual(OnePolynomial, Table[Table.Count - 1][6]))
+            {
                 MI = Table[Table.Count - 1][5];
+                MI.Variable = _Polynomial.Variable;
+            }
             return MI;
         }
+
         #endregion
 
         #region Greatest Common Divisor (GCD)
+
         /// <summary>
         /// Calculates the greatest common divisor of two numbers
         /// </summary>
@@ -189,6 +197,7 @@ namespace SecurityPackage
                 return n;
             return GCD(m, n % m);
         }
+
         /// <summary>
         /// Get the GCD of two polynomials using Euclid's Algorithm
         /// </summary>
@@ -202,6 +211,7 @@ namespace SecurityPackage
                 return a;
             return GCD(b, Polynomial.GetModulus(b, a));
         }
+
         #endregion
     }
 }

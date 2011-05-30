@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Numerics;
+using System.Windows.Forms;
 
 namespace SecurityPackage
 {
@@ -23,6 +24,7 @@ namespace SecurityPackage
         #endregion
 
         #region Diffie-Hellman Calculate Shared Key
+
         /// <summary>
         /// Get the shared key given the private numbers.
         /// </summary>
@@ -39,9 +41,13 @@ namespace SecurityPackage
             _Xb = Xb;
             _Ya = NumberTheoryOperations.BigPower(PrimitiveRoot, _Xa, PrimeBase);
             _Yb = NumberTheoryOperations.BigPower(PrimitiveRoot, _Xb, PrimeBase);
+            SharedKey = NumberTheoryOperations.BigPower(_Yb, _Xa, PrimeBase);
+            MessageBox.Show("Shared A = " + SharedKey.ToString());
             SharedKey = NumberTheoryOperations.BigPower(_Ya, _Xb, PrimeBase);
+            MessageBox.Show("Shared B = " + SharedKey.ToString());
             return SharedKey;
         }
+
         /// <summary>
         /// Get the shared key using random private numbers.
         /// </summary>
@@ -59,9 +65,11 @@ namespace SecurityPackage
             SharedKey = NumberTheoryOperations.BigPower((int)_Ya, _Xb, PrimeBase);
             return SharedKey;
         }
+
         #endregion
 
         #region Diffie-Hellman Get Public Number
+
         /// <summary>
         /// Get the public key of a given private key.
         /// </summary>
@@ -74,6 +82,7 @@ namespace SecurityPackage
             BigInteger Y = NumberTheoryOperations.BigPower(PrimitiveRoot, PrivateKey, PrimeBase);
             return Y;
         }
+
         #endregion
     }
 }
