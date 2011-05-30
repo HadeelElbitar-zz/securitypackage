@@ -807,7 +807,7 @@ namespace SecurityPackage
                 EllipticCurve ellipticCurve = new EllipticCurve();
                 InputOutputConversion IOConversion = new InputOutputConversion();
                 Point[] point = ellipticCurve.Encrypt(a, Base, G, IOConversion.StringToPoint(OriginalTextBox.Text), IOConversion.StringToPoint(BPublicKey), k);
-                ModifiedTextBox.Text = IOConversion.PointToString(point[0]) + '\n' + IOConversion.PointToString(point[0]);
+                ModifiedTextBox.Text = IOConversion.PointToString(point[0]) + '\n' + IOConversion.PointToString(point[1]);
             }
         }
         void PublicKeyEllipticCurveDecryptButton_Click(object sender, EventArgs e, int a, int Base, string BPublicKey)
