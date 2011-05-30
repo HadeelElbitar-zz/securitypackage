@@ -1,0 +1,105 @@
+advance attack two hours from now plz
+
+hadeel hisham sadek mohamed albetar
+
+qwertyuiopasdfghjklzxcvbnm
+
+HADEEL HIJSHAMM SAFMFIJKOLMMEDALBETARX
+
+NS EF DA GS CQ MI JL ME FO LG KM IJ FE MA CF YE XL
+
+anacwo mwzdctkouf  vet  rrnpa athsool
+
+HDYERNI AMMAEU MSC OCOIK KICY ACS EWY
+
+hadeele attack two hours from now plz
+
+
+DES
+            //PlainText = "0x0123456789ABCDEF";
+            //Key = "0x133457799BBCDFF1";
+            //CipherText = "0x85E813540F0AB405";
+            //Key = "0x133457799BBCDFF1";
+
+
+RSA
+PlainText="5";
+pText="19669081321110693270343633073697474256143563558458718976746753830538032062222257";
+qText="74121768604305613921745580037409259811952655310075487163797179490457039169594213";
+eText = "65537";
+CipherText="446699826528570457727849702847882456011063958845436575406364845773934883185785904969215738362722324430978629195687422700096164664107349103915395164169538874261";
+
+
+
+
+//InputOutputConversion IOConversion = new InputOutputConversion();
+            //Polynomial polynomial = new Polynomial();
+            //polynomial.InitializePolynomial("Y", new int[] { 1, 8, 0 });
+            //ModifiedTextBox.Text = IOConversion.PolynomialToString(polynomial);
+
+            //InputOutputConversion IOConversion = new InputOutputConversion();
+            //IOConversion.StringToPolynomial(" x^5 +  x + 1");
+
+            //OpenImageAsBytes();
+            //EllipticCurve Ec = new EllipticCurve();
+            //Point[] CT = Ec.Encrypt(1, 11, new Point(2, 7), new Point(10, 9), new Point(7, 2), 3);
+            //Point PT = Ec.Decrypt(1, 11, CT, 7);
+
+            //int[,] K = { { 17, 17, 5 }, { 21, 18, 21 }, { 2, 2, 19 } };
+            //int[,] K = { { 7, 4, 2, 0 }, { 6, 3, -1, 2 }, { 4, 6, 2, 5 }, { 8, 2, -7, 1 } };
+            //int[,] K = { { 7, 4, 2, 0, 6 }, { 6, 3, -1, 2, -1 }, { 4, 6, 2, 5, 4 }, { 8, 2, -7, 1, 2 }, { 9, 3, 7, 0, 5 } };
+            //HillCipher p = new HillCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", K);
+            //s = p.Decrypt("COIPDCUCBTSKITIEPUDNYEYXILEURUUT", K);
+
+            //RailFenceCipher p = new RailFenceCipher();
+            //string s =  p.Encrypt("advance attack two hours from nw", 7);
+            //s = p.Decrypt("aawfdtorvthoaaomncunckrwets", 7);
+
+            //ColumnarCipher p = new ColumnarCipher();
+            //string s = p.Encrypt("advance attack two hours from now", 52314);
+            //s = p.Decrypt("attuodechfovakorwntwrmacaosn", 52314);
+
+            //PolyalphabeticCipher p = new PolyalphabeticCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", "AVS", 0);
+            //s = p.Decrypt("AYNAAEIAMMAEUMSCOCOIKKICYACSEWY","AVSANCEATTACKTWOHOURSFROMNOWPLZ",0);
+            //s = p.Encrypt("advance attack two hours from now plz", "AVS", 1);
+            //s = p.Decrypt("AYNAIUEVLTVUKOOOCGUMKFMGMIGWKDZ", "AVSAVSAVSAVSAVSAVSAVSAVSAVSAVSA", 1);
+
+            //PlayFairCipher p = new PlayFairCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", "iklml");
+            //s = p.Decrypt("LFZIHDFMSYUMHCRYPNPTSTCUTEOPZHAX", "iklml");
+
+            //MonoalphabeticCipher p = new MonoalphabeticCipher();
+            //string s = p.Encrypt("hadeel hisham sadek mohamed albetar", "qwertyuiopasdfghjklzxcvbnm");
+            //s = p.Decrypt("iqrttsioliqdlqrtadgiqdtrqswtzqk", "qwertyuiopasdfghjklzxcvbnm");
+
+            //CeaserCipher p = new CeaserCipher();
+            //string s = p.Encrypt("advance attack two hours from now plz", 2);
+            //s = p.Decrypt("cfxcpegcvvcemvyqjqwtuhtqopqyrn|",2);
+
+            //AES p = new AES();
+            //string s = p.Encrypt("hadeel hisham sadek mohamed al bitar Amal Hussein Sayed Yassin", "123456789abcdef123456789abcdef");
+            //s = p.Decrypt("3820D72CBD39572137DC7A75579D414E5B4B99164739A8004F452718689602054D6D9BF786B9DEEC274AAD9D43B1FFC1DB0E9887F961E49E817A7C7133AA3703", "123456789ABCDEF123456789ABCDEF");
+
+            //DES des = new DES();
+            //ModifiedTextBox.Text = des.Decrypt("", "");
+
+            //RC4 rc4 = new RC4();
+            //ModifiedTextBox.Text = rc4.Encrypt("", "");
+
+            //RSA rsa = new RSA();
+            //ModifiedTextBox.Text = rsa.Encrypt("", "", "", "");
+
+            //KeyExchange KE = new KeyExchange();
+            //Point PublicA = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 3);
+            //Point PublicB = KE.EllipticCurveGetPublicKeyResidueClass(1, 11, new Point(2, 7), 7);
+            //Point Key = KE.EllipticCurveGetSharedKeyUsingResidueClass(1, 11, new Point(2, 7), 3, 7);
+
+            //DiffieHellman DH = new DiffieHellman();
+            //BigInt x = DH.DiffieHellmanGetSharedKey(71, 7, 5, 12);
+
+            //NumberTheory NT = new NumberTheory();
+            //BigInteger y = NT.BigPower(2, 5, 6);
+            //MessageBox.Show(y.ToString());
+
