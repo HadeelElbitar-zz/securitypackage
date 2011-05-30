@@ -12,6 +12,7 @@
 
 2. Block Cipher
 	DES
+	Double DES
 	Triple DES
 	AES
 
@@ -28,5 +29,7 @@
 
 6. Number Theory
 	Extended Euclid's Algorithm (Multiplicative Inverse of a Number Under Base N)
-	GCD
+	Extended Euclid's Algorithm (Multiplicative Inverse of a Polynomial Under a Polynomial Base)
+	GCD (Numbers)
+	GCD (Polynomials)
 	Calculate big powers
