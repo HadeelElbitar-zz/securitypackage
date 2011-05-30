@@ -54,7 +54,7 @@ namespace SecurityPackage
             int[,] KeyMatrix = new int[height, width];
             for (int i = 0; i < height; i++)
                 for (int j = 0; j < width; j++)
-                    KeyMatrix[i, j] = int.Parse(KeyMatrixDataGrid[i, j].Value.ToString());
+                    KeyMatrix[i, j] = int.Parse(KeyMatrixDataGrid[j, i].Value.ToString());
             HillCipher hillCipher = new HillCipher();
             ModifiedTextBox.Text = hillCipher.Encrypt(PlainText, KeyMatrix);
         }

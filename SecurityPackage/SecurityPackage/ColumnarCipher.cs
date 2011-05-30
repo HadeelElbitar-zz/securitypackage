@@ -19,13 +19,14 @@ namespace SecurityPackage
         #endregion
 
         #region Encryption
+
         /// <summary>
         /// Encrypt the given text with the given key.
         /// </summary>
         /// <param name="PlainText">Text to be encrypted</param>
         /// <param name="Key">Key to be used in the encryption</param>
         /// <returns>Returns a string contains the encrypted text.</returns>
-        public string Encrypt(string PlainText, int Key)
+        public string Encrypt(string PlainText, string Key)
         {
             //if (PlainText == null || Key == null)
             //    return "Please choose a valid Plain Text and Key !";
@@ -54,16 +55,18 @@ namespace SecurityPackage
             }
             return CipherText;
         }
+
         #endregion
 
         #region Decryption
+
         /// <summary>
         /// Decrypt the given text with the given key.
         /// </summary>
         /// <param name="CipherText">Text to be decrypted</param>
         /// <param name="Key">Key to be used in the decryption</param>
         /// <returns>Returns a string contains the decrypted text.</returns>
-        public string Decrypt(string CipherText, int Key)
+        public string Decrypt(string CipherText, string Key)
         {
             CipherText = CipherText.Replace(" ", "");
             int indexRemove = CipherText.IndexOf('\n');
@@ -104,30 +107,34 @@ namespace SecurityPackage
                 }
             return PlainText;
         }
+
         #endregion
 
         #region Helping Functions
-        int[] SortKey(string _Key)
+
+        int[] SortKey(string[] _Key)
         {
             int length = _Key.Length;
             int[] Numbers = new int[length];
-            SortedDictionary<char, int> Temp = new SortedDictionary<char, int>();
+            SortedDictionary<int, int> Temp = new SortedDictionary<int, int>();
             for (int i = 0; i < length; i++)
-                Temp.Add(_Key[i], i);
+                Temp.Add(Convert.ToInt32(_Key[i]), i);
             int j = -1;
-            foreach (KeyValuePair<char, int> item in Temp)
+            foreach (KeyValuePair<int, int> item in Temp)
                 Numbers[++j] = item.Value;
             return Numbers;
         }
-        void PrepareKey(int NewKey)
+        void PrepareKey(string NewKey)
         {
-            Key = NewKey.ToString();
-            NumberOfColumns = Key.Length;
+            Key = NewKey;
+            string[] Number = Key.Split(' ');
+            NumberOfColumns = Number.Length;
             Columns = new List<char>[NumberOfColumns];
             for (int i = 0; i < NumberOfColumns; i++)
                 Columns[i] = new List<char>();
-            SortedKey = SortKey(Key);
+            SortedKey = SortKey(Number);
         }
+
         #endregion
     }
 }

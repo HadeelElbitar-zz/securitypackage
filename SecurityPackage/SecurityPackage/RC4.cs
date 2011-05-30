@@ -42,23 +42,17 @@ namespace SecurityPackage
             #region Key Integers Array
 
             int[] KeyIntegers = new int[1];
-            if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
-            {
-                Key = Key.Substring(2);
-                int length = Key.Length;
-                KeyIntegers = new int[(length / 2) + (length % 2)];
-                for (int k = 0; k < length / 2; k++)
-                    KeyIntegers[k] = baseConversion.HexadecimalToDecimalTwo(Key[k * 2].ToString() + Key[k * 2 + 1].ToString());
-                if (length % 2 != 0)
-                    KeyIntegers[KeyIntegers.Length - 1] = baseConversion.HexadecimalToDecimalTwo(Key[length - 1].ToString());
-            }
-            else
-            {
-                int length = Key.Length;
-                KeyIntegers = new int[length];
-                for (int k = 0; k < length; k++)
-                    KeyIntegers[k] = int.Parse(Key[k].ToString());
-            }
+            if (!(Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1))
+                Key = "0x" + baseConversion.TextToHexadecimal(Key);
+
+            Key = Key.Substring(2);
+            int length = Key.Length;
+            KeyIntegers = new int[(length / 2) + (length % 2)];
+            for (int k = 0; k < length / 2; k++)
+                KeyIntegers[k] = baseConversion.HexadecimalToDecimalTwo(Key[k * 2].ToString() + Key[k * 2 + 1].ToString());
+            if (length % 2 != 0)
+                KeyIntegers[KeyIntegers.Length - 1] = baseConversion.HexadecimalToDecimalTwo(Key[length - 1].ToString());
+
             #endregion
 
             #endregion
@@ -99,8 +93,7 @@ namespace SecurityPackage
             }
             #endregion
 
-            EncryptedString = "0x" + EncryptedString.ToUpper();
-            return EncryptedString;
+            return "0x" + EncryptedString.ToUpper();
         }
 
         #endregion
@@ -124,10 +117,11 @@ namespace SecurityPackage
             CipherText = CipherText.Replace("\n", "");
             CipherText = CipherText.Replace("\t", "");
             string[] BinaryPlainText = new string[CipherText.Length];
+            int length = 0;
             if (CipherText.IndexOf("0x") != -1 || CipherText.IndexOf("0X") != -1)
             {
                 CipherText = CipherText.Substring(2);
-                int length = CipherText.Length;
+                length = CipherText.Length;
                 BinaryPlainText = new string[(length / 2) + (length % 2)];
                 for (int k = 0; k < length / 2; k++)
                     BinaryPlainText[k] = baseConversion.HexadecimalToBinary(CipherText[k * 2].ToString() + CipherText[k * 2 + 1].ToString()).ToString();
@@ -140,23 +134,17 @@ namespace SecurityPackage
 
             #region Key Integers Array
             int[] KeyIntegers = new int[1];
-            if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
-            {
-                Key = Key.Substring(2);
-                int length = Key.Length;
-                KeyIntegers = new int[(length / 2) + (length % 2)];
-                for (int k = 0; k < length / 2; k++)
-                    KeyIntegers[k] = baseConversion.HexadecimalToDecimalTwo(Key[k * 2].ToString() + Key[k * 2 + 1].ToString());
-                if (length % 2 != 0)
-                    KeyIntegers[KeyIntegers.Length - 1] = baseConversion.HexadecimalToDecimalTwo(Key[length - 1].ToString());
-            }
-            else
-            {
-                int length = Key.Length;
-                KeyIntegers = new int[length];
-                for (int k = 0; k < length; k++)
-                    KeyIntegers[k] = int.Parse(Key[k].ToString());
-            }
+            if (!(Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1))
+                Key = "0x" + baseConversion.TextToHexadecimal(Key);
+
+            Key = Key.Substring(2);
+            length = Key.Length;
+            KeyIntegers = new int[(length / 2) + (length % 2)];
+            for (int k = 0; k < length / 2; k++)
+                KeyIntegers[k] = baseConversion.HexadecimalToDecimalTwo(Key[k * 2].ToString() + Key[k * 2 + 1].ToString());
+            if (length % 2 != 0)
+                KeyIntegers[KeyIntegers.Length - 1] = baseConversion.HexadecimalToDecimalTwo(Key[length - 1].ToString());
+       
             #endregion
 
             #endregion
@@ -197,7 +185,7 @@ namespace SecurityPackage
             }
             #endregion
 
-            return DecryptedString;
+            return "0x" + baseConversion.TextToHexadecimal(DecryptedString).ToUpper();
         }
         #endregion
 

@@ -70,6 +70,7 @@ namespace SecurityPackage
         #endregion
 
         #region Helping Functions
+
         /// <summary>
         /// Prepares the key  to fit the text length.
         /// </summary>
@@ -86,21 +87,23 @@ namespace SecurityPackage
             if (indexRemove != -1)
                 Key = Key.Remove(indexRemove);
             KeyMode = Mode;
-            if (Key.Length < PT.Length && KeyMode == 0)
+            if (Key.Length < PT.Length && KeyMode == 1)
             {
                 int Difference = PT.Length - Key.Length;
                 int startIndex = PT.Length - Difference;
-                Key += PT.Substring(startIndex, Difference);
+                Key += PT.Substring(0, Difference);
             }
-            else if (Key.Length < PT.Length && KeyMode == 1)
+            else if (Key.Length < PT.Length && KeyMode == 0)
             {
                 while (Key.Length < PT.Length)
                     Key += Key;
                 Key = Key.Substring(0, PT.Length);
             }
+            MessageBox.Show(Key);
             BuildMatrix();
             FillIndex();
         }
+
         /// <summary>
         /// Builds the 26 X 26 Polyalphabetic Matrix.
         /// </summary>
@@ -125,6 +128,7 @@ namespace SecurityPackage
                 }
             }
         }
+
         /// <summary>
         /// Fills a dictionary with each character and its index.
         /// </summary>
@@ -135,6 +139,7 @@ namespace SecurityPackage
             for (int i = 0; i < 26; i++)
                 AlphaIndex.Add(Convert.ToChar(Convert.ToInt32(Initial) + i), i);
         }
+
         /// <summary>
         /// Finds which column index the given character in the given row belongs to.
         /// </summary>
@@ -148,6 +153,7 @@ namespace SecurityPackage
                     if (Matrix[i, j] == X)
                         return j;
         }
+
         #endregion
     }
 }

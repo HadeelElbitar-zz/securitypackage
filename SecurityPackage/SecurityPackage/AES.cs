@@ -81,19 +81,19 @@ namespace SecurityPackage
             if (indexRemove != -1)
                 PlainText = PlainText.Remove(indexRemove);
             if (PlainText.IndexOf("0x") != -1 || PlainText.IndexOf("0X") != -1)
-                HexText = PlainText.Substring(2);
+                HexText = PlainText.Substring(2).ToUpper();
             else
             {
                 BinaryText = TextToBinary(PlainText);
-                HexText = BinaryTextToHex(BinaryText);
+                HexText = BinaryTextToHex(BinaryText).ToUpper();
             }
             Key = HexaKey.Replace(" ", "").ToUpper();
             if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
-                Key = HexaKey.Substring(2);
+                Key = HexaKey.Substring(2).ToUpper();
             else
             {
                 string BinaryKey = TextToBinary(Key);
-                Key = BinaryTextToHex(BinaryKey);
+                Key = BinaryTextToHex(BinaryKey).ToUpper();
             }
             //Key = HexaKey.Replace(" ", "").ToUpper();
             if (Key.Length != 32)
@@ -133,6 +133,7 @@ namespace SecurityPackage
                 StepResults = AddRoundKey(StepResults, Keys[10]);
                 CipherText += GetTextFromMatrix(StepResults);
             }
+            CipherText = "0x" + CipherText;
             return CipherText;
         }
         #endregion
@@ -156,19 +157,19 @@ namespace SecurityPackage
             if (indexRemove != -1)
                 PlainText = PlainText.Remove(indexRemove);
             if (PlainText.IndexOf("0x") != -1 || PlainText.IndexOf("0X") != -1)
-                HexText = PlainText.Substring(2);
+                HexText = PlainText.Substring(2).ToUpper();
             else
             {
                 BinaryText = TextToBinary(PlainText);
-                HexText = BinaryTextToHex(BinaryText);
+                HexText = BinaryTextToHex(BinaryText).ToUpper();
             }
             Key = HexaKey.Replace(" ", "").ToUpper();
             if (Key.IndexOf("0x") != -1 || Key.IndexOf("0X") != -1)
-                Key = HexaKey.Substring(2);
+                Key = HexaKey.Substring(2).ToUpper();
             else
             {
                 string BinaryKey = TextToBinary(Key);
-                Key = BinaryTextToHex(BinaryKey);
+                Key = BinaryTextToHex(BinaryKey).ToUpper();
             }
             //Key = HexaKey.Replace(" ", "").ToUpper();
             if (Key.Length != 32)
@@ -210,6 +211,7 @@ namespace SecurityPackage
                 StepResults = AddRoundKey(StepResults, Keys[0]);
                 PT += GetTextFromMatrix(StepResults);
             }
+            PT = "0x" + PT;
             return PT;
         }
         #endregion
@@ -458,7 +460,7 @@ namespace SecurityPackage
         }
         void Complete(ref string Text)
         {
-            Text = Text.PadLeft(32, '0');
+            Text = Text.PadRight(32, '0');
         }
         string HexToBinary(string Text)
         {

@@ -586,15 +586,15 @@ namespace SecurityPackage
 
             Button EncryptButton = DefineButton("Encrypt");
             Button DecryptButton = DefineButton("Decrypt");
-            EncryptButton.Click += delegate(object sender1, EventArgs e1) { ColumnarEncryptButton_Click(sender1, e1, (int.Parse(KeyText.Text))); };
-            DecryptButton.Click += delegate(object sender1, EventArgs e1) { ColumnarDecryptButton_Click(sender1, e1, (int.Parse(KeyText.Text))); };
+            EncryptButton.Click += delegate(object sender1, EventArgs e1) { ColumnarEncryptButton_Click(sender1, e1, (KeyText.Text)); };
+            DecryptButton.Click += delegate(object sender1, EventArgs e1) { ColumnarDecryptButton_Click(sender1, e1, (KeyText.Text)); };
 
             CipherControlPanel.Controls.Clear();
             CipherControlPanel.Controls.Add(DecryptButton);
             CipherControlPanel.Controls.Add(EncryptButton);
             CipherControlPanel.Controls.Add(KeyGroupBox);
         }
-        void ColumnarEncryptButton_Click(object sender, EventArgs e, int Key)
+        void ColumnarEncryptButton_Click(object sender, EventArgs e, string Key)
         {
             if (OriginalTextBox.Text.Replace(" ", "") != "")
             {
@@ -602,7 +602,7 @@ namespace SecurityPackage
                 ModifiedTextBox.Text = ColumnarCipher.Encrypt(OriginalTextBox.Text, Key);
             }
         }
-        void ColumnarDecryptButton_Click(object sender, EventArgs e, int Key)
+        void ColumnarDecryptButton_Click(object sender, EventArgs e, string Key)
         {
             if (OriginalTextBox.Text.Replace(" ", "") != "")
             {
@@ -690,7 +690,7 @@ namespace SecurityPackage
             if (OriginalTextBox.Text.Replace(" ", "") != "")
             {
                 DES des = new DES();
-                ModifiedTextBox.Text = des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText);
+                ModifiedTextBox.Text = des.Decrypt(des.Decrypt(OriginalTextBox.Text, SecondKeyText), FirstKeyText);
             }
         }
         #endregion
@@ -736,7 +736,7 @@ namespace SecurityPackage
             if (OriginalTextBox.Text.Replace(" ", "") != "")
             {
                 DES des = new DES();
-                ModifiedTextBox.Text = des.Decrypt(des.Decrypt(des.Decrypt(OriginalTextBox.Text, FirstKeyText), SecondKeyText), ThirdKeyText);
+                ModifiedTextBox.Text = des.Decrypt(des.Decrypt(des.Decrypt(OriginalTextBox.Text, ThirdKeyText), SecondKeyText), FirstKeyText);
             }
         }
         #endregion
@@ -982,7 +982,7 @@ namespace SecurityPackage
             #endregion
 
             Button GetKeyButton = DefineButton("Get Key");
-            GetKeyButton.Click += delegate(object sender1, EventArgs e1) { DiffieHellmanGetKeyButton_Click(sender1, e1, SharedKeyRadioButton.Checked, SharedKeyNumberRadioButton.Checked, PublicNumberRadioButton.Checked, int.Parse(PrimeBaseText.Text), int.Parse(PrimeBaseText.Text), int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text)); };
+            GetKeyButton.Click += delegate(object sender1, EventArgs e1) { DiffieHellmanGetKeyButton_Click(sender1, e1, SharedKeyRadioButton.Checked, SharedKeyNumberRadioButton.Checked, PublicNumberRadioButton.Checked, int.Parse(PrimeBaseText.Text), int.Parse(PrimitiveRootText.Text), int.Parse(FirstNumberText.Text), int.Parse(SecondNumberText.Text)); };
 
             CipherControlPanel.Controls.Clear();
             CipherControlPanel.Controls.Add(GetKeyButton);
@@ -1127,12 +1127,13 @@ namespace SecurityPackage
         void EllipticCurveGetKeyButton_Click(object sender, EventArgs e, bool FirstChecked, bool SecondChecked, bool ThirdChecked, int a, int Base, Point G, int n, int PrivateKeyB)
         {
             EllipticCurve ellipticCurve = new EllipticCurve();
+            InputOutputConversion IOConversion = new InputOutputConversion();
             if (FirstChecked)
-                ellipticCurve.EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, n);
+                ModifiedTextBox.Text = IOConversion.PointToString(ellipticCurve.EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, n));
             else if (SecondChecked)
-                ellipticCurve.EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, n, PrivateKeyB);
+                ModifiedTextBox.Text = IOConversion.PointToString(ellipticCurve.EllipticCurveGetSharedKeyUsingResidueClass(a, Base, G, n, PrivateKeyB));
             else if (ThirdChecked)
-                ellipticCurve.EllipticCurveGetPublicKeyResidueClass(a, Base, G, n);
+                ModifiedTextBox.Text = IOConversion.PointToString(ellipticCurve.EllipticCurveGetPublicKeyResidueClass(a, Base, G, n));
         }
 
         #endregion

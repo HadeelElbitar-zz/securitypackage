@@ -103,6 +103,7 @@ namespace SecurityPackage
 
             #region Convert Text and Key To Binary
             BaseConversion baseConversion = new BaseConversion();
+
             #region Text
 
             PlainText = PlainText.Replace(" ", "");
@@ -160,7 +161,7 @@ namespace SecurityPackage
                 }
                 else
                 {
-                    Text64 = Text64.PadLeft(64, '0');
+                    Text64 = Text64.PadRight(64, '0');
                     BinaryText = "";
                 }
                 #endregion
@@ -270,11 +271,13 @@ namespace SecurityPackage
             #endregion
 
             permutedText = Rearrange(permutedText, IPInverse);
+
             #region Convert to array of bytes
             byte[] EncryptedByte = new byte[8];
             for (int i = 0; i < 8; i++)
                 EncryptedByte[i] = (byte)Convert.ToByte(permutedText.Substring(i * 8, 8), 2);
             #endregion
+
             return EncryptedByte;
         }
         #endregion
@@ -290,6 +293,7 @@ namespace SecurityPackage
         {
             #region Convert Text and Key To Binary
             BaseConversion baseConversion = new BaseConversion();
+
             #region Text
             CipherText = CipherText.Replace("\n", "");
             CipherText = CipherText.Replace("\t", "");
@@ -308,10 +312,9 @@ namespace SecurityPackage
                 BinaryKey = baseConversion.TextToBinary(Key);
             #endregion
 
-
             #endregion
 
-            string EncryptedText = "";
+            string DecryptedText = "";
             int keyIndex = 0;
             while (BinaryText != "")
             {
@@ -344,7 +347,7 @@ namespace SecurityPackage
                 }
                 else
                 {
-                    Text64 = Text64.PadLeft(64, '0');
+                    Text64 = Text64.PadRight(64, '0');
                     BinaryText = "";
                 }
                 #endregion
@@ -374,9 +377,9 @@ namespace SecurityPackage
                 #endregion
 
                 permutedText = Rearrange(permutedText, IPInverse);
-                EncryptedText += baseConversion.BinaryToText(permutedText);
+                DecryptedText += baseConversion.BinaryToHexadecimal(permutedText);
             }
-            return EncryptedText;
+            return "0x" + DecryptedText.ToUpper();
         }
 
         /// <summary>
@@ -409,12 +412,11 @@ namespace SecurityPackage
 
             #endregion
 
-            int keyIndex = 0;
-
             #region Get Bits From Key
 
             #region Binary Key
             string Key64;
+            int keyIndex = 0;
             if (keyIndex + 64 <= BinaryKey.Length)
             {
                 Key64 = BinaryKey.Substring(keyIndex, 64);
@@ -455,11 +457,13 @@ namespace SecurityPackage
             #endregion
 
             permutedText = Rearrange(permutedText, IPInverse);
+
             #region Convert to array of bytes
             byte[] EncryptedByte = new byte[8];
             for (int i = 0; i < 8; i++)
                 EncryptedByte[i] = (byte)Convert.ToByte(permutedText.Substring(i * 8, 8), 2);
             #endregion
+
             return EncryptedByte;
         }
         #endregion
